@@ -121,7 +121,7 @@ body{
     left: 50%;
     transform: translateX(-50%);
 
-    width: 25%;
+    width: 29%;
     aspect-ratio: 1 / 1;
   }
 
@@ -131,14 +131,14 @@ body{
     left: 50%;
     transform: translateX(-50%);
 
-    width: 55%;
-  height: 80%;
+    width: 60%;
+  height: 89%;
   }
 }
 
 .final{
   width: 100%;  
-  height: 20%;  
+  height: 25%;  
   background-color: rgb(72, 125, 194);
 
 .seccion1{
@@ -197,12 +197,22 @@ body{
  .parte1{
   width: 40%;
   height: 90%;
-  background-color: rgb(49, 12, 73);
+  background-color: rgba(49, 12, 73, 0);
  
 
   position: absolute;
   bottom: 5%;
  right:  30%;
+
+ .copa{
+  width: 130%;
+  height: 110%;
+ 
+
+  position: absolute;
+  bottom: -5%;
+ right:  -15%;
+ }
  }
 
 }
