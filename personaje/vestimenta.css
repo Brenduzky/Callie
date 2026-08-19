@@ -36,9 +36,9 @@
 .mascota{
     position: absolute;
      top: 20%;
-     left: 50%;
+     left: 25%;
      transform: translateX(-50%);
- 
-     width: 29%;
+     
+     width: 35%;
      aspect-ratio: 1 / 1;
    }
