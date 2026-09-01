@@ -31,12 +31,12 @@
 }
 
  .izquierda{
-  width: 25%;  
+  width: 30%;  
   height: 100%;  
   background-color: rgba(110, 107, 112, 0.932);
  }
  .derecha{
-  width: 25%;  
+  width: 30%;  
   height: 100%;  
   background-color: rgba(49, 30, 61, 0.932);
  }
@@ -48,25 +48,44 @@
  }
  .costados{
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-align-items: center;
+  
  }
 
+ .ladito1{
+  width: 50%;  
+  height: 100%;  
+  background-color: rgba(66, 82, 97, 0.932);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+align-items:end;
+padding: 4%;
+}
+.el1{
+  align-items: start;
+}
+ 
  .ropa{
-  width: 30%;
-height: 10%;
+  width: 60%;
+  aspect-ratio: 1/1;
 background-color: rgba(26, 8, 37, 0.795);
+border-radius: 15%;
               
  }
 
+ .ladito2{
+  width: 35%;  
+  height: 100%;  
+  background-color: rgba(66, 82, 97, 0.932);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+align-items:center;
+
+}
 
  .mascota{
-    position: absolute;
-     top: 20%;
-left:50%;
-     transform: translateX(-50%);
-     
+    
      width: 35%;
      aspect-ratio: 1 / 1;
    }
