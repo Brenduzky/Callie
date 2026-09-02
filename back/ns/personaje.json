@@ -1,0 +1,11 @@
+[
+  {
+    "idUsuario": 1,
+    "ropa": {
+      "remera": 4,
+      "pantalon": 2,
+      "zapatillas": 7
+    },
+    "fondo": 3
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remera azul",
+    "categoria": "remera",
+    "precio": 50
+  },
+  {
+    "id": 2,
+    "nombre": "Pantalon negro",
+    "categoria": "pantalon",
+    "precio": 80
+  },
+  {
+    "id": 3,
+    "nombre": "Fondo arcoiris",
+    "categoria": "fondo",
+    "precio": 100
+  }
+]

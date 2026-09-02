@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ejercicio de pronunciacion",
+    "recompensaMonedas": 20
+  },
+  {
+    "id": 2,
+    "nombre": "Ejercicio de lectura",
+    "recompensaMonedas": 30
+  }
+]
