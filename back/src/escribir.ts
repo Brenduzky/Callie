@@ -48,7 +48,30 @@ const textoTienda: string = JSON.stringify(tienda, null, 2);
 fs.writeFileSync('./tienda.json', textoTienda, 'utf8');
 console.log('Escrito: ./tienda.json');
 
-guardarComoJson('./usuarios.json', usuarios);
-guardarComoJson('./ejercicios.json', ejercicios);
-guardarComoJson('./objetosDelUsuario.json', objetosDelUsuario);
-guardarComoJson('./tienda.json', tienda);
+try {
+  fs.writeFileSync('./usuarios.json', textoUsuarios, 'utf8');
+  console.log('Archivo guardado correctamente en ./usuarios.json');
+} catch (error) {
+  console.error('Hubo un error al escribir usuarios.json:', error);
+}
+
+try {
+  fs.writeFileSync('./ejercicios.json', textoEjercicios, 'utf8');
+  console.log('Archivo guardado correctamente en ./ejercicios.json');
+} catch (error) {
+  console.error('Hubo un error al escribir ejercicios.json:', error);
+}
+
+try {
+  fs.writeFileSync('./objetosDelUsuario.json', textoObjetos, 'utf8');
+  console.log('Archivo guardado correctamente en ./objetosDelUsuario.json');
+} catch (error) {
+  console.error('Hubo un error al escribir objetosDelUsuario.json:', error);
+}
+
+try {
+  fs.writeFileSync('./tienda.json', textoTienda, 'utf8');
+  console.log('Archivo guardado correctamente en ./tienda.json');
+} catch (error) {
+  console.error('Hubo un error al escribir tienda.json:', error);
+}
