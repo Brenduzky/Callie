@@ -24,7 +24,7 @@ body{
 
           font-family:"Rubik Spray Paint", system-ui;
           font-weight: 600;
-          font-size: 400%;
+          font-size: clamp(1.8rem, 8vw, 3.5rem);
           font-style: normal;
 }  
 
@@ -53,11 +53,12 @@ body{
     aspect-ratio: 1/1;
   
     position: absolute;
-    top: 3%;
+    top: 50%;
     left: 4%;
+    transform: translateY(-50%);
   }
   .dias{
-    font-size: 400%;
+    font-size:clamp(1.2rem, 5vw, 2.5rem);
     position: absolute;
     bottom: 5%;
    left:  28%;
@@ -81,13 +82,13 @@ body{
   aspect-ratio: 1/1;
 
   position: absolute;
-  top: -8%;
+  top: 50%;
  right: 74%;
- transform: rotate(30deg);
+ transform: translateY(-50%) rotate(30deg);
  }
 
  .cantidad{
-    font-size: 400%;
+    font-size:clamp(1.2rem, 5vw, 2.5rem);
     position: absolute;
     bottom: 5%;
    left:  28%;
@@ -131,9 +132,9 @@ body{
 
   .mascota{
    position: absolute;
-    top: 20%;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 
     width: 29%;
     aspect-ratio: 1 / 1;
@@ -174,7 +175,7 @@ body{
           justify-content: center;
           align-items:center;    
           height: 100%;  
-  font-size:900%;
+  font-size:clamp(2rem, 10vw, 4rem);
   border-radius: 50%;
 
  }
@@ -192,10 +193,11 @@ body{
  left:  28%;
 
 .play{
-  font-size:600%;
-  position: absolute;
-  bottom: -10%;
- left:  24%;
+  font-size:clamp(1.5rem, 6vw, 3rem);
+  position:relative;
+  bottom: -50%;
+ left: 27%;
+ transform: translateY(-50%);
 }
 
 
@@ -236,5 +238,4 @@ body{
 
 
 }
-
 

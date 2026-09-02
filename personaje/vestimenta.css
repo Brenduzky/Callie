@@ -7,21 +7,14 @@
   
   body{
     height: 100vh;
+    background-color: rgb(19, 81, 161);
   }
   .superior {
     width: 100%;  
     height: 18%;  
     background-color: rgb(19, 81, 161);
-  
-.hola{
-    width: 4%;
-        aspect-ratio: 1/1;
-        background-color: rgba(110, 107, 112, 0.932);
-        position: absolute;
-        top: 3%;
-        right: 3%;
-        border-radius: 50%;
-}
+  }
+
     .salir {
         width: 4%;
         aspect-ratio: 1/1;
@@ -31,14 +24,68 @@
         left: 3%;
         border-radius: 50%;
     }
+.abajo{
+  width: 100%;  
+  height: 82%;  
+  display: flex;
 }
 
-.mascota{
-    position: absolute;
-     top: 20%;
-     left: 25%;
-     transform: translateX(-50%);
-     
+ .izquierda{
+  width: 30%;  
+  height: 100%;  
+  background-color: rgba(110, 107, 112, 0.932);
+ }
+ .derecha{
+  width: 30%;  
+  height: 100%;  
+  background-color: rgba(49, 30, 61, 0.932);
+ }
+
+ .medio{
+ width: 50%;  
+ height: 100%;  
+ background-color: rgba(89, 21, 131, 0.932);
+ }
+ .costados{
+  display: flex;
+  
+ }
+
+ .ladito1{
+  width: 50%;  
+  height: 100%;  
+  background-color: rgba(66, 82, 97, 0.932);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+align-items:end;
+padding: 4%;
+}
+.el1{
+  align-items: start;
+}
+ 
+ .ropa{
+  width: 60%;
+  aspect-ratio: 1/1;
+background-color: rgba(26, 8, 37, 0.795);
+border-radius: 15%;
+              
+ }
+
+ .ladito2{
+  width: 35%;  
+  height: 100%;  
+  background-color: rgba(66, 82, 97, 0.932);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+align-items:center;
+
+}
+
+ .mascota{
+    
      width: 35%;
      aspect-ratio: 1 / 1;
    }
