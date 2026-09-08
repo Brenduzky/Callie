@@ -7,7 +7,7 @@
 
 body{
   height: 100vh;
-  background-color: blue;
+  background-color: rgb(42, 132, 216);
 }
 
 h1{
@@ -15,15 +15,16 @@ h1{
   font-size: 18px;
   font-weight: bold;
   font-style: italic;
-  color: #333333;
+  color: #000000;
   letter-spacing: 2px;
   text-transform: uppercase;
+
 
 }
 .superior{
   width: 100%;  
   height: 15%;  
-  background-color: rgb(19, 81, 161);
+  background-color: rgba(19, 80, 161, 0);
   padding-left: 2%;
   padding-right: 2%;
   display: flex;
@@ -32,7 +33,7 @@ h1{
 .medio{
   width: 100%;  
   height: 60%;  
-  background-color: rgb(36, 193, 204);
+  background-color: rgba(36, 193, 204, 0);
   display:flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +42,7 @@ h1{
 .abajo{
   width: 100%;  
   height: 25%;  
-  background-color: rgb(196, 101, 38);
+  background-color: rgba(196, 101, 38, 0);
   padding: 1%;
   display:flex;
   justify-content: space-between;
@@ -51,7 +52,7 @@ h1{
 .configura{
   width: 8%;  
   height: 100%;  
-  background-color: rgb(196, 101, 38);
+  background-color: rgba(196, 101, 38, 0);
   display:flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +60,7 @@ h1{
 .racha{
   width: 11.5%;  
   height: 100%;  
-  background-color: rgb(75, 196, 38);
+  background-color: rgba(75, 196, 38, 0);
   display:flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +71,7 @@ h1{
 .titulo{
 width: 60%;  
   height: 100%;  
-  background-color: rgb(31, 126, 78);
+  background-color: rgba(31, 126, 78, 0);
   display:flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +80,7 @@ width: 60%;
 .peces{
   width: 20%;  
   height: 100%;  
-  background-color: rgb(196, 101, 38);
+  background-color: rgba(196, 101, 38, 0);
   display:flex;
   justify-content: center;
   align-items: center;

@@ -1,9 +1,45 @@
-.salir {
-    width: 4%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  body{
+    height: 100vh;
+    background-color: rgb(42, 132, 216);
+  }
+  
+  .salir {
+    width: 60%;
     aspect-ratio: 1/1;
-    background-color: rgba(110, 107, 112, 0.932);
-    position: absolute;
-    top: 3%;
-    left: 3%;
-    border-radius: 50%;
+     background-color: rgb(30, 46, 90);
+     border-radius: 50%;
 }
+
+.superior{
+    width: 100%;  
+    height: 15%;  
+    background-color: rgb(19, 161, 54);
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+  }
+  
+
+  .parasalir{
+    width: 8%;  
+    height: 100%;  
+    background-color: rgb(196, 101, 38);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .seccion{
+    width: 92%;  
+    height: 100%;  
+    background-color: rgb(122, 196, 38);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
