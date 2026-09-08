@@ -136,3 +136,14 @@ width: 20%;
   justify-content: center;
   align-items: center;
 }
+
+
+.linea{
+  width: 90%;
+  height: 0.5%;
+   background-color: rgb(0, 0, 0);
+   border-radius: 999px;
+ position: absolute;
+ top:15%;
+ left:5%;
+}
