@@ -32,7 +32,7 @@ h1{
 
 .medio{
   width: 100%;  
-  height: 60%;  
+  height: 65%;  
   background-color: rgba(36, 193, 204, 0);
   display:flex;
   justify-content: center;
@@ -41,7 +41,7 @@ h1{
 
 .abajo{
   width: 100%;  
-  height: 25%;  
+  height: 20%;  
   background-color: rgba(196, 101, 38, 0);
   padding: 1%;
   display:flex;
@@ -58,34 +58,38 @@ h1{
   align-items: center;
 }
 .racha{
-  width: 11.5%;  
+  width: 40%;  
   height: 100%;  
   background-color: rgba(75, 196, 38, 0);
   display:flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  gap:5%;
-  
-}
-
-.titulo{
-width: 60%;  
-  height: 100%;  
-  background-color: rgba(31, 126, 78, 0);
-  display:flex;
-  justify-content: center;
-  align-items: center;
+  padding-left: 1%;
+ 
 }
 
 .peces{
-  width: 20%;  
+  width: 50%;  
   height: 100%;  
-  background-color: rgba(196, 101, 38, 0);
+  background-color: rgba(224, 188, 164, 0);
   display:flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  gap:5%;
+  padding-right: 3%;
 }
+
+.cajita{
+  width: max-content;
+  height: 80%;  
+  background-color: rgba(241, 217, 189, 0.671);
+  display:flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 4px solid rgb(226, 100, 15);
+  padding-inline: 8%;
+  gap:10%;
+}
+
 
 .Configuracion{
   width: 60%;
@@ -95,14 +99,14 @@ width: 60%;
 }
 
 .imagenderacha{
-  width: 30%;
+  width: 3rem;
   aspect-ratio: 1/1;
    background-color: rgb(233, 9, 9);
 }
 
 .imagendelpez{
-  width: 30%;
-  height: 60%;
+  width: 4rem;
+  height: 2rem;
    background-color: rgb(9, 43, 233);
 }
 .callie{
@@ -114,27 +118,35 @@ width: 60%;
 .juego{
   width: 20%;  
   height: 100%;  
-  background-color: rgb(38, 196, 175);
+  background-color: rgb(38, 151, 196);
   display:flex;
   justify-content: center;
   align-items: center;
+  border-radius: 999px;
+  border: 4px solid rgb(17, 70, 168);
+
 }
 .jugar{
   width: 55%;  
   height: 100%;  
-  background-color: rgb(38, 196, 175);
+  background-color: rgb(224, 100, 17);
   display:flex;
   justify-content: center;
   align-items: center;
+  border-radius: 999px;
+  border: 4px solid rgb(196, 84, 9);
+
 }
 
 .trofeosracha{
 width: 20%;  
   height: 100%;  
-  background-color: rgb(38, 196, 175);
+  background-color: rgb(10, 156, 192);
   display:flex;
   justify-content: center;
   align-items: center;
+  border-radius: 999px;
+  border: 4px solid rgb(17, 70, 168);
 }
 
 
