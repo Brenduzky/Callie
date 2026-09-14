@@ -21,6 +21,9 @@ background-color: blue;
     height: 100%;
 width: 40%;
 background-color: rgb(255, 0, 0);
+display:flex;
+  justify-content: center;
+  align-items: center;
   }
 
   .arriba{
@@ -28,12 +31,19 @@ background-color: rgb(255, 0, 0);
   height: 15%;  
   background-color: rgb(43, 161, 19);
   padding-left: 3%;
-  padding-right: 2%;
+  padding-right: 3%;
   display: flex;
   }
-
+.abajo{
+  width: 100%;  
+  height: 85%;  
+  background-color: rgb(19, 140, 161);
+  padding-left: 3%;
+  padding-right: 3%;
+  display: flex;
+}
   .parasalir{
-    width: 13%;  
+    width: 14%;  
   height: 100%;  
   background-color: rgb(196, 101, 38);
   display:flex;
@@ -42,8 +52,72 @@ background-color: rgb(255, 0, 0);
   }
 
   .salir{
-    width: 60%;
+    width: 58%;
   aspect-ratio: 1/1;
    background-color: rgb(30, 46, 90);
    border-radius: 50%;
+  }
+
+
+
+
+
+
+
+
+
+  .caja{
+    width: 80%;  
+  height: 85%;  
+  background-color: rgb(196, 101, 38);
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8%;
+padding-top: 2%;
+padding-bottom: 2%;
+  }
+
+  .peces{
+    width: 100%;  
+    height: 20%;  
+    background-color: rgb(38, 196, 46);
+    padding-right: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .callie{
+    width: 100%;  
+    height: 70%;  
+    background-color: rgb(167, 196, 38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cajita{
+    width: max-content;
+  height: 80%;  
+  background-color: rgba(241, 217, 189, 0.671);
+  display:flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 4px solid rgb(226, 100, 15);
+  padding-inline: 8%;
+  gap:10%;
+  }
+
+  .imagendelpez{
+    width: 4rem;
+    height: 2rem;
+     background-color: rgb(9, 43, 233);
+  }
+
+  .imagendecallie{
+    width: 60%;
+    height: 90%;
+     background-color: rgb(9, 43, 233);
   }

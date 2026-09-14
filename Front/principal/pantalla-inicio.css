@@ -52,7 +52,7 @@ h1{
 .configura{
   width: 8%;  
   height: 100%;  
-  background-color: rgb(196, 101, 38);
+  background-color: rgba(196, 101, 38, 0);
   display:flex;
   justify-content: center;
   align-items: center;
