@@ -39,13 +39,13 @@ display:flex;
   width: 100%;  
   height: 85%;  
   background-color: rgba(19, 140, 161, 0);
-  padding-left: 3%;
-  padding-right: 3%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap:5%;
-  padding-top: 5%;
+  align-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap:7%;
+
 }
   .parasalir{
     width: 14%;  
@@ -127,24 +127,13 @@ padding-bottom: 2%;
      background-color: rgb(9, 43, 233);
   }
 
-  .cajaderopas{
-    width: 80%;
-  height: 20%;  
+  .cajas{
+    width: 18%;
+  height: 25%;  
   background-color: rgb(240, 106, 106);
   display:flex;
   align-items: center;
   border-radius: 10px;
   border: 4px solid rgba(175, 94, 94);
-  padding-inline: 15%;
   gap:10%;
-  }
-
-  .naranja{
-    background-color: rgb(246, 148, 46);
-    border: 4px solid rgba(175, 141, 94);
-  }
-
-  .azul{
-    background-color: rgb(101, 221, 234);
-    border: 4px solid rgba(94, 148, 175);
   }
