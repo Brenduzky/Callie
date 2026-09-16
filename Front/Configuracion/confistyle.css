@@ -181,17 +181,26 @@
 
   /*prueba de la seleccion desplegable*/
 
-  select.combo-problema {
-    color: #000000; /* Color de texto inicial */
-    cursor: pointer;
-    border: none;
-    outline: none;
-    appearance: auto; /* Muestra la flechita desplegable por defecto */
-  }
-  
-  /* Opciones que se despliegan al hacer clic */
-  select.combo-problema option {
-    background-color: rgb(89, 69, 204); /* Color del menú*/
-    color: #000000;                      /* Color del texto dentro de las opciones */
-    padding: 10px;
-  }
+.combo {
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  appearance: auto;
+  border-radius: 99px;
+  padding: 10px 14px;
+  width: 80%;
+  font-size: 1.3rem;
+  background-color: rgb(89, 69, 204);
+}
+
+.combo:has(option[value=""]:checked) {
+  color: #000000;
+}
+
+.combo option {
+  background-color: rgb(89, 69, 204);
+  color: #000000;
+  padding: 10px;
+  border-radius: 999px;
+}
