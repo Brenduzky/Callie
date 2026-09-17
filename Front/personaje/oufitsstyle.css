@@ -49,8 +49,9 @@ display:flex;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   gap:5%;
-  padding-top: 5%;
+  padding-top: 2%;
 }
   .parasalir{
     width: 14%;  
@@ -134,14 +135,14 @@ padding-bottom: 2%;
 
   .cajaderopas{
     width: 80%;
-  height: 20%;  
+  height: 19%;  
   background-color: rgb(240, 106, 106);
   display:flex;
   align-items: center;
   border-radius: 10px;
   border: 4px solid rgba(175, 94, 94);
   padding-inline: 15%;
-  gap:10%;
+  gap:40%;
   text-decoration: none; 
   color: rgb(0, 0, 0);   
   }
@@ -149,14 +150,24 @@ padding-bottom: 2%;
   .naranja{
     background-color: rgb(246, 148, 46);
     border: 4px solid rgba(175, 141, 94);
+    gap:47.5%;
   }
 
   .azul{
     background-color: rgb(101, 221, 234);
     border: 4px solid rgba(94, 148, 175);
+    gap:38%;
   }
 
   .violeta{
     background-color: rgb(234, 101, 223);
     border: 4px solid rgb(175, 94, 151);
+    gap:34%;
+  }
+
+  
+  .imagenderopas{
+    width: 40%;
+    height: 90%;
+     background-color: rgb(9, 43, 233);
   }

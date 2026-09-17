@@ -133,36 +133,37 @@ padding-bottom: 2%;
     width: 20%;
   height: 25%;  
   background-color: rgb(240, 106, 106);
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
   border: 4px solid rgba(175, 94, 94);
-  gap:5%;
+
 
   }
 
-  .miniarriba{
+  .fondo{
     width: 100%;
-  height: 25%;  
+  height: 100%;  
   background-color: rgba(164, 106, 240, 0);
+  display: flex;
+justify-content: flex-start;
+border-radius: 6px;
+  }
+
+.pez{
+  width:40%;
+aspect-ratio: 1/1;
+background-color: rgb(106, 240, 233);
+}
+
+.cajaenele{
+  width:60%;
+height: max-content;
+  background-color: rgba(255, 255, 255, 0.644);
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 4%;
-  gap:5%;
-  }
-
-  .imagencita{
-    width: 80%;
-    height: 60%;  
-    background-color: rgb(106, 240, 233);
-  }
-
-.circulo{
-  width:25%;
-  aspect-ratio: 1/1;
-  border-radius: 100%;
-  background-color: rgb(106, 240, 233);
+  gap:8%;
+  border-bottom-right-radius: 18px;
+  border-right: 4px solid rgba(175, 94, 94);
+  border-bottom: 4px solid rgba(175, 94, 94);
 }
