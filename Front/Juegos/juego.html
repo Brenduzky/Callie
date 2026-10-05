@@ -10,6 +10,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <section class="superior">
@@ -27,10 +33,64 @@
  </section>
         
         </section>
-            <section class="medio">
-                <a class="primerjuego" href="../Jueguitos/primerjuego.html"></a>
-            </section>
-            
+        <section class="medio">
+            <button class="flecha ant izquierdita" aria-label="Anterior">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 4 L7 12 L15 20" />
+                </svg>
+            </button>
+        
+            <div class="carrusel">
+                <a class="juego primero" href="../Jueguitos/primerjuego.html"></a>
+                <a class="juego segundo" href="../Jueguitos/segundojuego.html"></a>
+                <a class="juego tercero" href="../Jueguitos/tercerjuego.html"></a>
+                <a class="juego cuarto" href="../Jueguitos/cuartojuego.html"></a>
+            </div>
+        
+            <button class="flecha sig" aria-label="Siguiente">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 4 L17 12 L9 20" />
+                </svg>
+            </button>
+        </section>
+        
+        <script>
+            const juegos = document.querySelectorAll('.juego');
+            const ant = document.querySelector('.ant');
+            const sig = document.querySelector('.sig');
+            const n = juegos.length;
+            let actual = 0;
+        
+            function mostrar() {
+                juegos.forEach((j, i) => {
+                    j.classList.remove('centro', 'izq', 'der', 'oculto');
+        
+                    // distancia circular: la última queda "a la izquierda" de la primera
+                    let d = (i - actual + n) % n;
+                    if (d > n / 2) d -= n;
+        
+                    if (d === 0) j.classList.add('centro');
+                    else if (d === -1) j.classList.add('izq');
+                    else if (d === 1) j.classList.add('der');
+                    else j.classList.add('oculto');
+                });
+            }
+        
+            ant.addEventListener('click', () => { actual = (actual - 1 + n) % n; mostrar(); });
+            sig.addEventListener('click', () => { actual = (actual + 1) % n; mostrar(); });
+        
+            juegos.forEach((j, i) => {
+                j.addEventListener('click', e => {
+                    if (i !== actual) {
+                        e.preventDefault();
+                        actual = i;
+                        mostrar();
+                    }
+                });
+            });
+        
+            mostrar();
+        </script>
         
 
 
