@@ -13,8 +13,9 @@
 </head>
 <body>
 <section class="izquierda">
+    <div class="redondeado">
 <h1 class="jua-regular grande">Registrarse</h1>
-<div class="espacio"></div>
+<div class="espacio">
 <div class="contenedor">
     <h2 class="jua-regular chico">Nombre de Usuario</h2>
     <input placeholder="Escribir" class="escribilo">
@@ -31,13 +32,63 @@
     <h2 class="jua-regular chico">Fecha de nacimiento</h2>
     <input placeholder="Escribir" class="escribilo">
 </div>
+</div></div>
 </section>
 <section class="derecha">
-<div class="cubo"></div>
+<div class="cubo">
+    <h2 class="jua-regular chiquita">Obstaculo</h2>
+    <h2 class="jua-regular chiquita">fonoundiologico</h2>
+    <div class="cubitos">
+        
+<label>
+    <input type="radio" name="opcion" value="1">
+    1
+  </label>
+  
+  <br>
+  
+  <label>
+    <input type="radio" name="opcion" value="2">
+    2
+  </label>
+  
+  <br>
+  
+  <label>
+    <input type="radio" name="opcion" value="3">
+    3
+  </label>
+<!--
+
+<input type="radio" name="opcion" value="1"> 1
+<input type="radio" name="opcion" value="2"> 2
+<input type="radio" name="opcion" value="3"> 3
+
+<button onclick="elegir()">Elegir</button>
+
+<script>
+function elegir() {
+  const seleccionado = document.querySelector(
+    'input[name="opcion"]:checked'
+  );
+
+  if (seleccionado) {
+    alert("Elegiste la opción " + seleccionado.value);
+  } else {
+    alert("Elegí una opción primero");
+  }
+}
+</script>
+
+-->
+
+
+    </div>
+</div>
 <div class="abajo">
-    <button class="siguiente">
+    <a href="../principal/pantalla-atras.html" class="siguiente">
         <h2 class="jua-regular">Siguiente</h2>
-    </button>
+    </a>
 <div class="callie"></div>
 </div>
 
