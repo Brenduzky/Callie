@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="stylesheet" href="primerjuego.css">
     <link rel="stylesheet" href="/../Callie/Front/Todo/todostyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outfits de Callie</title>
+    <title>Juego de ...??</title>
 </head>
 <body>
     <section class="superior">
-        <div class="ejercicio"></div>
-        <div id="callie"></div>
-        <div id="burbujadetexto"></div>
+        <div class="ejercicio" id="ejercicio"></div>
+
+        <!-- poner la imagen del pingüino, style="background-image:url('callie.png')"-->
+        <div id="callie">🐧</div>
+
+        <div id="burbujadetexto">
+            <p id="texto"></p>
+            <button id="flecha" aria-label="Cerrar burbuja"></button>
+        </div>
+
+        <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir"></a>
     </section>
 
     <section class="abajo">
-        <div class=" seleccion" id="primero"></div>
-        <div class=" seleccion" id="segundo"></div>
-        <div class=" seleccion" id="tercero"></div>
-        <div class=" seleccion" id="cuarto"></div>
+        <!-- data-color: color que aparece en el cuadro grande. data-img: ruta de imagen (opcional) -->
+        <div class="seleccion" id="primero" data-color="#ff9ecb" data-img="">👄</div>
+        <div class="seleccion" id="segundo" data-color="#7fd4ff" data-img="">🧊</div>
+        <div class="seleccion" id="tercero" data-color="#ffd54a" data-img=""></div>
+        <div class="seleccion" id="cuarto"  data-color="#8be07a" data-img=""></div>
     </section>
+
+    <script src="primerjuego.js"></script>
 </body>
 </html>
