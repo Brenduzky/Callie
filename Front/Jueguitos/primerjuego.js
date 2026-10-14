@@ -8,10 +8,10 @@ const texto = document.getElementById('texto');
 const flecha = document.getElementById('flecha');
 const cerrar = document.getElementById('cerrar');
 
-// Textos distintos para cada caja (se elige uno al azar)
+// Textos distintos para cada caja (uno al azar)
 const textos = {
     primero: [
-        '¡Mmm, qué besito! Esa caja estaba rojita.',
+        '¡Mmm, bebesita, que ricos labios rojitos.',
         'Los labios sirven para sonreír. ¡Probá sonreír!',
         'Dicen que los pingüinos también mandan besos.'
     ],
@@ -35,21 +35,36 @@ const textos = {
 let rondas = 0;
 let activa = null;
 let ultima = null;
+let bloqueado = false;
 
 function azar(lista) {
     return lista[Math.floor(Math.random() * lista.length)];
 }
 
 function iluminar() {
-    // elige una caja al azar, evitando repetir la anterior
+    // elige una caja al azar, sin repetir la anterior
     const opciones = [...cajas].filter(c => c !== ultima);
     activa = azar(opciones);
     activa.classList.add('brilla');
 }
 
 function tocarCaja(caja) {
-    if (caja !== activa) return; // solo funciona la iluminada
+    if (bloqueado) return; // Si está en pausa tras un error, ignora clics
 
+    // Si toca la caja q no es se pone rojo
+    if (caja !== activa) {
+        bloqueado = true;
+        caja.classList.add('error-rojo');
+
+        setTimeout(() => {
+            caja.classList.remove('error-rojo');
+            bloqueado = false;
+        }, 1000); // (1000 ms = 1 segundo)
+
+        return;
+    }
+
+    // Si toca la caja q si sigue al siguiente
     caja.classList.remove('brilla');
     ultima = caja;
     activa = null;
@@ -73,7 +88,7 @@ function tocarCaja(caja) {
 function terminar() {
     ejercicio.style.backgroundImage = 'none';
     ejercicio.style.backgroundColor = '#f1f0ee';
-    ejercicio.textContent = '¡Terminaste! 🎉';
+    ejercicio.textContent = '¡Lo habeis logrado chaval!! Terminaste! 🎉';
     // Acá podés redirigir a la siguiente pantalla, por ejemplo:
     // window.location.href = 'siguiente.html';
 }
