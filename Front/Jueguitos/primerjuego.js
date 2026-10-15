@@ -27,7 +27,7 @@ const textos = {
     ],
     cuarto: [
         '¡Verde como el pasto! Lo extraño un montón.',
-        'Esta caja es la más fresca de todas.',
+        'hoy, volví, a dormir en nuestra cama y todo sigue igual. El aire y nuestros gatos, nada cambiara. Fui tu amiga, fui tu compañera. Te quiero ver, aún te amo y creo que hasta más que ayer, de hiedra venenosa, no se deja ver.',
         '¡Verde fluor! Se ve desde lejos.'
     ]
 };
