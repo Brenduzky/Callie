@@ -86,33 +86,33 @@ h1{
   align-items: center;
   border-radius: 10px;
   border: 5px solid rgb(226, 169, 50);
-  padding-inline: 8%;
-  gap:10%;
+  padding-inline: 4%;
+  gap:4%;
 }
 
 
 .Configuracion{
   width: 60%;
   aspect-ratio: 1/1;
-   background-color: rgb(30, 46, 90);
+   background-color: rgba(30, 46, 90, 0);
    border-radius: 50%;
 }
 
 .imagenderacha{
-  width: 3rem;
-  aspect-ratio: 1/1;
-   background-color: rgb(233, 9, 9);
-}
+  width: 60%;
+ height: 100%;
+   background-color: rgba(233, 9, 9, 0);
+} 
 
 .imagendelpez{
   width: 4rem;
   height: 2rem;
-   background-color: rgb(9, 43, 233);
+   background-color: rgba(9, 43, 233, 0);
 }
 .callie{
   width: 20%;
   height: 90%;
-   background-color: rgb(9, 43, 233);
+   background-color: rgba(9, 43, 233, 0);
 }
 
 .juego{
@@ -125,7 +125,7 @@ h1{
   border-radius: 999px;
   border: 5px solid rgb(23, 171, 240);
   text-decoration: none;
-  gap:6%;
+  gap:5%;
   padding-left: 2.2%;
 
 }
@@ -177,5 +177,64 @@ width: 20%;
 .fotito{
   width: 25%;  
   height: 80%;  
-  background-color: rgb(192, 10, 177);
+  background-color: rgba(192, 10, 177, 0);
+}
+
+
+/*imagenes*/
+
+
+.calliete{
+  width: 20%;  
+  aspect-ratio: 1/1;
+  position: absolute;
+  top:14%;
+}
+
+.confi{
+  width: 100%;  
+  aspect-ratio: 1/1;
+}
+
+.rachita{
+  width: 80%;  
+  aspect-ratio: 1/1;
+}
+
+.marca{
+  width: 20%;  
+  aspect-ratio: 1/1;
+  position: absolute;
+  top:0;
+  right: 40.2%;
+}
+
+.pececito{
+  width: 5.5%;  
+  aspect-ratio: 1/1;
+  position: absolute;
+  top:0;
+ right: 15.5%;
+}
+
+.dado{
+  width: 9%;  
+  aspect-ratio: 1/1;
+  position: absolute;
+  bottom:0;
+ left: 0.8%;
+}
+
+.trofeito{
+  position: absolute;
+  bottom:0;
+ right: 12.5%;
+ width: 6%;  
+ aspect-ratio: 1/1;
+}
+
+.fondo{
+ position: absolute;
+ z-index: -1; 
+ height: 100%;
 }
