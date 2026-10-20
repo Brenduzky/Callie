@@ -53,14 +53,17 @@ body{
   align-items: center;
   justify-content: start;
   padding-top: 4%;
-  gap: 3%;
+  gap: 10%;
 }
 
 
 .callie{
   width: 50%;
   height: 55%;
-  background-color: rgb(26, 13, 216);
+  background-color: rgba(26, 13, 216, 0);
+  display: flex;
+  justify-content: center;
+  align-items: end;
 }
 .textos{
 display: flex;
@@ -69,20 +72,22 @@ align-items: center;
 width:max-content;
 justify-content: end;
 padding-bottom: 2%;
-height: 30%;
+height: 25%;
 background-color: rgba(13, 202, 216, 0);
+
 }
 
 .texto{
   display: flex;
 flex-direction: column;
 align-items: center;
-width:max-content;
-justify-content: end;
-padding-bottom: 2%;
-height: 12%;
-background-color: rgba(13, 202, 216, 0);
+width:30%;
+justify-content: center;
+
+height: 10%;
+background-color: rgba(168, 212, 239, 0.6);
 gap:3%;
+border-radius: 40px;
 }
 
 
@@ -95,8 +100,8 @@ justify-content: start;
 padding-top: 6%;
 gap:4%;
 padding-bottom: 2%;
-height: 82%;
-background-color: rgb(217, 217, 217);
+height: 72%;
+background-color: rgb(168, 212, 239, 0.6);
 border-radius: 45px;
 
 }
@@ -125,11 +130,11 @@ border-radius: 45px;
 }
 
 .escribilo{
-   height: 63%;
-    width:100%;
+   height: 44%;
+    width:110%;
     background-color: #71CFF7;
     border: 5px solid #17ABF0;
-    border-radius: 12px;
+    border-radius: 25px;
     color: #5FB6DA;
     font-family: sans-serif;
     font-size: 1.9rem;
@@ -153,4 +158,32 @@ border-radius: 45px;
     gap:5%;
       background-color: #eb3a6f00;
       padding-top: 5%;
+  }
+
+
+  .azul{
+    color:blue;
+  }
+  /*imagenes*/
+
+  .calliete{
+  width: 88%;  
+  
+  }
+  
+  .marca{
+    position: absolute;
+    width: 15%;
+    top:6%;
+    left: 16.5%;
+  }
+
+  .fondo{
+    position: fixed;           /* La fija en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;              
+    height: 100vh;             
+    object-fit: cover;         /* Se estira y adapta sin deformarse */
+    z-index: -1;               /*al fondo*/
   }

@@ -9,6 +9,7 @@
     height: 100vh;
     background-color: rgba(135, 208, 254);
     display: flex;
+    overflow: hidden;  
   }
 
 
@@ -44,15 +45,15 @@ gap:15%;
     background-color: rgba(87, 165, 42, 0);
     display: flex;
     flex-direction: column;
-    gap:7%;
+    gap:10%;
   }
 
   .escribilo{
-    height: 63%;
-    width:100%;
+    height: 55%;
+    width:90%;
     background-color: #71CFF7;
     border: 5px solid #17ABF0;
-    border-radius: 12px;
+    border-radius: 25px;
     color: #5FB6DA;
     font-family: sans-serif;
     font-size: 1.9rem;
@@ -87,9 +88,9 @@ gap:15%;
   /*parte derecha*/
 
   .cubo{
-    height: 100%;
+    height: 75%;
     width: 70%;
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(168, 212, 239, 0.6);
     backdrop-filter: blur(3px);
     border-radius: 40px;
     display: flex;
@@ -128,10 +129,10 @@ gap:15%;
     appearance: none;
     -webkit-appearance: none;
     width: 10%;
-    height: 100%;
+    aspect-ratio: 1/1;
     border-radius: 8px;
     background-color: #c9c9c9;
-    border: 4px solid #999;
+    border: 5px solid #999;
     cursor: pointer;
     margin: 0;
   }
@@ -171,13 +172,13 @@ gap:15%;
     bottom: 0;
     height: 28%;
     width:20%;
-    background-color: blue;
+    background-color: rgba(0, 0, 255, 0);
   }
 
   .redondeado{
     height: 90%;
     width:70%;
-    background-color: rgba(217, 217, 217, 0.600);
+    background-color: rgba(168, 212, 239, 0.6);
 border-radius: 50px;
 display: flex;
 flex-direction: column;
@@ -190,4 +191,23 @@ gap:4%;
   a{
     text-decoration: none;
     color: black;
+  }
+
+
+  /* imagenes */
+
+  .fondo{
+    position: fixed;           /* La fija en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;              
+    height: 100vh;             
+    object-fit: cover;         /* Se estira y adapta sin deformarse */
+    z-index: -1;               /*al fondo*/
+  }
+
+  .calliete{
+    position: absolute;
+    bottom: -15%;
+    right:-1%;
   }
