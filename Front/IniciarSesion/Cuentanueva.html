@@ -9,30 +9,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    
 
 </head>
 <body>
 <section class="izquierda">
     <div class="redondeado">
 <h1 class="jua-regular grande">Registrarse</h1>
-<div class="espacio">
+<form id="registrate" class="espacio">
 <div class="contenedor">
-    <h2 class="jua-regular chico">Nombre de Usuario</h2>
-    <input placeholder="Escribir" class="escribilo">
+    <label for="nombre-usuario" class="jua-regular chico">Nombre de Usuario</label>
+    <input name="nombre-usuario" placeholder="Escribir" class="escribilo">
 </div>
 <div class="contenedor">
-    <h2 class="jua-regular chico">Contraseña</h2>
-    <input placeholder="Escribir" class="escribilo">
+    <label for="contraseña" class="jua-regular chico">Contraseña</label>
+    <input name="contraseña" placeholder="Escribir" class="escribilo">
 </div>
 <div class="contenedor">
-    <h2 class="jua-regular chico">Repetir contraseña</h2>
-    <input placeholder="Escribir" class="escribilo">
+    <label for="verificacion" class="jua-regular chico">Repetir contraseña</label>
+    <input name="verificacion" placeholder="Escribir" class="escribilo">
 </div>
 <div class="contenedor">
-    <h2 class="jua-regular chico">Fecha de nacimiento</h2>
-    <input placeholder="Escribir" class="escribilo">
+    <label for="nacimiento" class="jua-regular chico">Fecha de nacimiento</label>
+    <input name="nacimiento" placeholder="Escribir" class="escribilo">
 </div>
-</div></div>
+</form></div>
 </section>
 <section class="derecha">
 
@@ -80,13 +81,14 @@ function elegir() {
 -->
 
 <div class="abajo">
-    <a href="../principal/pantalla-atras.html" class="siguiente">
-        <h2 class="jua-regular">Siguiente</h2>
-    </a>
+    <button class="siguiente">Siguiente</button>
 <div class="callie"></div>
 </div>
 
 </section>
+
+
+<script src="Cuentanuevajason.js"></script>
 
 </body>
 </html>
