@@ -78,19 +78,17 @@ h1{
   padding-right: 3%;
 }
 
-.cajita{
+.cajita {
   width: max-content;
   height: 80%;  
   background-color: rgba(255, 255, 255, 0.720);
-  display:flex;
+  display: flex;
   align-items: center;
   border-radius: 10px;
   border: 5px solid rgb(226, 169, 50);
-  padding-inline: 8%;
-  padding-left: 2%;
-  gap:25%;
+  padding-inline: 1.1rem;      /*relleno interno*/
+  gap: 1rem;           
 }
-
 
 .Configuracion{
   width: 60%;
@@ -103,18 +101,26 @@ h1{
   width: 3rem;
   aspect-ratio: 1/1;
    background-color: rgba(233, 9, 9, 0);
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
-.imagendelpez{
-  width: 7rem;
-  height: max-content;
-   background-color: rgba(9, 43, 233, 0);
-   display: flex;
+.imagendelpez {
+  width: 4rem;         
+  aspect-ratio: 1/1;
+  background-color: rgba(9, 43, 233, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .callie{
   width: 20%;
   height: 90%;
-   background-color: rgb(9, 43, 233);
+   background-color: rgba(9, 43, 233, 0);
+   display: flex;
+   justify-content: center;
+   align-items: end;
 }
 
 .juego{
@@ -179,7 +185,10 @@ width: 20%;
 .fotito{
   width: 25%;  
   height: 80%;  
-  background-color: rgb(192, 10, 177);
+  background-color: rgba(192, 10, 177, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -190,7 +199,7 @@ width: 20%;
 }
 
 .rachita{
-  width: 130%;
+  width: 95%;
 }
 
 .pecesito{
@@ -200,3 +209,26 @@ width: 20%;
 .especial{
 gap:-5%
 }
+
+.calliete{
+  width: 85%;
+}
+
+.dado{
+  width: 180%;
+}
+
+.trofeito{
+  width: 160%;
+}
+
+  .fondo{
+    position: fixed;           /* La fija en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;              
+    height: 100vh;             
+    object-fit: cover;         /* Se estira y adapta sin deformarse */
+    z-index: -1;               /*al fondo*/
+  }
+ 
