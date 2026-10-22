@@ -31,85 +31,126 @@ body {
 
 /* cuadrado del medio (grande) */
 .ejercicio {
+  position: relative;
   width: 65%;
   height: 80%;
   background-color: #f1f0ee;
-  background-size: cover;
-  background-position: center;
   border-radius: 10px;
   border: 5px solid #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  transition: background-color 0.4s;
+  transition: background-color 0.4s;  /*cuando cambia de color, lo hace lento */
+  overflow: hidden; /*esconde lo que no esta adentro (asi no recorto la imagen*/
 }
 
-/*Callie*/
+/* los dos modos están escondidos */
+#intro,
+#consigna {
+  display: none;
+}
+
+/* según la clase que tenga el cuadro, se muestra uno u otro */
+.ejercicio.modo-intro #intro {
+  display: block;
+}
+
+.ejercicio.modo-consigna #consigna {
+  display: flex;
+}
+
+
+
+
+/* MODO INTRO */
 #callie {
   position: absolute;
-  left: -2%;
-  top: 35%;
-  width: 9%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: #9fe0ff;
+  left: -6%;       
+  bottom: 0;
+  width: 20%;
+  aspect-ratio: 1/1;
+  background-color: #9fe1ff00;
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  transition: all 0.5s ease;
+  font-size: 4rem; 
+  transform: rotate(45deg); /*asi giro la img*/
+}
+.calliete{
+  transform: scaleX(-1);
 }
 
-/*pero la parte de cuando se va el circulo tmb*/
-#callie.grande {
-  left: -4%;
-  top: 25%;
-  width: 22%;
-  background-color: transparent;
-  font-size: 9rem;
-}
-
-/*burbuja de texto ("sale" de callie)*/
+/* burbuja de texto, al lado de Callie */
 #burbujadetexto {
   position: absolute;
-  left: 12%;
-  top: 8%;
-  width: 24%;
-  min-height: 35%;
-  padding: 14px 16px 44px 16px;
+  left: 17%;
+  top: 14%;
+  width: max-content;
+  height: 38%;
+  padding: 20px 40px 2px 15px;  /* abajo más espacio para que la flecha no tape el texto */
   background-color: #9fe0ff;
   border: 5px solid #000;
-  border-radius: 40px 40px 40px 0;
-  font-size: 0.95rem;
-  line-height: 1.2;
+  border-radius: 50px 50px 50px 0;  /* un lado sin redondear*/
+  font-size: 1.1rem;
+  line-height: 1.3;
   z-index: 2;
-
-  /*cuando desaparece */
-  transform: scale(0);
-  transform-origin: bottom left;
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
-#burbujadetexto.abierta {
-  transform: scale(1);
-  opacity: 1;
+/* MODO CONSIGNA */
+
+#consigna {
+  width: 100%;
+  height: 100%;
+  padding: 4% 6%;
+  flex-direction: column;   /* título arriba, explicación abajo */
+  align-items: center;
 }
 
-#flecha {
+#titulo {
+  background-color: rgba(255, 255, 255, 0.85);  /* blanco medio transparente */
+  padding: 0.4em 1.2em;
+  border-radius: 12px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#explicacion {
+  align-self: flex-start;   /* este texto va pegado a la izquierda, no centrado */
+  margin-top: 5%;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/*FLECHAS*/
+
+.flecha {
   position: absolute;
-  right: 5%;
-  bottom:8%;
-  width: 10%;
- aspect-ratio: 1/1;
-  background: blue;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #000;
+  font-size: 1.3rem;
   cursor: pointer;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* flecha de la burbuja */
+#flecha {
+  left: 78%;
+  bottom: 6%;
+  width: 12%;
+  background: #ffffff00;
+  border:  solid #00000000;
+}
+
+/* flecha del cuadro de consigna: arriba a la izquierda */
+#flecha2 {
+  left: 2%;
+  top: 4%;
+  width: 4%;
+  min-width: 2.2rem;
 }
 
 /*salir del juego (pq se equivoco o termino) */
@@ -141,10 +182,22 @@ body {
   transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
 }
 
-  #primero { background-color: #ff7a7a; border-color: #b85c5c; }
-  #segundo { background-color: #5588f5; border-color: #6a6af0; }
-  #tercero { background-color: #f0d444; border-color: #d1b02a; }
-  #cuarto  { background-color: #4dff45; border-color: #1fa81a; }
+  #primero { 
+    background-color: #ff7a7a; 
+    border-color: #b85c5c; 
+  }
+  #segundo { 
+    background-color: #5588f5; 
+    border-color: #6a6af0; 
+  }
+  #tercero { 
+    background-color: #f0d444; 
+    border-color: #d1b02a; 
+  }
+  #cuarto  { 
+    background-color: #4dff45; 
+    border-color: #1fa81a;
+   }
 
 /*la caja que se va a poner de colores */
 .seleccion.brilla {
@@ -154,19 +207,21 @@ body {
 
 /*para que se agranden las cajas y eso*/
 
-@keyframes pulso {
+@keyframes pulso { /*define los pasos de una animación (de pulso). Dentro, el porcentaje marca en qué momento de la animación pasa cada cosa*/
   0%, 100% {
-      transform: scale(1);
+      transform: scale(1);                                        /*como esta*/
       box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8);
   }
   50% {
       transform: scale(1.08);
-      box-shadow: 0 0 28px 12px rgba(255, 255, 255, 1);
+      box-shadow: 0 0 28px 12px rgba(255, 255, 255, 1);          /*se en el maximo para q cuando 100=0*/
   }
 }
 
-.seleccion.error-rojo {
-  background-color: #ff4d4d !important; /* Rojo */
+
+
+.seleccion.error-rojo {      /* si elije la caja mala*/
+  background-color: #ff4d4d !important; /* el important es para q sea la regla mas importante*/
   box-shadow: 0 0 100px #ff0000;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease; /*lo que tarda en convertirse del todo para luego volver a antes*/
 }

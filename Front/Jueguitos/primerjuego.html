@@ -9,27 +9,58 @@
 </head>
 <body>
     <section class="superior">
-        <div class="ejercicio" id="ejercicio"></div>
 
-        <!-- poner la imagen del pingüino, style="background-image:url('callie.png')"-->
-        <div id="callie">🐧</div>
+        <!-- El cuadro grande. Empieza con la clase "modo-intro" (muestra a Callie y la burbuja).
+             Después el JS lo cambia a "modo-consigna" (muestra el título y la explicación del ejercicio). -->
+        <div class="ejercicio modo-intro" id="ejercicio">
 
-        <div id="burbujadetexto">
-            <p id="texto"></p>
-            <button id="flecha" aria-label="Cerrar burbuja"></button>
+            <!-- MODO INTRO (solo aparece al principio) -->
+            <div id="intro">
+                <!-- cuadrado donde va Callie -->
+                <div id="callie">
+                    <img class="calliete" src="../../imagenes/calliesaludando.png">
+                </div>
+
+                <div id="burbujadetexto">
+                    <p id="texto">En el juego debes ir <br>tocando los botones de <br>colores al iluminarse y<br> hacer el ejercicio pedido!<br><br>Tu puedes!!</p>
+                    <button class="flecha" id="flecha" aria-label="Empezar el juego">
+                        <img class="salir" src="../../imagenes/salir.png">
+                    </button>
+                </div>
+            </div>
+
+            <!-- modo consigna: lo que aparece al tocar la caja que brilla -->
+            <div id="consigna">
+                <button class="flecha" id="flecha2" aria-label="Cerrar">→</button> <!-- para pasar a la siguiente caja-->
+                <h2 id="titulo"></h2>
+                <p id="explicacion"></p>
+            </div>
         </div>
 
         <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir"></a>
     </section>
 
     <section class="abajo">
-        <!-- data-color: color que aparece en el cuadro grande. data-img: ruta de imagen (opcional) -->
-        <div class="seleccion" id="primero" data-color="#ff9ecb" data-img="">👄</div>
-        <div class="seleccion" id="segundo" data-color="#7fd4ff" data-img="">🧊</div>
-        <div class="seleccion" id="tercero" data-color="#ffd54a" data-img=""></div>
-        <div class="seleccion" id="cuarto"  data-color="#8be07a" data-img=""></div>
+        <!-- data-titulo: el título que aparece en el cuadro grande.
+             data-explicacion: el texto de cómo se hace el ejercicio.
+             el color del cuadro grande se vuelv del color de la caja -->
+        <div class="seleccion" id="primero"
+             data-titulo="Debes hacer 10 besos!"
+             data-explicacion="¿Cómo se hace? Cierra la boca y empuja tus labios hacia adelante y arriba, sin separarlos. Mantenlo así por 10 segundos."></div>
+
+        <div class="seleccion" id="segundo"
+             data-titulo="Título del ejercicio 2"
+             data-explicacion="¿Cómo se hace? Escribí acá la explicación."></div>
+
+        <div class="seleccion" id="tercero"
+             data-titulo="Título del ejercicio 3"
+             data-explicacion="¿Cómo se hace? Escribí acá la explicación."></div>
+
+        <div class="seleccion" id="cuarto"
+             data-titulo="Título del ejercicio 4"
+             data-explicacion="¿Cómo se hace? Escribí acá la explicación."></div>
     </section>
 
-    <script src="primerjuego.js"></script>
+    <script src="primerjuego.js"></script> <!-- para vincularlo al js-->
 </body>
 </html>

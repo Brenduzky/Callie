@@ -1,55 +1,44 @@
-const TOTAL = 6; // cajas a tocar antes de terminar
+const TOTAL = 6; // veces q pasa para terminar
 
+//elementos que va a utilizar del html
 const cajas = document.querySelectorAll('.seleccion');
 const ejercicio = document.getElementById('ejercicio');
-const callie = document.getElementById('callie');
-const burbuja = document.getElementById('burbujadetexto');
-const texto = document.getElementById('texto');
-const flecha = document.getElementById('flecha');
+const titulo = document.getElementById('titulo');
+const explicacion = document.getElementById('explicacion');
+const flechaIntro = document.getElementById('flecha');      
+const flechaConsigna = document.getElementById('flecha2');  
 const cerrar = document.getElementById('cerrar');
-
-// Textos distintos para cada caja (uno al azar)
-const textos = {
-    primero: [
-        '¡Mmm, bebesita, que ricos labios rojitos.',
-        'Los labios sirven para sonreír. ¡Probá sonreír!',
-        'Dicen que los pingüinos también mandan besos.'
-    ],
-    segundo: [
-        '¡Brrr! Qué frío, es puro hielo.',
-        'Este cubito se derrite si lo dejás al sol.',
-        'En mi iglú hay hielo por todos lados.'
-    ],
-    tercero: [
-        '¡Amarillo como el sol! Aunque acá casi no sale.',
-        'Me encanta este color, ¡brilla mucho!',
-        'Las cajas amarillas dan buena suerte.'
-    ],
-    cuarto: [
-        '¡Verde como el pasto! Lo extraño un montón.',
-        'hoy, volví, a dormir en nuestra cama y todo sigue igual. El aire y nuestros gatos, nada cambiara. Fui tu amiga, fui tu compañera. Te quiero ver, aún te amo y creo que hasta más que ayer, de hiedra venenosa, no se deja ver.',
-        '¡Verde fluor! Se ve desde lejos.'
-    ]
-};
 
 let rondas = 0;
 let activa = null;
 let ultima = null;
-let bloqueado = false;
+let bloqueado = true;// Empieza en true: mientras Callie explica el juego, las cajas de abajo no hacen nada
 
 function azar(lista) {
-    return lista[Math.floor(Math.random() * lista.length)];
+    return lista[Math.floor(Math.random() * lista.length)]; //va entre las opciones para elegir una random
 }
 
-function iluminar() {
-    // elige una caja al azar, sin repetir la anterior
-    const opciones = [...cajas].filter(c => c !== ultima);
+function iluminar() { //define una funcion que va a hacer q dsp voy a hacer q se ilumine una de las cajas
+    const opciones = [...cajas].filter(c => c !== ultima); 
     activa = azar(opciones);
     activa.classList.add('brilla');
+    bloqueado = false; // ahora sí se puede tocar
+}
+
+// Cuando se cierra la Flecha de la burbuja de Callie se cierra la explicación y empieza el juego
+function empezar() {
+    vaciar();                  // el cuadro grande queda vacío
+    setTimeout(iluminar, 500); // espera un rato y ilumina la primera caja
+}
+
+// Deja el cuadro grande en su estado de inicio
+function vaciar() {
+    ejercicio.classList.remove('modo-intro', 'modo-consigna');
+    ejercicio.style.backgroundColor = ''; // borra el color que puso el JS, así vuelve al gris del CSS
 }
 
 function tocarCaja(caja) {
-    if (bloqueado) return; // Si está en pausa tras un error, ignora clics
+    if (bloqueado) return; // Si está en intro, error o consigna abierta, ignora clics
 
     // Si toca la caja q no es se pone rojo
     if (caja !== activa) {
@@ -69,44 +58,45 @@ function tocarCaja(caja) {
     ultima = caja;
     activa = null;
     rondas++;
+    bloqueado = true; // mientras se ve la consigna no se puede tocar otra caja
 
-    // imagen (si tiene data-img) o color en el cuadro grande
-    ejercicio.textContent = '';
-    if (caja.dataset.img) {
-        ejercicio.style.backgroundImage = `url('${caja.dataset.img}')`;
-    } else {
-        ejercicio.style.backgroundImage = 'none';
-    }
-    ejercicio.style.backgroundColor = caja.dataset.color;
+    // dataset.titulo lee data-titulo que escribiste en el HTML para ponerlo
+    titulo.textContent = caja.dataset.titulo;
+    explicacion.textContent = caja.dataset.explicacion;
 
-    // Callie se agranda y habla
-    texto.textContent = azar(textos[caja.id]);
-    callie.classList.add('grande');
-    burbuja.classList.add('abierta');
+    // getComputedStyle(caja).backgroundColor hace que la pantalla se ponga del color que tiene la caja
+    // así el cuadro grande queda del MISMO color sin repetirlo en el JS
+    ejercicio.style.backgroundColor = getComputedStyle(caja).backgroundColor;
+
+    // muestra la consigna adentro del cuadro grande
+    ejercicio.classList.remove('modo-intro');
+    ejercicio.classList.add('modo-consigna');
 }
 
-function terminar() {
-    ejercicio.style.backgroundImage = 'none';
-    ejercicio.style.backgroundColor = '#f1f0ee';
-    ejercicio.textContent = '¡Lo habeis logrado chaval!! Terminaste! 🎉';
-    // Acá podés redirigir a la siguiente pantalla, por ejemplo:
-    // window.location.href = 'siguiente.html';
-}
-
-function tocarFlecha() {
-    // la burbuja se achica y Callie vuelve a su tamaño chico
-    burbuja.classList.remove('abierta');
-    callie.classList.remove('grande');
-
+// si se toca la flecha del cuadro de la consigna se cierra y sigue el juego
+function cerrarConsigna() {
     if (rondas >= TOTAL) {
         terminar();
     } else {
-        setTimeout(iluminar, 500);
+        vaciar();                  // el cuadro vuelve al gris de inicio sin nada
+        setTimeout(iluminar, 500); // y se ilumina la siguiente caja
     }
 }
 
+function terminar() {
+    ejercicio.style.backgroundColor = ''; // gris de inicio
+    titulo.textContent = '¡Lo habeis logrado chaval!! Terminaste! 🎉';
+    explicacion.textContent = '';
+    flechaConsigna.hidden = true; // ya no hace falta la flecha
+   
+   // window.location.href = '../../Front/principal/pantalla-atras.html'    // se redirige a la siguiente pantalla
+
+   
+}
+
 cajas.forEach(caja => caja.addEventListener('click', () => tocarCaja(caja)));
-flecha.addEventListener('click', tocarFlecha);
+flechaIntro.addEventListener('click', empezar);
+flechaConsigna.addEventListener('click', cerrarConsigna);
 cerrar.addEventListener('click', () => window.history.back());
 
-iluminar();
+//el juego arranca recién cuando se aprieta la flecha de la burbuja
