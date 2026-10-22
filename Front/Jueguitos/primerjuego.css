@@ -84,9 +84,9 @@ body {
   position: absolute;
   left: 17%;
   top: 14%;
-  width: max-content;
-  height: 38%;
-  padding: 20px 40px 2px 15px;  /* abajo más espacio para que la flecha no tape el texto */
+  width: 30%;
+  height: max-content;  
+  padding: 20px 40px 20px 15px;  /* abajo más espacio para que la flecha no tape el texto */
   background-color: #9fe0ff;
   border: 5px solid #000;
   border-radius: 50px 50px 50px 0;  /* un lado sin redondear*/
