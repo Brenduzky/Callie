@@ -23,6 +23,10 @@ body{
 width: 100%;
     height: 84%;
     background-color: rgb(216, 42, 138);
+    display: flex;
+    flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
 }
 
 .espacio{
@@ -41,4 +45,22 @@ width: 100%;
     display: flex;
     justify-content: center;
     align-items: end;
+}
+
+.untrofeo{
+    width:70%;
+    height: 20%;
+    background-color: rgb(202, 202, 202);
+    border-radius: 15px;
+  border: 5px solid rgb(151, 153, 153);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:2%;
+}
+
+.trofeo{
+    width:12%;
+    height: 100%;
+    background-color: rgb(255, 1, 1);
 }
