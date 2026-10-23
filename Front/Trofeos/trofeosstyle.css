@@ -12,17 +12,29 @@ body{
   flex-direction: column;
 }
 
+/*tipgrafía*/
+
+.tipografia{
+    font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "GRAD" 0;
+  }
+
+
 .header{
     width: 100%;
     height: 16%;
-    background-color: rgb(97, 216, 42);
+    background-color: rgba(97, 216, 42, 0);
     display: flex;
 }
 
 .medio{
 width: 100%;
     height: 84%;
-    background-color: rgb(216, 42, 138);
+    background-color: rgb(216, 42, 138, 0);
     display: flex;
     flex-direction: column;
 align-items: center;
@@ -32,7 +44,7 @@ justify-content: space-evenly;
 .espacio{
     width: 8%;
     height: 100%;
-    background-color: rgb(42, 74, 216);
+    background-color: rgb(42, 74, 216, 0);
         display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +53,7 @@ justify-content: space-evenly;
 .logros{
     width:84%;
     height: 100%;
-    background-color: rgb(216, 204, 42);
+    background-color: rgb(216, 204, 42, 0);
     display: flex;
     justify-content: center;
     align-items: end;
@@ -62,5 +74,21 @@ justify-content: space-evenly;
 .trofeo{
     width:12%;
     height: 100%;
-    background-color: rgb(255, 1, 1);
+    background-color: rgba(255, 1, 1, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.izquierda{
+    height: 85%;
+}
+
+.derecha{
+    height: 85%;
+    transform: scaleX(-1);
+}
+
+.masgrande{
+    height: 130%;
 }
