@@ -234,3 +234,8 @@ gap:-5%
     z-index: -1;               /*al fondo*/
   }
  
+
+  /*intento de hacerlo mas lindo*/ /*no me estaría saliendo*/
+  .prueba:hover {
+  filter: brightness(1.08);      
+}

@@ -28,27 +28,26 @@ body {
   justify-content: space-evenly;
 }
 
-/* ---------- CUADRO GRANDE ---------- */
+/* CUADRO GRANDE */
 .ejercicio {
-  position: relative;            /* para poder ubicar la flecha adentro */
+  position: relative;            /* para poner la flecha de adentro */
   width: 65%;
   height: 85%;
-  background-color: #87d7ee;     /* celeste de la intro y la pregunta */
+  background-color: #87d7ee;     /* celeste de la intro y dsp el js lo cambia segun lo q elija*/
   border-radius: 10px;
   border: 5px solid #000;
-  overflow: hidden;              /* lo que se sale del cuadro se corta (bordes redondeados) */
-  transition: background-color 0.4s;  /* el cambio de color es suave */
+  overflow: hidden;              /* lo que se sale del cuadrado se recorta */
+  transition: background-color 0.4s;  /* lo que tarda en cambiar el color */
 }
 
-/* Todas las pantallas están escondidas y ocupan todo el cuadro.
-   Solo se muestra la que corresponde a la clase del cuadro (ver abajo) */
+
 .pantalla {
-  display: none;
+  display: none; /* todas las pantallas están escondidas */
   width: 100%;
   height: 100%;
 }
 
-/* según la clase que tenga el cuadro, se muestra UNA sola pantalla */
+/* según la clase que tenga el cuadro, se muestra una sola pantalla */
 .ejercicio.modo-intro #intro,
 .ejercicio.modo-pregunta #pregunta,
 .ejercicio.modo-ejercicio #pantallaEjercicio,
@@ -56,9 +55,9 @@ body {
   display: flex;
 }
 
-/* ---------- FLECHA (la misma para intro y ejercicio) ---------- */
+/* FLECHA */
 .flecha {
-  position: absolute;            /* pegada arriba a la izquierda del cuadro */
+  position: absolute;           
   left: 2%;
   top: 4%;
   width: 4%;
@@ -74,12 +73,12 @@ body {
 }
 
 .flecha img {
-  width: 100%;                   /* ajustá este número si tu imagen se ve grande o chica */
+  width: 100%;                 
 }
 
-/* ---------- PANTALLA 1: INTRO ---------- */
+/* PANTALLA 1: INTRO  */
 #intro {
-  align-items: center;           /* texto centrado de arriba a abajo */
+  align-items: center;      
   padding: 0 8%;
 }
 
@@ -89,20 +88,21 @@ body {
   text-align: left;
 }
 
-/* ---------- PANTALLA 2: PREGUNTA ---------- */
+/*PANTALLA 2: PREGUNTA */
 #pregunta {
-  flex-direction: column;        /* la pregunta arriba, las opciones abajo */
+  flex-direction: column;       
 }
 
 #textoPregunta {
-  flex: 1;                       /* ocupa todo el espacio que dejan los botones */
+  flex: 1;                       /* ocupa el espacio sobrante entre los botones para que haya espacio*/
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 10%;
   font-size: 1.7rem;
   text-align: center;
-  white-space: pre-line;         /* hace que el "\n" del JS sea un salto de línea */
+  white-space: pre-line;         /* hace que el "\n" del JS sea un salto de línea. Es decir, que se vea 
+                                  en distintos espacios (arriba y abajo) pq no se puede usar br en js */
 }
 
 .opciones {
@@ -112,7 +112,7 @@ body {
 }
 
 .opcion {
-  flex: 1;                       /* cada botón ocupa la mitad */
+  flex: 1;                       /* cada botón ocupa la mitad: se reparten el ancho en partes iguales */
   border: none;
   font-family: inherit;
   font-size: 1.2rem;
@@ -120,23 +120,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6em;                    /* espacio entre el texto y el emoji */
+  gap: 0.6em;                    
   transition: filter 0.2s;
 }
 
 .opcion + .opcion {
-  border-left: 5px solid #000;   /* línea que separa los dos botones */
+  border-left: 5px solid #000;   /* línea que separa los botones */
 }
 
 .opcion:hover {
-  filter: brightness(1.08);      /* se aclara un poquito al pasar el mouse */
+  filter: brightness(1.08);      /* se aclara al pasar el mouse */
 }
 
 .op-emoji {
   font-size: 1.6rem;
 }
 
-/* ---------- PANTALLA 3: EJERCICIO ---------- */
+/* PANTALLA 3: EJERCICIO*/
 #pantallaEjercicio {
   flex-direction: column;
   align-items: center;
@@ -144,7 +144,7 @@ body {
 }
 
 #tituloOpcion {
-  align-self: flex-end;          /* "🍕 Pizza!! 🍕" va arriba a la derecha */
+  align-self: flex-end;         
   font-size: 1.7rem;
   font-weight: normal;
 }
@@ -152,21 +152,21 @@ body {
 #tituloEjercicio {
   margin-top: 3%;
   padding: 0.4em 1.2em;
-  background-color: rgba(255, 255, 255, 0.85);  /* blanco medio transparente */
+  background-color: rgba(255, 255, 255, 0.85); 
   border-radius: 12px;
   font-size: 1.4rem;
   text-align: center;
 }
 
 #explicacionEjercicio {
-  align-self: flex-start;        /* pegado a la izquierda */
+  align-self: flex-start;        
   margin-top: 5%;
   font-size: 1.1rem;
   line-height: 1.4;
   text-align: left;
 }
 
-/* ---------- PANTALLA FINAL ---------- */
+/* PANTALLA FINAL */
 #final {
   align-items: center;
   justify-content: center;
@@ -174,7 +174,7 @@ body {
   font-weight: bold;
 }
 
-/* ---------- CALLIE Y DECORACIÓN (igual que antes) ---------- */
+/* la parte de abajo (no cambia) */
 #callie {
   width: 20%;
   height: 95%;

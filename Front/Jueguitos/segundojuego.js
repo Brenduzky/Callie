@@ -1,14 +1,8 @@
-// ================== LOS DATOS DEL JUEGO ==================
-// Cada pregunta tiene:
-//  - pregunta: el texto (el \n es un salto de línea)
-//  - opciones: las DOS opciones, cada una con texto, emoji y color de fondo
-//  - ejercicio: UN solo ejercicio, que es el mismo elijas la opción que elijas
-// (todo esto es de ejemplo: cambialo por lo tuyo)
-const preguntas = [
+const preguntas = [ //todas las preguntas con sus ejercicios
   {
-    pregunta: "¿Qué preferís...\nPizza o Hamburguesa?",
+    pregunta: "¿Qué preferís...\nPizza o Hamburguesa?", //el \n es un salto de línea, para que quede en dos renglones
     opciones: [
-      { texto: "Pizza",       emoji: "🍕", color: "#e97f7f" },
+      { texto: "Pizza",       emoji: "🍕", color: "#e97f7f" }, //proximamente cambiarlo a img (drive: "Poner imagen: Segundo juego opciones")
       { texto: "Hamburguesa", emoji: "🍔", color: "#e2ec55" }
     ],
     ejercicio: {
@@ -62,50 +56,50 @@ const preguntas = [
   }
 ];
 
-// ================== ELEMENTOS DEL HTML ==================
+//elementos importados del html
 const ejercicio = document.getElementById('ejercicio');           // el cuadro grande
-const flechaIntro = document.getElementById('flechaIntro');       // flecha de la explicación
-const flechaEjercicio = document.getElementById('flechaEjercicio'); // flecha del ejercicio
+const flechaIntro = document.getElementById('flechaIntro');      
+const flechaEjercicio = document.getElementById('flechaEjercicio'); 
 const textoPregunta = document.getElementById('textoPregunta');
 const tituloOpcion = document.getElementById('tituloOpcion');
 const tituloEjercicio = document.getElementById('tituloEjercicio');
 const explicacionEjercicio = document.getElementById('explicacionEjercicio');
 
-// los dos botones de opciones, en una lista: botones[0] es el A y botones[1] el B
+// los botones de opciones, botones[0] es el A y botones[1] el B
 const botones = [
   document.getElementById('opcionA'),
   document.getElementById('opcionB')
 ];
 
-// ================== MEZCLAR LAS PREGUNTAS ==================
-// Fisher-Yates: una forma de mezclar una lista donde cada elemento
-// aparece UNA sola vez (por eso nunca se repite una pregunta).
+//  MEZCLAR LAS PREGUNTAS       
+//IMPORTANTE intentar usar la funcion que hace que se reste el valor que aparecio (sar random y restarlo para que no este mas el numero que aparecio)
+// Fisher-Yates: forma de mezclar una lista donde aparece UNA sola vez (nunca se repite una pregunta)
 function mezclar(lista) {
-  const copia = [...lista];                       // copia, para no tocar la original
-  for (let i = copia.length - 1; i > 0; i--) {
+  const copia = [...lista];                       // usa una copia para poder modificar y cambiar el orden de la original (de los ejercicios)
+  for (let i = copia.length - 1; i > 0; i--) {     //así se recorre la lista desde el final hasta el principio para ir cambiando de lugar cada elemento con otro al azar
     const j = Math.floor(Math.random() * (i + 1)); // posición al azar entre 0 e i
-    [copia[i], copia[j]] = [copia[j], copia[i]];   // intercambia las dos posiciones
+    [copia[i], copia[j]] = [copia[j], copia[i]];   // intercambia las dos posiciones, esa posición queda "congelada" y el bucle pasa a la siguiente (i--). Esto garantiza que no haya duplicados ni repeticiones
   }
   return copia;
 }
 
-const orden = mezclar(preguntas); // se mezcla cada vez que se carga la página (o sea, cada vez que se juega)
-let indice = 0;                   // en qué pregunta del "orden" estamos (0 = la primera)
+const orden = mezclar(preguntas); // se mezcla cada vez que se juega
+let indice = 0;                   // dice qué pregunta toca ahora definiendo la primera pregunta como la 0, la segunda como la 1, etc. 
 
-// ================== CAMBIAR DE PANTALLA ==================
-// Le pone al cuadro grande la clase de la pantalla que queremos ver
-// (el CSS se encarga de mostrar solo esa).
+
+
+//  CAMBIAR DE PANTALLA 
+// Le pone al cuadro grande la clase de la pantalla que queremos ver: el CSS se encarga
 function mostrarModo(modo) {
   ejercicio.className = 'ejercicio ' + modo;
-  ejercicio.style.backgroundColor = ''; // borra el color que haya puesto el JS (vuelve al celeste del CSS)
+  ejercicio.style.backgroundColor = ''; // borra el color que pusó el JS y vuelve al predeterminado
 }
 
-// ================== PANTALLA DE PREGUNTA ==================
+//  PANTALLA DE PREGUNTA 
 function mostrarPregunta() {
-  const p = orden[indice];              // la pregunta que toca ahora
-  textoPregunta.textContent = p.pregunta;
+  const p = orden[indice];              // la pregunta que toca ahora (viene de la otra funcion) ahora se va a llamar p
+  textoPregunta.textContent = p.pregunta; //textoPregunta viene del html y va a cambiar lo que dice con textContent segun p
 
-  // rellena cada botón con los datos de su opción
   botones.forEach((boton, i) => {
     const op = p.opciones[i];
     boton.querySelector('.op-texto').textContent = op.texto;

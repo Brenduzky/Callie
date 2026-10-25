@@ -4,18 +4,16 @@
     <link rel="stylesheet" href="segundojuego.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de ...??</title>
+    <title>Juego de "Qué preferís?"</title>
 </head>
 <body>
 
     <section class="superior">
 
-        <!-- El cuadro grande. Empieza con la clase "modo-intro".
-             El JS le va cambiando la clase para mostrar una pantalla u otra:
-             modo-intro -> modo-pregunta -> modo-ejercicio -> (vuelve a modo-pregunta) ... -> modo-final -->
+        <!-- Empieza con la clase "modo-intro". El JS le va cambiando la clase -->
         <div class="ejercicio modo-intro" id="ejercicio">
 
-            <!-- PANTALLA 1: explicación del juego (imagen 1) -->
+            <!-- explicación del juego -->
             <div class="pantalla" id="intro">
                 <button class="flecha" id="flechaIntro" aria-label="Empezar el juego">
                     <img src="../../imagenes/salir.png" alt="">
@@ -27,12 +25,12 @@
                 </p>
             </div>
 
-            <!-- PANTALLA 2: la pregunta con las dos opciones (imagen 2) -->
+            <!--Otra pantala: pregunta con las dos opciones -->
             <div class="pantalla" id="pregunta">
-                <!-- acá el JS escribe la pregunta -->
+                <!-- el JS escribe la pregunta -->
                 <p id="textoPregunta"></p>
 
-                <!-- los dos botones de abajo. El JS les pone el texto, el emoji y el color -->
+                <!-- los dos botones de abajo. El JS les pone lo de adentro-->
                 <div class="opciones">
                     <button class="opcion" id="opcionA">
                         <span class="op-texto"></span>
@@ -45,19 +43,19 @@
                 </div>
             </div>
 
-            <!-- PANTALLA 3: el ejercicio (imagen 3) -->
+            <!-- tercera pantalla: el ejercicio -->
             <div class="pantalla" id="pantallaEjercicio">
                 <button class="flecha" id="flechaEjercicio" aria-label="Siguiente pregunta">
                     <img src="../../imagenes/salir.png" alt="">
                 </button>
-                <h2 id="tituloOpcion"></h2>         <!-- "🍕 Pizza!! 🍕" -->
-                <p id="tituloEjercicio"></p>        <!-- "Debes hacer 10 besos!" -->
-                <p id="explicacionEjercicio"></p>   <!-- "Como se hace?..." -->
+                <h2 id="tituloOpcion"></h2>         
+                <p id="tituloEjercicio"></p>        
+                <p id="explicacionEjercicio"></p>   
             </div>
 
-            <!-- PANTALLA FINAL: cuando ya respondió las 5 -->
+            <!-- PANTALLA FINAL: cuando hizo todas las preguntas -->
             <div class="pantalla" id="final">
-                <p id="textoFinal">¡Terminaste! 🎉</p>
+                <p id="textoFinal">¡Terminaste! </p>
             </div>
         </div>
     </section>
