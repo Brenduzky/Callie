@@ -84,14 +84,12 @@ function cerrarConsigna() {
 }
 
 function terminar() {
-    ejercicio.style.backgroundColor = ''; // gris de inicio
-    titulo.textContent = '¡Lo habeis logrado chaval!! Terminaste! 🎉';
-    explicacion.textContent = '';
-    flechaConsigna.hidden = true; // ya no hace falta la flecha
-   
-   // window.location.href = '../../Front/principal/pantalla-atras.html'    // se redirige a la siguiente pantalla
+    ejercicio.style.backgroundColor = '';          // vuelve al gris
+    ejercicio.classList.remove('modo-intro', 'modo-consigna');
+    ejercicio.classList.add('modo-final');         // muestra a Callie y "Lo lograste!!!"
+    bloqueado = true;                              // las cajas ya no hacen nada
 
-   
+    // window.location.href = '../../Front/principal/pantalla-atras.html'
 }
 
 cajas.forEach(caja => caja.addEventListener('click', () => tocarCaja(caja)));

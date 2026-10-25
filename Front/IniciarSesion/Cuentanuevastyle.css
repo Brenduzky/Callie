@@ -12,6 +12,14 @@
     overflow: hidden;  
   }
 
+.tipografia{
+font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 2rem;
+}
 
 
   .izquierda{
@@ -101,7 +109,9 @@ gap:15%;
   }
   
   .chiquita{
-    font-family: sans-serif;
+    /* CORREGIDO: acá había "font-family: sans-serif;". Como .chiquita está
+       escrita DESPUÉS de .tipografia, le pisaba la fuente Google Sans.
+       Se borró esa línea para que el h2 use la fuente de .tipografia. */
     font-size: 1.8rem;
     font-weight: 550;
     color: black;

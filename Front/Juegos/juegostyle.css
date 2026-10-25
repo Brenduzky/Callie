@@ -8,19 +8,14 @@
   body{
     height: 100vh;
     background-color: rgb(42, 132, 216);
+
+     background-image: url("../../imagenes/fondojuegos.png");
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat; 
   }
   
-  h1{
-    font-family: 'Arial', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    font-style: italic;
-    color: #000000;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-  
-  }
+
   .superior{
     width: 100%;  
     height: 15%;  
@@ -47,14 +42,14 @@
     height: 100%;  
     background-color: rgba(196, 101, 38, 0);
     display:flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
   }
   
   .Salir{
     width: 60%;
     aspect-ratio: 1/1;
-     background-color: rgb(30, 46, 90);
+     background-color: rgb(30, 46, 90, 0);
      border-radius: 50%;
       
     }
@@ -63,7 +58,7 @@
   .arribita{
     width: 80%;
     height: 100%;
-    background-color: rgba(63, 12, 68, 0);
+    background-color: rgba(47, 68, 12, 0);
     display: flex;
     justify-content: start;
     align-items: end;
@@ -79,59 +74,66 @@
 .buscador{
     width: 50%;
     height: 12%;
-    background-color: rgba(20, 12, 68, 0.973);
+    background-color: rgba(20, 12, 68, 0);
     border-radius: 999px;
     position: absolute;
     top:10%;
     left: 25%;
     display: flex;
-    padding-left: 3%;
     align-items: center;
-    gap: 4%;
+ justify-content: center;
 }
 
-.algo{
-  width: 10%;
-aspect-ratio: 1/1;
-    background-color: rgba(21, 68, 12, 0.973);
 
+
+.tipografia{
+font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 2rem;
 }
 
-.jua-regular {
-  font-family: "Jua", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 2rem;
-}
-
+/* PASO 5: .medio es la referencia para las flechas.
+   OJO: tenés .medio escrito DOS veces en tu CSS; conviene dejar solo una
+   y juntar las propiedades (la segunda pisa a la primera). */
 .medio {
   width: 100%;
   height: 85%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4%;
-  position: relative;
+  justify-content: center;   /* centra el carrusel horizontalmente */
+  align-items: center;       /* y verticalmente */
+  position: relative;        /* las flechas (absolute) se ubican respecto a esto */
 }
 
+/* PASO 6: el carrusel es la "caja" donde viven las tarjetas */
 .carrusel {
-  position: relative;
+  position: relative;        /* las tarjetas absolute se miden contra esta caja */
   width: 80%;
   height: 100%;
 }
 
+/* PASO 7: estilo base de TODAS las tarjetas.
+   Todas empiezan en el centro exacto (top/left 50%) y apiladas */
 .juego {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 45%;
   height: 70%;
-  background-color: rgb(9, 43, 233);
   border-radius: 30px;
-  border: 4px solid rgb(17, 70, 168);
   text-decoration: none;
+  /* transition = hace que los cambios de posición, tamaño y brillo
+     se animen en 0.5s en vez de saltar de golpe */
   transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
 }
+
+/* PASO 8: colores individuales de cada tarjeta (.primero, .segundo, etc.) */
+
+/* PASO 9: los 4 "estados" que el JS va asignando.
+   translate(-50%, -50%) = centra la tarjeta usando su propio tamaño.
+   Sumar/restar 75% la corre a la derecha/izquierda del centro. */
 .primero{
   background-color: rgb(9, 43, 233);
   border: 4px solid rgb(17, 70, 168);
@@ -155,30 +157,35 @@ aspect-ratio: 1/1;
 
 /*sin comentario*/
 
+/* CENTRO: tamaño normal y al frente (z-index más alto) */
 .juego.centro {
   transform: translate(-50%, -50%) scale(1);
   z-index: 3;
 }
 
+/* IZQUIERDA: se corre a la izquierda, más chica (scale 0.7) y más oscura */
 .juego.izq {
   transform: translate(calc(-50% - 75%), -50%) scale(0.7);
   z-index: 2;
-  filter: brightness(0.8); /*hace que este más oscuro*/
+  filter: brightness(0.8);
 }
 
+/* DERECHA: igual pero hacia la derecha */
 .juego.der {
   transform: translate(calc(-50% + 75%), -50%) scale(0.7);
   z-index: 2;
   filter: brightness(0.8);
 }
 
+/* OCULTO: las que sobran quedan chiquitas, invisibles y sin poder clickearse */
 .juego.oculto {
   transform: translate(-50%, -50%) scale(0.4);
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none;   /* ignora clicks aunque estén "debajo" */
   z-index: 1;
 }
 
+/* PASO 10: estilo común de las flechas, flotando sobre el carrusel */
 .flecha {
   display: flex;
   justify-content: center;
@@ -208,5 +215,6 @@ height: 15%;
 
 .flecha:hover { transform: translateY(-50%) scale(1.1); }
 
+/* PASO 11: una a cada lado */
 .ant { left: 2%; }
 .sig { right: 2%; }

@@ -6,6 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de ...??</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <section class="superior">
@@ -22,7 +28,7 @@
                 </div>
 
                 <div id="burbujadetexto">
-                    <p id="texto">En el juego debes ir <br>tocando los botones de <br>colores al iluminarse y<br> hacer el ejercicio pedido!<br>Tu puedes!!</p>
+                    <p class="tipografia chica" id="texto">En el juego debes ir <br>tocando los botones de <br>colores al iluminarse y<br> hacer el ejercicio pedido!<br>Tu puedes!!</p>
                     <button class="flecha" id="flecha" aria-label="Empezar el juego">
                         <img class="salir" src="../../imagenes/salir.png">
                     </button>
@@ -31,13 +37,29 @@
 
             <!-- modo consigna: lo que aparece al tocar la caja que brilla -->
             <div id="consigna">
-                <button class="flecha" id="flecha2" aria-label="Cerrar">→</button> <!-- para pasar a la siguiente caja-->
+                <button class="flecha" id="flecha2" aria-label="Cerrar">
+                    <img class="salidita" src="../../imagenes/salir.png">
+                </button> <!-- para pasar a la siguiente caja-->
                 <h2 id="titulo"></h2>
                 <p id="explicacion"></p>
             </div>
+<!-- MODO FINAL (cuando termina el juego) -->
+<div id="final">
+    <div class="callie-final">
+        <img class="calliete" src="../../imagenes/calliesaludando.png">
+    </div>
+    <div id="textofinal">
+        <h2 class="tipografia">Lo lograste!!!</h2>
+        <p class="tipografia"><span id="peces">100</span> peces</p>
+    </div>
+</div>
+
+
         </div>
 
-        <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir"></a>
+        <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir">
+            <img class="cerralo" src="../../imagenes/cerrar.png">
+        </a>
     </section>
 
     <section class="abajo">

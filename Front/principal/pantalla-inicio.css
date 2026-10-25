@@ -10,17 +10,6 @@ body{
   background-color: rgb(42, 132, 216);
 }
 
-h1{
-  font-family: 'Arial', sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-  font-style: italic;
-  color: #000000;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-
-}
 .superior{
   width: 100%;  
   height: 15%;  
@@ -179,7 +168,20 @@ width: 20%;
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
+     text-transform: none;
+       text-decoration: none;
+       color: black;
+
+}
+
+.tipografia{
+font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 2rem;
 }
 
 .fotito{

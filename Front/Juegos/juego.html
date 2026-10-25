@@ -2,95 +2,127 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="juegostyle.css">
-    <link rel="stylesheet" href="/../Callie/Front/Todo/todostyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jueguitos Callie</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
     <section class="superior">
         <div class="Salidita"> 
-            <a class="Salir" href="../principal/pantalla-atras.html"></a>
+            <a class="Salir" href="../principal/pantalla-atras.html">
+                <img class="salida" src="../../imagenes/salirtransparente.png">
+            </a>
         </div>
 
         <section class="arribita">
             <div class="meconfundi"></div>
         <div class="buscador">
             <div class="algo"></div>
-            <h1 class="jua-regular">Problema</h1>
+            <h1 class="tipografia">Nombre de obstaculo</h1>
 <div class="opciones"></div>
         </div>
  </section>
         
         </section>
-        <section class="medio">
-            <button class="flecha ant izquierdita" aria-label="Anterior">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15 4 L7 12 L15 20" />
-                </svg>
-            </button>
+      <!-- PASO 1: contenedor general de la zona del carrusel.
+     Es "position: relative" para poder ubicar las flechas adentro -->
+<section class="medio">
+
+    <!-- PASO 2: botón "anterior". Tiene dos clases:
+         "flecha" = estilo compartido, "ant" = su posición (izquierda).
+         aria-label describe el botón para lectores de pantalla -->
+    <button class="flecha ant izquierdita" aria-label="Anterior">
+        <!-- El SVG dibuja la flecha. viewBox="0 0 24 24" es un lienzo de 24x24 -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <!-- path = línea: M(mover a 15,4) L(línea a 7,12) L(línea a 15,20) forma una "<" -->
+            <path d="M15 4 L7 12 L15 20" />
+        </svg>
+    </button>
+
+    <!-- PASO 3: el carrusel. Adentro van las tarjetas de los juegos.
+         Todas se apilan en el mismo lugar y el CSS decide dónde queda cada una -->
+    <div class="carrusel">
+        <!-- "juego" = estilo común, "primero/segundo..." = el color de cada una.
+             Cada tarjeta es un link a su juego -->
+        <a class="juego primero" href="../Jueguitos/primerjuego.html"></a>
+        <a class="juego segundo" href="../Jueguitos/segundojuego.html"></a>
+        <a class="juego tercero" href="../Jueguitos/tercerjuego.html"></a>
+        <a class="juego cuarto"  href="../Jueguitos/cuartojuego.html"></a>
+    </div>
+
+    <!-- PASO 4: botón "siguiente" (la flecha ">") -->
+    <button class="flecha sig" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 4 L17 12 L9 20" />
+        </svg>
+    </button>
+</section>
         
-            <div class="carrusel">
-                <a class="juego primero" href="../Jueguitos/primerjuego.html"></a>
-                <a class="juego segundo" href="../Jueguitos/segundojuego.html"></a>
-                <a class="juego tercero" href="../Jueguitos/tercerjuego.html"></a>
-                <a class="juego cuarto" href="../Jueguitos/cuartojuego.html"></a>
-            </div>
-        
-            <button class="flecha sig" aria-label="Siguiente">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 4 L17 12 L9 20" />
-                </svg>
-            </button>
-        </section>
-        
-        <script>
-            const juegos = document.querySelectorAll('.juego');
-            const ant = document.querySelector('.ant');
-            const sig = document.querySelector('.sig');
-            const n = juegos.length;
-            let actual = 0;
-        
-            function mostrar() {
-                juegos.forEach((j, i) => {
-                    j.classList.remove('centro', 'izq', 'der', 'oculto');
-        
-                    // distancia circular: la última queda "a la izquierda" de la primera
-                    let d = (i - actual + n) % n;
-                    if (d > n / 2) d -= n;
-        
-                    if (d === 0) j.classList.add('centro');
-                    else if (d === -1) j.classList.add('izq');
-                    else if (d === 1) j.classList.add('der');
-                    else j.classList.add('oculto');
-                });
+       <script>
+    // PASO 12: buscar los elementos del HTML y guardarlos en variables
+    const juegos = document.querySelectorAll('.juego'); // lista con las 4 tarjetas
+    const ant = document.querySelector('.ant');         // botón anterior
+    const sig = document.querySelector('.sig');         // botón siguiente
+    const n = juegos.length;                            // cantidad de tarjetas (4)
+
+    // PASO 13: "actual" guarda cuál tarjeta está en el centro.
+    // Empieza en 0 (la primera). "let" porque va a cambiar.
+    let actual = 0;
+
+    // PASO 14: función que reparte las clases según quién es el actual
+    function mostrar() {
+        // forEach recorre cada tarjeta: j = la tarjeta, i = su número (0,1,2,3)
+        juegos.forEach((j, i) => {
+
+            // Primero se limpian las clases de posición anteriores
+            j.classList.remove('centro', 'izq', 'der', 'oculto');
+
+            // d = distancia entre esta tarjeta y la actual.
+            // El "+ n" y el "% n" hacen que la cuenta sea circular (da la vuelta)
+            let d = (i - actual + n) % n;
+
+            // Si d queda en la segunda mitad, la pasamos a negativa
+            // para que la última cuente como "a la izquierda" de la primera
+            if (d > n / 2) d -= n;
+
+            // Según la distancia se asigna la posición:
+            if (d === 0) j.classList.add('centro');        // es la actual
+            else if (d === -1) j.classList.add('izq');     // la anterior
+            else if (d === 1) j.classList.add('der');      // la siguiente
+            else j.classList.add('oculto');                // el resto se esconde
+        });
+    }
+
+    // PASO 15: botón anterior. Resta 1; el "+ n" evita números negativos
+    // (así desde la primera se pasa a la última). Luego redibuja.
+    ant.addEventListener('click', () => { actual = (actual - 1 + n) % n; mostrar(); });
+
+    // PASO 16: botón siguiente. Suma 1; el "% n" vuelve a 0 después de la última.
+    sig.addEventListener('click', () => { actual = (actual + 1) % n; mostrar(); });
+
+    // PASO 17: hacer clic en una tarjeta lateral la trae al centro
+    juegos.forEach((j, i) => {
+        j.addEventListener('click', e => {
+            if (i !== actual) {          // si NO es la del centro...
+                e.preventDefault();      // ...frenamos el link (no abre el juego)
+                actual = i;              // la hacemos la actual
+                mostrar();               // y redibujamos
             }
-        
-            ant.addEventListener('click', () => { actual = (actual - 1 + n) % n; mostrar(); });
-            sig.addEventListener('click', () => { actual = (actual + 1) % n; mostrar(); });
-        
-            juegos.forEach((j, i) => {
-                j.addEventListener('click', e => {
-                    if (i !== actual) {
-                        e.preventDefault();
-                        actual = i;
-                        mostrar();
-                    }
-                });
-            });
-        
-            mostrar();
-        </script>
+            // si ES la del centro, no hacemos nada y el link abre el juego
+        });
+    });
+
+    // PASO 18: ejecutar una vez al cargar para que se vea el estado inicial
+    mostrar();
+</script>
         
 
 

@@ -4,12 +4,27 @@
   box-sizing: border-box;
 }
 
+
 body {
   height: 100vh;
   overflow: hidden;
   /* poner el fondo sino*/
   background: linear-gradient(#f2fcc4 0%, #eefcbd 60%, #e6f7b5 100%);
   font-family: 'Inter', Arial, sans-serif;
+}
+
+.tipografia{
+  font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 2.2rem;
+}
+
+.chica{
+  font-size: 1.1rem;
+  
 }
 
 .superior {
@@ -60,9 +75,10 @@ body {
 
 
 /* MODO INTRO */
-#callie {
+#callie,
+.callie-final {
   position: absolute;
-  left: -6%;       
+  left: -6%;
   bottom: 0;
   width: 20%;
   aspect-ratio: 1/1;
@@ -72,18 +88,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem; 
-  transform: rotate(45deg); /*asi giro la img*/
+  font-size: 4rem;
+  transform: rotate(45deg);
 }
 .calliete{
   transform: scaleX(-1);
+  width: 120%;
 }
 
 /* burbuja de texto, al lado de Callie */
 #burbujadetexto {
   position: absolute;
   left: 17%;
-  top: 14%;
+  top: 5%;
   width: 30%;
   height: max-content;  
   padding: 20px 40px 20px 15px;  /* abajo más espacio para que la flecha no tape el texto */
@@ -103,6 +120,32 @@ body {
   padding: 4% 6%;
   flex-direction: column;   /* título arriba, explicación abajo */
   align-items: center;
+}
+
+#final {
+  display: none;
+}
+
+.ejercicio.modo-final #final {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#textofinal {
+  text-align: center;
+}
+
+#textofinal h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8em;
+}
+
+#textofinal p {
+  font-size: 1.2rem;
 }
 
 #titulo {
@@ -151,6 +194,9 @@ body {
   top: 4%;
   width: 4%;
   min-width: 2.2rem;
+  color:#ffffff00;
+    background: #ffffff00;
+  border:none;
 }
 
 /*salir del juego (pq se equivoco o termino) */
@@ -162,9 +208,19 @@ body {
   aspect-ratio: 1/1;
   border-radius: 50%;
   border: none;
-  background: #fff;
+  background: #ffffff00;
   font-size: 0.8rem;
   cursor: pointer;
+}
+
+
+.salidita {
+  width: 120%;
+}
+
+/*cerrar juego*/
+.cerralo {
+width: 100%;
 }
 
 /* cajas de abajo, ejercicios*/
