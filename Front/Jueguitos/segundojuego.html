@@ -9,16 +9,71 @@
 <body>
 
     <section class="superior">
-        <div class="ejercicio" id="ejercicio"></div>
-    </section>
-    <section class="abajo">
-<div id="callie"></div>
-    </section>
-    
 
+        <!-- El cuadro grande. Empieza con la clase "modo-intro".
+             El JS le va cambiando la clase para mostrar una pantalla u otra:
+             modo-intro -> modo-pregunta -> modo-ejercicio -> (vuelve a modo-pregunta) ... -> modo-final -->
+        <div class="ejercicio modo-intro" id="ejercicio">
+
+            <!-- PANTALLA 1: explicación del juego (imagen 1) -->
+            <div class="pantalla" id="intro">
+                <button class="flecha" id="flechaIntro" aria-label="Empezar el juego">
+                    <img src="../../imagenes/salir.png" alt="">
+                </button>
+                <p class="texto-izq">
+                    En este juego te voy a preguntar qué preferís.<br>
+                    Elegí una de las dos opciones y hacé el ejercicio que aparezca.<br>
+                    ¡Vos podés!
+                </p>
+            </div>
+
+            <!-- PANTALLA 2: la pregunta con las dos opciones (imagen 2) -->
+            <div class="pantalla" id="pregunta">
+                <!-- acá el JS escribe la pregunta -->
+                <p id="textoPregunta"></p>
+
+                <!-- los dos botones de abajo. El JS les pone el texto, el emoji y el color -->
+                <div class="opciones">
+                    <button class="opcion" id="opcionA">
+                        <span class="op-texto"></span>
+                        <span class="op-emoji"></span>
+                    </button>
+                    <button class="opcion" id="opcionB">
+                        <span class="op-texto"></span>
+                        <span class="op-emoji"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PANTALLA 3: el ejercicio (imagen 3) -->
+            <div class="pantalla" id="pantallaEjercicio">
+                <button class="flecha" id="flechaEjercicio" aria-label="Siguiente pregunta">
+                    <img src="../../imagenes/salir.png" alt="">
+                </button>
+                <h2 id="tituloOpcion"></h2>         <!-- "🍕 Pizza!! 🍕" -->
+                <p id="tituloEjercicio"></p>        <!-- "Debes hacer 10 besos!" -->
+                <p id="explicacionEjercicio"></p>   <!-- "Como se hace?..." -->
+            </div>
+
+            <!-- PANTALLA FINAL: cuando ya respondió las 5 -->
+            <div class="pantalla" id="final">
+                <p id="textoFinal">¡Terminaste! 🎉</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="abajo">
+        <div id="callie">
+            <img class="calliete" src="../../imagenes/calliesaludando.png">
+        </div>
+    </section>
 
     <div class="burbujita"></div>
     <div class="burbujita otra"></div>
-    <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir"></a>
+    <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir">
+        <img class="cerrado" src="../../imagenes/cerrar.png">
+    </a>
+
+    <script src="segundojuego.js"></script> <!-- vincula el JS -->
 </body>
 </html>
