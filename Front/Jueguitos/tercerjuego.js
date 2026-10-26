@@ -24,36 +24,35 @@ let bloqueado = true;    // si es true, los clics en las cartas se ignoran (empi
 let encontrados = 0;     // cuántos pares lleva encontrados
 let parActual = [];      // las dos cartas que acaban de coincidir (para eliminarlas después)
 
-// ==================  MEZCLAR ==================
-// Misma idea que tu función: elige al azar, saca de la lista y lo agrega al resultado.
+//   MEZCLAR 
+// Igual que el segundo juego
 function mezclar(lista) {
-  const restantes = [...lista];                       // copia, para no borrar la original
-  const resultado = [];                               // acá se arma el nuevo orden
-  while (restantes.length > 0) {                      // mientras queden cartas sin acomodar
-    const i = Math.floor(Math.random() * restantes.length); // posición al azar
-    resultado.push(restantes.splice(i, 1)[0]);        // la saca de "restantes" y la agrega al resultado
+  const restantes = [...lista];                       
+  const resultado = [];                               
+  while (restantes.length > 0) {                    
+    const i = Math.floor(Math.random() * restantes.length); 
+    resultado.push(restantes.splice(i, 1)[0]);        
   }
   return resultado;
 }
 
-// ================== CREAR LAS CARTAS ==================
+//  CREAR LAS CARTAS 
 function crearTablero() {
-  // Cada par se mete DOS veces en la lista: así hay dos cartas iguales de cada color
   const cartas = [];
   pares.forEach(par => {
     cartas.push(par);
-    cartas.push(par);
+    cartas.push(par); // Cada par esta dos veces asi son iguales
   });
 
-  // Se mezclan: esto pasa cada vez que se carga la página, por eso el orden cambia en cada partida
+  // Se mezclan con la funcion de antes las cartas q creamos
   const mezcladas = mezclar(cartas);
 
   // Por cada una se crea un botón y se agrega al tablero
   mezcladas.forEach(par => {
     const carta = document.createElement('button');  // crea un <button> nuevo
     carta.className = 'carta';                        // le pone la clase del CSS
-    carta.dataset.color = par.color;                  // guarda su color escondido en el botón (data-color)
-    carta.dataset.texto = par.texto;                  // y su palabra (data-texto)
+    carta.dataset.color = par.color;                  // guarda su color en el botón (data-color)
+    carta.dataset.texto = par.texto;                  // y su texto de adentro (data-texto)
     carta.addEventListener('click', () => tocarCarta(carta)); // qué pasa al tocarla
     tablero.appendChild(carta);                       // la mete adentro del tablero
   });
