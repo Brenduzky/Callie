@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="tercerjuegostyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memotest</title>
+</head>
+<body>
+
+    <section class="superior">
+        <div class="ejercicio modo-intro" id="ejercicio"> <!-- El cuadro grande, empieza en "modo-intro", el JS le cambia la clase -->
+
+            <!-- PANTALLA 1 (explicación) -->
+            <div class="pantalla" id="intro">
+                <div class="callie">
+                    <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
+                </div>
+                <div id="burbujadetexto">
+                    <p>En el juego debes encontrar el par de cada color.<br>
+                       Al encontrar un par, haz el ejercicio pedido!<br>
+                       Tu puedes!!</p>
+                    <button class="flecha" id="flechaIntro" aria-label="Empezar el juego">
+                        <img src="../../imagenes/salir.png" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <!-- PANTALLA 2
+                 Está vacío a propósito pq el JS crea lo de adentro -->
+            <div class="pantalla" id="tablero"></div>
+
+            <!-- PANTALLA FINAL (cuando ganó) -->
+            <div class="pantalla" id="final">
+                <div class="callie">
+                    <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
+                </div>
+                <div id="textofinal">
+                    <h2>Lo lograste!!!</h2>
+                    <p>Encontraste todos los pares</p>
+                    <button id="jugarOtraVez">Jugar de nuevo</button>
+                    <!--  crear un boton que diga que vuelvas al inicio-->
+                </div>
+            </div>
+
+            <!-- POPUP DEL EJERCICIO 
+                 Empieza escondido, el JS le agrega la visibilidad -->
+            <div id="popup">
+                <button class="flecha" id="flechaPopup" aria-label="Seguir jugando">
+                    <img src="../../imagenes/salir.png" alt="">
+                </button>
+                <span id="iconoCartas">🃏</span>
+                <p id="textoPopup"></p>
+                <button id="altavoz" aria-label="Escuchar">🔊</button>
+            </div>
+        </div>
+
+        <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir">
+            <img class="cerrado" src="../../imagenes/cerrar.png" alt="">
+        </a>
+    </section>
+
+    <script src="tercerjuego.js"></script> <!-- vincula el JS -->
+</body>
+</html>

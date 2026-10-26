@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(#f2fcc4 0%, #eefcbd 60%, #e6f7b5 100%);
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  
+  /* Esta sección ocupa todo el alto y centra el cuadro grande */
+  .superior {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* ---------- CUADRO GRANDE ---------- */
+  .ejercicio {
+    position: relative;           /* para ubicar el popup y a Callie adentro */
+    width: 70%;
+    height: 70%;
+    background-color: #d4e8ec;    /* el celeste grisáceo de tus fotos */
+    border-radius: 10px;
+    border: 3px solid #000;
+    overflow: hidden;             /* lo que se sale del cuadro se corta */
+  }
+  
+  /* Todas las pantallas empiezan escondidas y ocupan todo el cuadro */
+  .pantalla {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Según la clase del cuadro, se muestra UNA sola pantalla */
+  .ejercicio.modo-intro #intro {
+    display: block;
+  }
+  
+  .ejercicio.modo-juego #tablero {
+    display: grid;                /* grilla para acomodar las cartas en filas y columnas */
+    grid-template-columns: repeat(5, 1fr);  /* 5 columnas iguales */
+    grid-template-rows: repeat(2, 1fr);     /* 2 filas iguales: 5 x 2 = 10 cartas */
+    align-items: center;          /* cada carta centrada en su casillero */
+    justify-items: center;
+    padding: 3% 4%;
+  }
+  
+  .ejercicio.modo-final #final {
+    display: block;
+  }
+  
+  /* ---------- CARTAS ---------- */
+  .carta {
+    height: 85%;                  /* alto relativo al casillero de la grilla */
+    aspect-ratio: 3/4;            /* el ancho se calcula solo para que sea un rectángulo parado */
+    background-color: #c9c9c9;    /* gris = carta boca abajo */
+    border: 3px solid #777;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;  /* cambios suaves */
+  }
+  
+  .carta:hover {
+    transform: scale(1.05);       /* se agranda un poquito al pasar el mouse */
+  }
+  
+  /* carta dada vuelta: el color de fondo lo pone el JS */
+  .carta.volteada {
+    border-color: #000;
+  }
+  
+  /* carta eliminada: desaparece pero SIGUE ocupando su lugar (así no se mueven las otras, como en tu 4ta foto).
+     Con "display: none" se correrían todas; con "visibility: hidden" no */
+  .carta.eliminada {
+    visibility: hidden;
+    pointer-events: none;         /* y no se le puede hacer clic */
+  }
+  
+  /* ---------- INTRO: Callie y burbuja ---------- */
+  /* ".callie" se usa en la intro y en el final */
+  .callie {
+    position: absolute;
+    left: -6%;
+    bottom: 0;
+    width: 20%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);     /* así se ve girada, asomándose */
+  }
+  
+  .callie img {
+    width: 100%;                  /* si se ve muy grande o chica, cambiá este número */
+  }
+  
+  .calliete {
+    transform: scaleX(-1);        /* da vuelta la imagen para que mire al otro lado */
+  }
+  
+  #burbujadetexto {
+    position: absolute;
+    left: 17%;
+    top: 14%;
+    width: 40%;
+    height: max-content;          /* el alto se adapta al texto */
+    padding: 20px 20px 45px 15px; /* abajo más lugar para que la flecha no tape el texto */
+    background-color: #9fe0ff;
+    border: 3px solid #000;
+    border-radius: 40px 40px 40px 0;  /* una esquina sin redondear */
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  
+  /* ---------- FLECHA (burbuja y popup) ---------- */
+  .flecha {
+    position: absolute;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .flecha img {
+    width: 100%;
+  }
+  
+  #flechaIntro {                  /* abajo a la derecha de la burbuja */
+    right: 5%;
+    bottom: 8%;
+  }
+  
+  /* ---------- POPUP DEL EJERCICIO ---------- */
+  #popup {
+    display: none;                /* escondido hasta que se encuentre un par */
+    position: absolute;
+    left: 50%;                    /* estas 3 líneas lo centran en el cuadro */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 40%;
+    border: 2px solid #333;
+    border-radius: 6px;
+    flex-direction: column;       /* texto arriba, parlante abajo */
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
+    font-size: 1.1rem;
+    z-index: 5;                   /* queda por encima de las cartas */
+  }
+  
+  #popup.visible {
+    display: flex;                /* el JS agrega esta clase para mostrarlo */
+  }
+  
+  #flechaPopup {                  /* arriba a la izquierda del popup */
+    left: 3%;
+    top: 6%;
+  }
+  
+  #iconoCartas {                  /* arriba a la derecha */
+    position: absolute;
+    right: 4%;
+    top: 4%;
+    font-size: 1.5rem;
+  }
+  
+  #altavoz {
+    padding: 0.3em 0.6em;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  /* ---------- PANTALLA FINAL ---------- */
+  #textofinal {
+    position: absolute;           /* centrado en el cuadro */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  #textofinal h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5em;
+  }
+  
+  #textofinal p {
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+  }
+  
+  #jugarOtraVez {
+    padding: 0.5em 1.2em;
+    border: 3px solid #000;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* ---------- BOTÓN DE SALIR ---------- */
+  #cerrar {
+    position: absolute;
+    right: 1.5%;
+    top: 3%;
+    width: 3%;
+    aspect-ratio: 1/1;
+  }
+  
+  .cerrado {
+    width: 100%;
+  }

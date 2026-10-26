@@ -71,21 +71,23 @@ const botones = [
   document.getElementById('opcionB')
 ];
 
-//  MEZCLAR LAS PREGUNTAS       
-//IMPORTANTE intentar usar la funcion que hace que se reste el valor que aparecio (sar random y restarlo para que no este mas el numero que aparecio)
-// Fisher-Yates: forma de mezclar una lista donde aparece UNA sola vez (nunca se repite una pregunta)
+//  MEZCLAR LAS PREGUNTAS
+// Elige una pregunta al azar, la saca de la lista y la pone en el nuevo orden. Se repite hasta que no queda ninguna
 function mezclar(lista) {
-  const copia = [...lista];                       // usa una copia para poder modificar y cambiar el orden de la original (de los ejercicios)
-  for (let i = copia.length - 1; i > 0; i--) {     //así se recorre la lista desde el final hasta el principio para ir cambiando de lugar cada elemento con otro al azar
-    const j = Math.floor(Math.random() * (i + 1)); // posición al azar entre 0 e i
-    [copia[i], copia[j]] = [copia[j], copia[i]];   // intercambia las dos posiciones, esa posición queda "congelada" y el bucle pasa a la siguiente (i--). Esto garantiza que no haya duplicados ni repeticiones
+  const restantes = [...lista];   // usa una copia para poder modificar y cambiar el orden (de los ejercicios)
+  const resultado = [];           
+
+  while (restantes.length > 0) {           // preguntas sin usar
+    const i = Math.floor(Math.random() * restantes.length); // al azar de las q quedan
+    const elegida = restantes.splice(i, 1)[0];              // la elegida la usa y la saca de "restantes" 
+    resultado.push(elegida);                                // la usa
   }
-  return copia;
+
+  return resultado;
 }
 
 const orden = mezclar(preguntas); // se mezcla cada vez que se juega
-let indice = 0;                   // dice qué pregunta toca ahora definiendo la primera pregunta como la 0, la segunda como la 1, etc. 
-
+let indice = 0;                   // dice qué pregunta toca ahora (la primera es la 0, la segunda la 1, etc.)
 
 
 //  CAMBIAR DE PANTALLA 
@@ -97,51 +99,49 @@ function mostrarModo(modo) {
 
 //  PANTALLA DE PREGUNTA 
 function mostrarPregunta() {
-  const p = orden[indice];              // la pregunta que toca ahora (viene de la otra funcion) ahora se va a llamar p
+  const p = orden[indice];              // la pregunta que toca ahora (viene de la ultima funcion) ahora se va a llamar p
   textoPregunta.textContent = p.pregunta; //textoPregunta viene del html y va a cambiar lo que dice con textContent segun p
 
-  botones.forEach((boton, i) => {
-    const op = p.opciones[i];
-    boton.querySelector('.op-texto').textContent = op.texto;
+  botones.forEach((boton, i) => {              //botones viene del httml
+    const op = p.opciones[i];       //Obtiene la opción correspondiente a ese botón usando i
+    boton.querySelector('.op-texto').textContent = op.texto;   //querySelector busca la etiqueta que muestra el icono y le pone op.texto
     boton.querySelector('.op-emoji').textContent = op.emoji;
-    boton.style.backgroundColor = op.color;
+    boton.style.backgroundColor = op.color; //segun op.color le pone el color al cuadrado grande
   });
 
   mostrarModo('modo-pregunta');
 }
 
-// ================== PANTALLA DE EJERCICIO ==================
-// "numero" es 0 si tocó el botón A, 1 si tocó el B
-function elegir(numero) {
-  const p = orden[indice];
+//  PANTALLA DE EJERCICIO 
+function elegir(numero) {   // "numero" es 0 si tocó el botón A, 1 si tocó el B
+  const p = orden[indice];     //le pone p en la pregunta que se encuentra que luego mostrara el ejercicio predeterminado para la misma
   const op = p.opciones[numero];        // la opción que eligió
 
-  // arriba a la derecha: "🍕 Pizza!! 🍕"
+  // lo quqe se muestra arriba a la derecha
   tituloOpcion.textContent = `${op.emoji} ${op.texto}!! ${op.emoji}`;
 
-  // El ejercicio es el MISMO sin importar cuál opción tocó
+  // El ejercicio es el mismo sin importar que opcion elijió
   tituloEjercicio.textContent = p.ejercicio.titulo;
   explicacionEjercicio.textContent = p.ejercicio.explicacion;
 
   mostrarModo('modo-ejercicio');
-  // el cuadro se pinta del color de la opción elegida
-  // (va DESPUÉS de mostrarModo porque esa función borra el color)
+  // el cuadro se pinta del color de la opción elegida (despues de mostrarModo porque esa función borra el color)
   ejercicio.style.backgroundColor = op.color;
 }
 
-// ================== SEGUIR A LA PRÓXIMA PREGUNTA ==================
+//  SEGUIR A LA PRÓXIMA PREGUNTA 
 function siguiente() {
-  indice++;                              // pasa a la pregunta siguiente
+  indice++;                             
   if (indice >= orden.length) {
-    mostrarModo('modo-final');           // ya respondió las 5
-    // window.location.href = '../principal/pantalla-atras.html'; // si querés redirigir al terminar
+    mostrarModo('modo-final');           // cuando ya respondió las 5
+    // window.location.href = '../principal/pantalla-atras.html'; // redirigir al terminar
   } else {
     mostrarPregunta();
   }
 }
 
-// ================== EVENTOS (qué pasa al tocar cada cosa) ==================
-flechaIntro.addEventListener('click', mostrarPregunta);   // la flecha de la explicación empieza el juego
-flechaEjercicio.addEventListener('click', siguiente);     // la flecha del ejercicio sigue a la próxima pregunta
-botones[0].addEventListener('click', () => elegir(0));    // botón A
-botones[1].addEventListener('click', () => elegir(1));    // botón B
+//  Que pasa cuando se toca algo
+flechaIntro.addEventListener('click', mostrarPregunta);   // flecha de la explicación (empieza el juego)
+flechaEjercicio.addEventListener('click', siguiente);     // flecha del ejercicio (sigue a la próxima pregunta)
+botones[0].addEventListener('click', () => elegir(0));    // A = 0
+botones[1].addEventListener('click', () => elegir(1));    // B = 0
