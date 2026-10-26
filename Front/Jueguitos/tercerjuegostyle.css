@@ -11,7 +11,6 @@
     font-family: 'Inter', Arial, sans-serif;
   }
   
-  /* Esta sección ocupa todo el alto y centra el cuadro grande */
   .superior {
     position: relative;
     width: 100%;
@@ -21,33 +20,33 @@
     align-items: center;
   }
   
-  /* ---------- CUADRO GRANDE ---------- */
+  /* CUADRO GRANDE */
   .ejercicio {
-    position: relative;           /* para ubicar el popup y a Callie adentro */
+    position: relative;           /* para ubicar el popup y a Callie */
     width: 70%;
     height: 70%;
-    background-color: #d4e8ec;    /* el celeste grisáceo de tus fotos */
+    background-color: #d4e8ec;   
     border-radius: 10px;
-    border: 3px solid #000;
+    border: 5px solid #000;
     overflow: hidden;             /* lo que se sale del cuadro se corta */
   }
   
-  /* Todas las pantallas empiezan escondidas y ocupan todo el cuadro */
+  /* Todas las pantallas empiezan escondidas*/
   .pantalla {
     display: none;
     width: 100%;
     height: 100%;
   }
   
-  /* Según la clase del cuadro, se muestra UNA sola pantalla */
+  /*se muestra una de las pantallas segun el js*/
   .ejercicio.modo-intro #intro {
     display: block;
   }
   
   .ejercicio.modo-juego #tablero {
-    display: grid;                /* grilla para acomodar las cartas en filas y columnas */
+    display: grid;                      /* para acomodar las cartas */
     grid-template-columns: repeat(5, 1fr);  /* 5 columnas iguales */
-    grid-template-rows: repeat(2, 1fr);     /* 2 filas iguales: 5 x 2 = 10 cartas */
+    grid-template-rows: repeat(2, 1fr);     /* 2 filas iguales*/
     align-items: center;          /* cada carta centrada en su casillero */
     justify-items: center;
     padding: 3% 4%;
@@ -57,78 +56,80 @@
     display: block;
   }
   
-  /* ---------- CARTAS ---------- */
+  /* CARTAS */
   .carta {
-    height: 85%;                  /* alto relativo al casillero de la grilla */
-    aspect-ratio: 3/4;            /* el ancho se calcula solo para que sea un rectángulo parado */
-    background-color: #c9c9c9;    /* gris = carta boca abajo */
-    border: 3px solid #777;
+    height: 85%;                  
+    aspect-ratio: 3/4;            /*  para que sea un rectángulo */
+    background-color: #CACACA;    
+    border: 5px solid #6F6F6F;
     border-radius: 8px;
-    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.12); /*la sombra de los costados*/
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;  /* cambios suaves */
+    transition: background-color 0.3s, transform 0.2s;  /* tarda en cambiar */
   }
-  
+
+  /*IMPORTANTE: PUEDE SERVIR PARA LOS BOTONES DE LA PAGINA PRINCIPAL*/
   .carta:hover {
-    transform: scale(1.05);       /* se agranda un poquito al pasar el mouse */
+    transform: scale(1.05);       /* se agranda al pasar el mouse */
   }
   
-  /* carta dada vuelta: el color de fondo lo pone el JS */
+  /* carta dada vuelta (el color del fondo lo pone el js) */
   .carta.volteada {
-    border-color: #000;
+    color: #E8E8E8;
+    box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.603);
   }
+
+
   
-  /* carta eliminada: desaparece pero SIGUE ocupando su lugar (así no se mueven las otras, como en tu 4ta foto).
-     Con "display: none" se correrían todas; con "visibility: hidden" no */
+  /* carta eliminada (desaparece pero SIGUE ocupando su lugar, así no se mueven las otras). */
   .carta.eliminada {
-    visibility: hidden;
-    pointer-events: none;         /* y no se le puede hacer clic */
+    visibility: hidden;             /*si uso display:none no ocuparia su lugar*/
+    pointer-events: none;         /* no se le puede hacer clic */
   }
   
-  /* ---------- INTRO: Callie y burbuja ---------- */
-  /* ".callie" se usa en la intro y en el final */
+  /* INTRO */
   .callie {
     position: absolute;
-    left: -6%;
+    left: -10%;
     bottom: 0;
-    width: 20%;
+    width: 25%;
     aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(45deg);     /* así se ve girada, asomándose */
+    transform: rotate(45deg);   
   }
   
   .callie img {
-    width: 100%;                  /* si se ve muy grande o chica, cambiá este número */
+    width: 100%;               
   }
   
   .calliete {
-    transform: scaleX(-1);        /* da vuelta la imagen para que mire al otro lado */
+    transform: scaleX(-1);       /*lo invierte*/
   }
   
   #burbujadetexto {
     position: absolute;
     left: 17%;
-    top: 14%;
+    top: 15%;
     width: 40%;
-    height: max-content;          /* el alto se adapta al texto */
-    padding: 20px 20px 45px 15px; /* abajo más lugar para que la flecha no tape el texto */
+    height: max-content;          
+    padding: 20px 20px 50px 15px; /* abajo más lugar para que la flecha no tape el texto */
     background-color: #9fe0ff;
-    border: 3px solid #000;
-    border-radius: 40px 40px 40px 0;  /* una esquina sin redondear */
+    border: 5px solid #000;
+    border-radius: 40px 40px 40px 0; 
     font-size: 1rem;
     line-height: 1.3;
   }
   
-  /* ---------- FLECHA (burbuja y popup) ---------- */
+  /* FLECHA (burbuja y popup) */
   .flecha {
     position: absolute;
-    width: 2rem;
+    width: 3.6rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
     border: none;
-    background: #fff;
+    background: #ffffff00;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -139,40 +140,44 @@
     width: 100%;
   }
   
-  #flechaIntro {                  /* abajo a la derecha de la burbuja */
-    right: 5%;
-    bottom: 8%;
+  #flechaIntro {                  
+    right: 2%;
+    bottom: 5%;
   }
   
-  /* ---------- POPUP DEL EJERCICIO ---------- */
+  /*  POPUP DEL EJERCICIO  */
   #popup {
     display: none;                /* escondido hasta que se encuentre un par */
     position: absolute;
-    left: 50%;                    /* estas 3 líneas lo centran en el cuadro */
+    left: 50%;                    
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);   /*para centrarlo*/
     width: 45%;
     height: 40%;
-    border: 2px solid #333;
+    border: 5px solid #524F54;
     border-radius: 6px;
-    flex-direction: column;       /* texto arriba, parlante abajo */
+    flex-direction: column;       
     align-items: center;
     justify-content: center;
-    gap: 0.8em;
+    gap: 0.5em;
     font-size: 1.1rem;
     z-index: 5;                   /* queda por encima de las cartas */
   }
+
+  /*agrega la tipografia aca*/
   
   #popup.visible {
-    display: flex;                /* el JS agrega esta clase para mostrarlo */
+    display: flex;                /* el JS cambia la clase*/
   }
   
-  #flechaPopup {                  /* arriba a la izquierda del popup */
+  #flechaPopup {                  
     left: 3%;
     top: 6%;
   }
   
-  #iconoCartas {                  /* arriba a la derecha */
+
+  /*cambiarlo por la img*/
+  #iconoCartas {                  
     position: absolute;
     right: 4%;
     top: 4%;
@@ -183,14 +188,18 @@
     padding: 0.3em 0.6em;
     border: none;
     border-radius: 8px;
-    background: #fff;
-    font-size: 1.2rem;
+    background: #ffffff00;
+    font-size: 1rem;
     cursor: pointer;
   }
+
+  .parlante{
+    width: 85%;
+  }
   
-  /* ---------- PANTALLA FINAL ---------- */
+  /*  PANTALLA FINAL  */
   #textofinal {
-    position: absolute;           /* centrado en el cuadro */
+    position: absolute;           
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -216,7 +225,7 @@
     cursor: pointer;
   }
   
-  /* ---------- BOTÓN DE SALIR ---------- */
+  /* BOTÓN DE SALIR */
   #cerrar {
     position: absolute;
     right: 1.5%;
