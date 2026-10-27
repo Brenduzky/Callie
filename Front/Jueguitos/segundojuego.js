@@ -34,10 +34,10 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\nAvión o Salado?",
+    pregunta: "¿Qué preferís...\nAvión o Barco?",
     opciones: [
       { texto: "Avion",  imagen: "../../imagenes/segundo-avion.png", color: "#C3DDF2" },
-      { texto: "Salado", imagen: "../../imagenes/segundo-barco.png", color: "#8880F5" }
+      { texto: "Barco", imagen: "../../imagenes/segundo-barco.png", color: "#8880F5" }
     ],
     ejercicio: {
       titulo: "Saca la lengua!",
