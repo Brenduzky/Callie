@@ -132,8 +132,10 @@ body {
   filter: brightness(1.08);      /* se aclara al pasar el mouse */
 }
 
-.op-emoji {
-  font-size: 1.6rem;
+/* foto dentro de los botones de opción */
+.op-img {
+  height: 1.8em;          /* el alto manda; el ancho se ajusta solo */
+  width: auto;
 }
 
 /* PANTALLA 3: EJERCICIO*/
@@ -148,6 +150,14 @@ body {
   font-size: 1.7rem;
   font-weight: normal;
 }
+
+/* fotos del título de la pantalla del ejercicio */
+.titulo-img {
+  height: 1.2em;
+  width: auto;
+  vertical-align: middle; /* las alinea con el texto (si no, quedan más abajo) */
+}
+
 
 #tituloEjercicio {
   margin-top: 3%;

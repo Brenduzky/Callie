@@ -2,9 +2,10 @@ const preguntas = [ //todas las preguntas con sus ejercicios
   {
     pregunta: "¿Qué preferís...\nPizza o Hamburguesa?", //el \n es un salto de línea, para que quede en dos renglones
     opciones: [
-      { texto: "Pizza",       emoji: "🍕", color: "#e97f7f" }, //proximamente cambiarlo a img (drive: "Poner imagen: Segundo juego opciones")
-      { texto: "Hamburguesa", emoji: "🍔", color: "#e2ec55" }
+      { texto: "Pizza",       imagen: "../../imagenes/segundo-pizza.png", color: "#e97f7f" },
+      { texto: "Hamburguesa", imagen: "../../imagenes/segundo-hamburguesa.png", color: "#e2ec55" }
     ],
+    
     ejercicio: {
       titulo: "Debes hacer 10 besos!",
       explicacion: "¿Cómo se hace? Cierra la boca y empuja tus labios hacia adelante y arriba, sin separarlos. Mantenlo así por 10 segundos."
@@ -13,8 +14,8 @@ const preguntas = [ //todas las preguntas con sus ejercicios
   {
     pregunta: "¿Qué preferís...\nPerro o Gato?",
     opciones: [
-      { texto: "Perro", emoji: "🐶", color: "#f0b27a" },
-      { texto: "Gato",  emoji: "🐱", color: "#c39bd3" }
+      { texto: "Perro", imagen:"../../imagenes/segundo-perro.png", color: "#E8C075" },
+      { texto: "Gato",  imagen:"../../imagenes/segundo-gato.png", color: "#ABB1A6" }
     ],
     ejercicio: {
       titulo: "Infla las mejillas!",
@@ -24,8 +25,8 @@ const preguntas = [ //todas las preguntas con sus ejercicios
   {
     pregunta: "¿Qué preferís...\nPlaya o Montaña?",
     opciones: [
-      { texto: "Playa",   emoji: "🏖️", color: "#f7dc6f" },
-      { texto: "Montaña", emoji: "⛰️", color: "#82e0aa" }
+      { texto: "Playa",   imagen:"../../imagenes/segundo-playa.png", color: "#F2D2A8" },
+      { texto: "Montaña", imagen:"../../imagenes/segundo-montaña.png", color: "#99E556" }
     ],
     ejercicio: {
       titulo: "Sonrisa gigante!",
@@ -33,10 +34,10 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\nDulce o Salado?",
+    pregunta: "¿Qué preferís...\nAvión o Salado?",
     opciones: [
-      { texto: "Dulce",  emoji: "🍫", color: "#d7a58c" },
-      { texto: "Salado", emoji: "🍟", color: "#f9e79f" }
+      { texto: "Avion",  imagen: "../../imagenes/segundo-avion.png", color: "#C3DDF2" },
+      { texto: "Salado", imagen: "../../imagenes/segundo-barco.png", color: "#8880F5" }
     ],
     ejercicio: {
       titulo: "Saca la lengua!",
@@ -44,10 +45,10 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\nVerano o Invierno?",
+    pregunta: "¿Qué preferís...\nHelado o Chocolate?",
     opciones: [
-      { texto: "Verano",   emoji: "☀️", color: "#f5b041" },
-      { texto: "Invierno", emoji: "❄️", color: "#85c1e9" }
+      { texto: "Helado",   imagen: "../../imagenes/segundo-helado.png", color: "#F29CF0" },
+      { texto: "Chocolate", imagen: "../../imagenes/segundo-chocolate.png", color: "#BA816E" }
     ],
     ejercicio: {
       titulo: "Chasquea la lengua!",
@@ -105,7 +106,7 @@ function mostrarPregunta() {
   botones.forEach((boton, i) => {              //botones viene del httml
     const op = p.opciones[i];       //Obtiene la opción correspondiente a ese botón usando i
     boton.querySelector('.op-texto').textContent = op.texto;   //querySelector busca la etiqueta que muestra el icono y le pone op.texto
-    boton.querySelector('.op-emoji').textContent = op.emoji;
+    boton.querySelector('.op-img').src = op.imagen;
     boton.style.backgroundColor = op.color; //segun op.color le pone el color al cuadrado grande
   });
 
@@ -118,7 +119,12 @@ function elegir(numero) {   // "numero" es 0 si tocó el botón A, 1 si tocó el
   const op = p.opciones[numero];        // la opción que eligió
 
   // lo quqe se muestra arriba a la derecha
-  tituloOpcion.textContent = `${op.emoji} ${op.texto}!! ${op.emoji}`;
+  tituloOpcion.innerHTML = `
+  <img class="titulo-img" src="${op.imagen}" alt="">
+  ${op.texto}!!
+  <img class="titulo-img" src="${op.imagen}" alt="">
+`;
+
 
   // El ejercicio es el mismo sin importar que opcion elijió
   tituloEjercicio.textContent = p.ejercicio.titulo;
