@@ -120,7 +120,7 @@ function elegir(numero) {   // "numero" es 0 si tocó el botón A, 1 si tocó el
 
   // lo quqe se muestra arriba a la derecha
   tituloOpcion.innerHTML = `
-  <img class="titulo-img" src="${op.imagen}" alt="">
+  <img class="titulo-img derecha" src="${op.imagen}" alt="">
   ${op.texto}!!
   <img class="titulo-img" src="${op.imagen}" alt="">
 `;

@@ -53,18 +53,18 @@ function crearTablero() {
     carta.className = 'carta';                        // le pone la clase del CSS
     carta.dataset.color = par.color;                  // guarda su color en el botón (data-color)
     carta.dataset.texto = par.texto;                  // y su texto de adentro (data-texto)
-    carta.addEventListener('click', () => tocarCarta(carta)); // qué pasa al tocarla
+    carta.addEventListener('click', () => tocarCarta(carta)); // al tocarla
     tablero.appendChild(carta);                       // la mete adentro del tablero
   });
 }
 
-// ==================  CAMBIAR DE PANTALLA ==================
-// Le pone al cuadro la clase del modo que queremos (el CSS muestra solo esa pantalla)
+//  CAMBIAR DE PANTALLA
+// Le pone al cuadro la clase del modo que queremos 
 function mostrarModo(modo) {
   ejercicio.className = 'ejercicio ' + modo;
 }
 
-// ==================  DAR VUELTA UNA CARTA ==================
+//  DAR VUELTA UNA CARTA
 function voltear(carta) {
   carta.classList.add('volteada');
   carta.style.borderColor = carta.dataset.color;  // asigna el color al borde
@@ -72,16 +72,16 @@ function voltear(carta) {
 
 function desvoltear(carta) {
   carta.classList.remove('volteada');
-  carta.style.borderColor = '';                   // restaura el borde por defecto definido en CSS
+  carta.style.borderColor = '';                   // le da el borde normal
 }
 
-// ================== LO QUE PASA AL TOCAR UNA CARTA ==================
+// LO QUE PASA AL TOCAR UNA CARTA
 function tocarCarta(carta) {
   if (bloqueado) return;                              // si está bloqueado, no hace nada
   if (carta.classList.contains('volteada')) return;   // si ya está dada vuelta, no hace nada
 
   voltear(carta);                                     // muestra el borde con color
-
+// -------------------------------------- segui de aca
   // CASO A: es la primera carta de la jugada. Se guarda y se espera la segunda.
   if (primera === null) {
     primera = carta;
@@ -140,17 +140,17 @@ function cerrarPopup() {
   }
 }
 
-// ================== 10. EMPEZAR EL JUEGO ==================
+// ================== EMPEZAR EL JUEGO ==================
 function empezar() {
   mostrarModo('modo-juego');                          // pasa de la explicación al tablero
   bloqueado = false;                                  // ahora se pueden tocar las cartas
 }
 
-// ================== 11. EVENTOS (qué pasa al tocar cada cosa) ==================
+// ==================  EVENTOS (qué pasa al tocar cada cosa) ==================
 flechaIntro.addEventListener('click', empezar);
 flechaPopup.addEventListener('click', cerrarPopup);
 altavoz.addEventListener('click', hablar);
 jugarOtraVez.addEventListener('click', () => location.reload()); // recargar = nueva mezcla
 
-// ================== 12. ARRANQUE ==================
-crearTablero();  // arma las cartas apenas carga la página
+// EMPEZAR
+crearTablero(); 

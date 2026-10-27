@@ -33,7 +33,7 @@ body {
   position: relative;            /* para poner la flecha de adentro */
   width: 65%;
   height: 85%;
-  background-color: #87d7ee;     /* celeste de la intro y dsp el js lo cambia segun lo q elija*/
+  background-color: #71CFF7;     /* celeste de la intro y dsp el js lo cambia segun lo q elija*/
   border-radius: 10px;
   border: 5px solid #000;
   overflow: hidden;              /* lo que se sale del cuadrado se recorta */
@@ -156,6 +156,10 @@ body {
   height: 1.2em;
   width: auto;
   vertical-align: middle; /* las alinea con el texto (si no, quedan más abajo) */
+}
+
+.derecha{
+  transform: scaleX(-1);
 }
 
 

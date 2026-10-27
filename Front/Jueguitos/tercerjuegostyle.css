@@ -10,6 +10,18 @@
     background: linear-gradient(#f2fcc4 0%, #eefcbd 60%, #e6f7b5 100%);
     font-family: 'Inter', Arial, sans-serif;
   }
+
+  .fondo{
+    position: fixed;          
+    top: 0;
+    left: 0;
+    width: 100vw;              
+    height: 100vh;             
+    object-fit: cover;         
+    z-index: -1;      
+    transform: scaleX(-1)         
+  }
+ 
   
   .superior {
     position: relative;
@@ -23,9 +35,9 @@
   /* CUADRO GRANDE */
   .ejercicio {
     position: relative;           /* para ubicar el popup y a Callie */
-    width: 70%;
-    height: 70%;
-    background-color: #d4e8ec;   
+    width: 75%;
+    height: 75%;
+    background-color: #cce7e9ea;   
     border-radius: 10px;
     border: 5px solid #000;
     overflow: hidden;             /* lo que se sale del cuadro se corta */
@@ -50,6 +62,7 @@
     align-items: center;          /* cada carta centrada en su casillero */
     justify-items: center;
     padding: 3% 4%;
+gap:4%;
   }
   
   .ejercicio.modo-final #final {
@@ -58,7 +71,7 @@
   
   /* CARTAS */
   .carta {
-    height: 85%;                  
+    height: 90%;                  
     aspect-ratio: 3/4;            /*  para que sea un rectángulo */
     background-color: #CACACA;    
     border: 5px solid #6F6F6F;
