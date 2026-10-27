@@ -71,6 +71,7 @@ gap:4%;
   
   /* CARTAS */
   .carta {
+    position: relative;
     height: 90%;                  
     aspect-ratio: 3/4;            /*  para que sea un rectángulo */
     background-color: #CACACA;    
@@ -92,7 +93,13 @@ gap:4%;
     box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.603);
   }
 
-
+  #emoji {
+    position: absolute;
+    right: 2%;
+    top: 5%;
+    width: 15%; 
+  
+  }
   
   /* carta eliminada (desaparece pero SIGUE ocupando su lugar, así no se mueven las otras). */
   .carta.eliminada {

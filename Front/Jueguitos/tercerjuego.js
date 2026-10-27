@@ -1,10 +1,10 @@
 //Los colores de los pares predeterminados
 const pares = [
-  { color: "#B7383A", texto: "Di Ratón!!" },
-  { color: "#E2863C", texto: "Di Pelota!!" },
-  { color: "#2AA418", texto: "Di Sol!!" },
-  { color: "#3358BC", texto: "Di Rana!!" },
-  { color: "#B90EAE", texto: "Di Mariposa!!" }
+  { color: "#B7383A", fondo: "#FFEBEE", texto: "Di Ratón!!", emoji: "../../imagenes/carta-roja.png" },
+  { color: "#E2863C", fondo: "#FFF3E0", texto: "Di Pelota!!", emoji: "../../imagenes/carta-naranja.png" },
+  { color: "#2AA418", fondo: "#E8F5E9", texto: "Di Sol!!", emoji: "../../imagenes/carta-verde.png" },
+  { color: "#3358BC", fondo: "#E3F2FD", texto: "Di Rana!!", emoji: "../../imagenes/carta-azul.png" },
+  { color: "#B90EAE", fondo: "#F3E5F5", texto: "Di Mariposa!!", emoji: "../../imagenes/carta-violeta.png" }
 ];
 
 // ELEMENTOS DEL HTML 
@@ -16,6 +16,7 @@ const textoPopup = document.getElementById('textoPopup');
 const flechaPopup = document.getElementById('flechaPopup');
 const altavoz = document.getElementById('altavoz');
 const jugarOtraVez = document.getElementById('jugarOtraVez');
+const emojiPopup = document.getElementById('emoji');
 //agregar el boton de salir del final junto el volver a jugar
 
 //  VARIABLES DEL JUEGO 
@@ -52,7 +53,9 @@ function crearTablero() {
     const carta = document.createElement('button');  // crea un <button> nuevo
     carta.className = 'carta';                        // le pone la clase del CSS
     carta.dataset.color = par.color;                  // guarda su color en el botón (data-color)
+    carta.dataset.fondo = par.fondo;
     carta.dataset.texto = par.texto;                  // y su texto de adentro (data-texto)
+    carta.dataset.emoji = par.emoji;
     carta.addEventListener('click', () => tocarCarta(carta)); // al tocarla
     tablero.appendChild(carta);                       // la mete adentro del tablero
   });
@@ -93,11 +96,17 @@ function tocarCarta(carta) {
   primera = null;                                     // la jugada termina: la próxima vez empieza de cero
   bloqueado = true;                                   // mientras se compara no se puede tocar nada
 
-  if (anterior.dataset.color === carta.dataset.color) {
-    // COINCIDEN (mismo color): se espera un poquito para que se vean y sale el popup
-    parActual = [anterior, carta];
-    setTimeout(() => mostrarPopup(carta.dataset.texto, carta.dataset.color), 600);
-  } else {
+if (anterior.dataset.color === carta.dataset.color) {
+  parActual = [anterior, carta];
+  setTimeout(() => {
+    mostrarPopup(
+      carta.dataset.texto, 
+      carta.dataset.color, 
+      carta.dataset.fondo, 
+      carta.dataset.emoji
+    );
+  }, 600);
+} else {
     // NO COINCIDEN: se dejan 1 segundo a la vista y se vuelven a dar vuelta las dos
     setTimeout(() => {
       desvoltear(anterior);
@@ -108,10 +117,18 @@ function tocarCarta(carta) {
 }
 
 // ==================  POPUP DEL EJERCICIO ==================
-function mostrarPopup(texto, color) {
-  textoPopup.textContent = texto;                     // escribe la palabra
-  popup.style.backgroundColor = color;                // el popup toma el color del par
-  popup.classList.add('visible');                     // lo muestra (el CSS lo pone display: flex)
+function mostrarPopup(texto, color, fondo, emoji) {
+  textoPopup.textContent = texto;
+  
+  // Asigna el borde dinámico y el fondo personalizado
+  popup.style.borderColor = color;
+  popup.style.backgroundColor = fondo; // O usa un color fijo ej: "#FFFFFF" si no cambia por par
+
+  popup.classList.add('visible');
+
+  if (emojiPopup) {
+    emojiPopup.src = emoji;
+  }
 }
 
 // Lee la palabra en voz alta con el parlante (la voz del navegador)
