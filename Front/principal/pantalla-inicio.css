@@ -34,12 +34,12 @@ body{
   background-color: rgba(196, 101, 38, 0);
   padding: 1%;
   display:flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .configura{
-  width: 8%;  
+  width: 10%;  
   height: 100%;  
   background-color: rgba(196, 101, 38, 0);
   display:flex;
@@ -69,7 +69,7 @@ body{
 
 .cajita {
   width: max-content;
-  height: 65%;  
+  height: 68%;  
   background-color: rgba(255, 255, 255, 0.720);
   display: flex;
   align-items: center;
@@ -126,6 +126,7 @@ body{
   text-decoration: none;
   gap:6%;
   padding-left: 2.2%;
+  padding-right: 1%;
 
 }
 .jugar{
@@ -153,6 +154,7 @@ width: 20%;
   text-decoration: none;
   gap:6%;
   padding-left: 2.2%;
+  padding-right: 1%;
 }
 
 
@@ -170,7 +172,7 @@ width: 20%;
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 3.4rem;
+  font-size: 3rem;
      text-transform: none;
        text-decoration: none;
        color: black;
@@ -183,11 +185,11 @@ font-family: "Google Sans", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "GRAD" 0;
-    font-size: 3.2rem;
+    font-size: 3rem;
 }
 
 .fotito{
-  width: 25%;  
+  width: 40%;  
   height: 80%;  
   background-color: rgba(192, 10, 177, 0);
   display: flex;
@@ -203,11 +205,11 @@ font-family: "Google Sans", sans-serif;
 }
 
 .rachita{
-  width: 100%;
+  width: 95%;
 }
 
 .pecesito{
-  width: 150%;
+  width: 130%;
 }
 
 .especial{
@@ -219,11 +221,11 @@ gap:-5%
 }
 
 .dado{
-  width: 180%;
+  width: 200%;
 }
 
 .trofeito{
-  width: 160%;
+  width: 210%;
 }
 
   .fondo{

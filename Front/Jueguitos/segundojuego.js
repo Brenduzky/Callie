@@ -65,6 +65,7 @@ const textoPregunta = document.getElementById('textoPregunta');
 const tituloOpcion = document.getElementById('tituloOpcion');
 const tituloEjercicio = document.getElementById('tituloEjercicio');
 const explicacionEjercicio = document.getElementById('explicacionEjercicio');
+const jugarOtraVez = document.getElementById('jugarOtraVez');
 
 // los botones de opciones, botones[0] es el A y botones[1] el B
 const botones = [
@@ -151,3 +152,27 @@ flechaIntro.addEventListener('click', mostrarPregunta);   // flecha de la explic
 flechaEjercicio.addEventListener('click', siguiente);     // flecha del ejercicio (sigue a la próxima pregunta)
 botones[0].addEventListener('click', () => elegir(0));    // A = 0
 botones[1].addEventListener('click', () => elegir(1));    // B = 0
+
+jugarOtraVez.addEventListener('click', () => location.reload()); // recargar hace q se reinicie
+
+
+// ===== BOTÓN X Y POPUP DE SALIR =====
+const cerrar = document.getElementById('cerrar');
+const modalSalir = document.getElementById('modalSalir');
+const seguirJugando = document.getElementById('seguirJugando');
+const salirJuego = document.getElementById('salirJuego');
+
+function salir() {
+  window.location.href = '../principal/pantalla-atras.html';
+}
+
+cerrar.addEventListener('click', () => {
+  if (ejercicio.classList.contains('modo-final')) {
+    salir();                              // en la pantalla final se cierra de una
+  } else {
+    modalSalir.classList.add('visible');  // si no, pregunta primero
+  }
+});
+
+seguirJugando.addEventListener('click', () => modalSalir.classList.remove('visible')); // vuelve al juego
+salirJuego.addEventListener('click', salir);

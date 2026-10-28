@@ -62,6 +62,7 @@
             <!-- PANTALLA FINAL: cuando hizo todas las preguntas -->
             <div class="pantalla" id="final">
                 <p id="textoFinal tipografia alta">¡Terminaste! </p>
+                <button class="tipografia" id="jugarOtraVez">Jugar de nuevo</button>
             </div>
         </div>
     </section>
@@ -74,9 +75,19 @@
 
     <div class="burbujita"></div>
     <div class="burbujita otra"></div>
-    <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir">
-        <img class="cerrado" src="../../imagenes/cerrar.png">
-    </a>
+    <button id="cerrar" aria-label="Salir">
+        <img class="cerrado" src="../../imagenes/cerrar.png" alt="">
+    </button>
+
+
+<!-- POPUP DE SALIR: empieza escondido, el JS le agrega la clase "visible" -->
+<div class="modal-fondo" id="modalSalir">
+    <div class="modal-caja">
+        <p class="tipografia modal-texto">¿Querés salir del juego?</p>
+        <button class="tipografia boton-naranja" id="seguirJugando">Seguir jugando</button>
+        <button class="tipografia boton-naranja" id="salirJuego">Salir</button>
+    </div>
+</div>
 
     <script src="segundojuego.js"></script> <!-- vincula el JS -->
 </body>

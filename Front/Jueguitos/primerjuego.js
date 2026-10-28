@@ -7,7 +7,6 @@ const titulo = document.getElementById('titulo');
 const explicacion = document.getElementById('explicacion');
 const flechaIntro = document.getElementById('flecha');      
 const flechaConsigna = document.getElementById('flecha2');  
-const cerrar = document.getElementById('cerrar');
 
 let rondas = 0;
 let activa = null;
@@ -95,6 +94,33 @@ function terminar() {
 cajas.forEach(caja => caja.addEventListener('click', () => tocarCaja(caja)));
 flechaIntro.addEventListener('click', empezar);
 flechaConsigna.addEventListener('click', cerrarConsigna);
-cerrar.addEventListener('click', () => window.history.back());
 
 //el juego arranca recién cuando se aprieta la flecha de la burbuja
+
+
+
+
+
+// ===== BOTÓN X Y POPUP DE SALIR =====
+const cerrar = document.getElementById('cerrar');
+const modalSalir = document.getElementById('modalSalir');
+const seguirJugando = document.getElementById('seguirJugando');
+const salirJuego = document.getElementById('salirJuego');
+
+function salir() {
+  window.location.href = '../principal/pantalla-atras.html';
+}
+
+cerrar.addEventListener('click', () => {
+  if (ejercicio.classList.contains('modo-final')) {
+    salir();                              // en la pantalla final se cierra de una
+  } else {
+    modalSalir.classList.add('visible');  // si no, pregunta primero
+  }
+});
+
+seguirJugando.addEventListener('click', () => modalSalir.classList.remove('visible')); // vuelve al juego
+salirJuego.addEventListener('click', salir);
+
+const jugarOtraVez = document.getElementById('jugarOtraVez');
+jugarOtraVez.addEventListener('click', () => location.reload());

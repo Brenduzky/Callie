@@ -57,11 +57,21 @@
             </div>
         </div>
 
-        <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir">
+        <button id="cerrar" aria-label="Salir">
             <img class="cerrado" src="../../imagenes/cerrar.png" alt="">
-        </a>
+        </button>
     </section>
 
+
+
+    <!-- POPUP DE SALIR: empieza escondido, el JS le agrega la clase "visible" -->
+<div class="modal-fondo" id="modalSalir">
+    <div class="modal-caja">
+        <p class="tipografia modal-texto">¿Querés salir del juego?</p>
+        <button class="tipografia boton-naranja" id="seguirJugando">Seguir jugando</button>
+        <button class="tipografia boton-naranja" id="salirJuego">Salir</button>
+    </div>
+</div>
     <script src="tercerjuego.js"></script> <!-- vincula el JS -->
 </body>
 </html>

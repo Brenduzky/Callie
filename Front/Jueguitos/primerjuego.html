@@ -51,17 +51,22 @@
         <img class="calliete" src="../../imagenes/calliesaludando.png">
     </div>
     <div id="textofinal">
-        <h2 class="tipografia">Lo lograste!!!</h2>
-        <p class="tipografia"><span id="peces">100</span> peces</p>
+        <h2 class="tipografia">
+            <img class="pez" src="../../imagenes/pez.png" alt="">
+            ¡¡Lo lograste!!
+            <img class="pez" src="../../imagenes/pez.png" alt="">
+        </h2>
+        <p class="tipografia">Ganaste <span id="peces">100</span> peces</p>
+        <button class="tipografia boton-naranja" id="jugarOtraVez">Volver a jugar</button>
     </div>
 </div>
 
 
         </div>
 
-        <a href="../principal/pantalla-atras.html" id="cerrar" aria-label="Salir">
-            <img class="cerralo" src="../../imagenes/cerrar.png">
-        </a>
+        <button id="cerrar" aria-label="Salir">
+            <img class="cerrado" src="../../imagenes/cerrar.png" alt="">
+        </button>
     </section>
 
     <section class="abajo">
@@ -84,6 +89,16 @@
              data-titulo="Título del ejercicio 4"
              data-explicacion="¿Cómo se hace? Escribí acá la explicación."></div>
     </section>
+
+
+<!-- POPUP DE SALIR: empieza escondido, el JS le agrega la clase "visible" -->
+<div class="modal-fondo" id="modalSalir">
+    <div class="modal-caja">
+        <p class="tipografia modal-texto">¿Querés salir del juego?</p>
+        <button class="tipografia boton-naranja" id="seguirJugando">Seguir jugando</button>
+        <button class="tipografia boton-naranja" id="salirJuego">Salir</button>
+    </div>
+</div>
 
     <script src="primerjuego.js"></script> <!-- para vincularlo al js-->
 </body>

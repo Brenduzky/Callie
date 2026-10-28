@@ -204,19 +204,6 @@ body {
   border:none;
 }
 
-/*salir del juego (pq se equivoco o termino) */
-#cerrar {
-  position: absolute;
-  right: 1.5%;
-  top: 3%;
-  width: 3%;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  border: none;
-  background: #ffffff00;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
 
 
 .salidita {
@@ -285,4 +272,82 @@ width: 100%;
   background-color: #ff4d4d !important; /* el important es para q sea la regla mas importante*/
   box-shadow: 0 0 100px #ff0000;
   transition: background-color 0.2s ease; /*lo que tarda en convertirse del todo para luego volver a antes*/
+}
+
+
+
+
+
+
+
+
+/*extra*/
+/* para el poop de salir / x / yqs*/
+#cerrar {
+  position: absolute;
+  right: 1%;
+  top: 3%;
+  width: 3%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff00;
+  font-size: 0.1rem;
+  cursor: pointer;
+}
+
+#cerrar img {
+  display: block; /* saca el huequito que deja una imagen dentro de un botón */
+  width: 100%;
+}
+
+/* ===== POPUP DE SALIR ===== */
+.modal-fondo {
+  display: none;                 /* escondido hasta que se toca la X */
+  position: fixed;               /* ocupa TODA la pantalla, tapa el juego */
+  inset: 0;                      /* top/right/bottom/left = 0 */
+  background: rgba(0, 0, 0, 0.45);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;                  /* por encima de todo */
+}
+.modal-fondo.visible {
+  display: flex;                 /* el JS agrega esta clase para mostrarlo */
+}
+.modal-caja {
+  background: #f1f0ee;
+  border: 5px solid #000;
+  border-radius: 15px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.modal-texto {
+  font-size: 1.4rem;
+}
+
+/* ===== BOTÓN NARANJA (Volver a jugar, Seguir jugando, Salir) ===== */
+.boton-naranja,
+#jugarOtraVez {
+  padding: 0.4em 1.1em;
+  border: 3px solid #E58F3F;
+  border-radius: 10px;
+  background: #FFB874;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.boton-naranja:hover,
+#jugarOtraVez:hover {
+  filter: brightness(1.06);
+}
+
+/* ===== PECES DEL "Lo lograste" ===== */
+.pez {
+  height: 1.2em;                 /* el alto manda, el ancho se ajusta solo */
+  width: auto;
+  vertical-align: middle;        /* alineados con el texto */
+  margin: 0 0.6em;
 }

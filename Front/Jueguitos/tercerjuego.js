@@ -186,3 +186,27 @@ jugarOtraVez.addEventListener('click', () => location.reload()); // recargar hac
 
 // EMPEZAR
 crearTablero(); 
+
+
+
+
+// ===== BOTÓN X Y POPUP DE SALIR =====
+const cerrar = document.getElementById('cerrar');
+const modalSalir = document.getElementById('modalSalir');
+const seguirJugando = document.getElementById('seguirJugando');
+const salirJuego = document.getElementById('salirJuego');
+
+function salir() {
+  window.location.href = '../principal/pantalla-atras.html';
+}
+
+cerrar.addEventListener('click', () => {
+  if (ejercicio.classList.contains('modo-final')) {
+    salir();                              // en la pantalla final se cierra de una
+  } else {
+    modalSalir.classList.add('visible');  // si no, pregunta primero
+  }
+});
+
+seguirJugando.addEventListener('click', () => modalSalir.classList.remove('visible')); // vuelve al juego
+salirJuego.addEventListener('click', salir);
