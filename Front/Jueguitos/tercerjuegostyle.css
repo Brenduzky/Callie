@@ -178,10 +178,11 @@ gap:4%;
     border-radius: 6px;
     flex-direction: column;       
     align-items: center;
-    justify-content: center;
-    gap: 0.5em;
+    justify-content: end;
+    gap: 1em;
     font-size: 1.1rem;
     z-index: 5;                   /* queda por encima de las cartas */
+    padding-bottom: 1em;
   }
 
   /*agrega la tipografia aca*/

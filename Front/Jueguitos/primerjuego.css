@@ -46,9 +46,12 @@ body {
 
 /* cuadrado del medio (grande) */
 .ejercicio {
-  position: relative;
+  position: relative;           
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 65%;
-  height: 80%;
+  height: 85%;
   background-color: #f1f0ee;
   border-radius: 10px;
   border: 5px solid #000;
@@ -120,6 +123,8 @@ body {
   padding: 4% 6%;
   flex-direction: column;   /* título arriba, explicación abajo */
   align-items: center;
+  justify-content:center;
+  
 }
 
 #final {
@@ -226,7 +231,7 @@ width: 100%;
 /* cajas de abajo, ejercicios*/
 .seleccion {
   width: 18%;
-  height: 75%;
+  height: 80%;
   border-radius: 15px;
   border: 5px solid transparent;
   display: flex;
@@ -239,20 +244,20 @@ width: 100%;
 }
 
   #primero { 
-    background-color: #ff7a7a; 
-    border-color: #b85c5c; 
+    background-color: #EA9E9E; 
+    border-color: #AF5E5E; 
   }
   #segundo { 
-    background-color: #5588f5; 
-    border-color: #6a6af0; 
+    background-color: #A3BDF5; 
+    border-color: #645ADE; 
   }
   #tercero { 
-    background-color: #f0d444; 
-    border-color: #d1b02a; 
+    background-color: #FFF07E; 
+    border-color: #DFBA54; 
   }
   #cuarto  { 
-    background-color: #4dff45; 
-    border-color: #1fa81a;
+    background-color: #A9FFA5; 
+    border-color: #2FB33F;
    }
 
 /*la caja que se va a poner de colores */

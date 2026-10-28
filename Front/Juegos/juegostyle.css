@@ -153,6 +153,16 @@ font-family: "Google Sans", sans-serif;
   background-color: rgb(233, 9, 222);
   border: 4px solid rgb(168, 17, 148);
 }
+
+.quinto{
+   background-color: rgb(233, 233, 9);
+  border: 4px solid rgb(168, 168, 17); 
+}
+
+.sexto{
+background-color: rgb(233, 9, 9);
+  border: 4px solid rgb(168, 17, 17);
+}
 /*prueba del movimiento de los juegos*/
 
 /*sin comentario*/

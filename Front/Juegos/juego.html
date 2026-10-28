@@ -26,7 +26,7 @@
             <div class="meconfundi"></div>
         <div class="buscador">
             <div class="algo"></div>
-            <h1 class="tipografia">Nombre de obstaculo</h1>
+            <h1 class="tipografia" id="titulo">1</h1>
 <div class="opciones"></div>
         </div>
  </section>
@@ -56,6 +56,8 @@
         <a class="juego segundo" href="../Jueguitos/segundojuego.html"></a>
         <a class="juego tercero" href="../Jueguitos/tercerjuego.html"></a>
         <a class="juego cuarto"  href="../Jueguitos/cuartojuego.html"></a>
+        <a class="juego quinto"  href="../Jueguitos/quintojuego.html"></a>
+        <a class="juego sexto"  href="../Jueguitos/sextojuego.html"></a>
     </div>
 
     <!-- PASO 4: botón "siguiente" (la flecha ">") -->
@@ -73,6 +75,9 @@
     const sig = document.querySelector('.sig');         // botón siguiente
     const n = juegos.length;                            // cantidad de tarjetas (4)
 
+    
+const titulo = document.querySelector('#titulo'); // para buscar el título para cambiarle el texto}
+const textos = ['1', '2', '3', '4', '5', '6'];
     // PASO 13: "actual" guarda cuál tarjeta está en el centro.
     // Empieza en 0 (la primera). "let" porque va a cambiar.
     let actual = 0;
@@ -99,6 +104,8 @@
             else if (d === 1) j.classList.add('der');      // la siguiente
             else j.classList.add('oculto');                // el resto se esconde
         });
+
+        titulo.textContent = textos[actual]; //el titulo q cambia segun el juego
     }
 
     // PASO 15: botón anterior. Resta 1; el "+ n" evita números negativos
