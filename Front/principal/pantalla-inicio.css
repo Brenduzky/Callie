@@ -7,7 +7,7 @@
 
 body{
   height: 100vh;
-  background-color: rgb(42, 132, 216);
+  background-color: #E3F9FF;
 }
 
 .superior{
@@ -69,13 +69,15 @@ body{
 
 .cajita {
   width: max-content;
-  height: 80%;  
+  height: 65%;  
   background-color: rgba(255, 255, 255, 0.720);
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 5px solid rgb(226, 169, 50);
   padding-inline: 1.1rem;      /*relleno interno*/
+  padding-left:5%;
+  padding-right:6%;
   gap: 1rem;           
 }
 
@@ -168,7 +170,7 @@ width: 20%;
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 2.2rem;
+  font-size: 3.4rem;
      text-transform: none;
        text-decoration: none;
        color: black;
@@ -181,7 +183,7 @@ font-family: "Google Sans", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-variation-settings: "GRAD" 0;
-    font-size: 2rem;
+    font-size: 3.2rem;
 }
 
 .fotito{
@@ -201,11 +203,11 @@ font-family: "Google Sans", sans-serif;
 }
 
 .rachita{
-  width: 95%;
+  width: 100%;
 }
 
 .pecesito{
-  width: 125%;
+  width: 150%;
 }
 
 .especial{
@@ -229,7 +231,7 @@ gap:-5%
     top: 0;
     left: 0;
     width: 100vw;              
-    height: 100vh;             
+    height: 80vh;             
     object-fit: cover;         /* Se estira y adapta sin deformarse */
     z-index: -1;               /*al fondo*/
   }

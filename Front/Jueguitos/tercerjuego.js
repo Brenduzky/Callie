@@ -122,6 +122,8 @@ if (anterior.dataset.color === carta.dataset.color) { //si son iguales:
 //  POPUP DEL EJERCICIO
 function mostrarPopup(texto, color, fondo, emoji, palabra) {
   textoPopup.textContent = texto;
+  textoPopup.classList.add('tipografia'&&'grande'); //para agregarle la clase
+
   popup.style.borderColor = ""; //el borde del pop es igual al del css
   popup.style.backgroundColor = fondo; //los colores del principio q puse
 

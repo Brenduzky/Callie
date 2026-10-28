@@ -23,6 +23,21 @@
   }
  
   
+.tipografia{
+  font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 1.5rem;
+}
+
+  .grande{
+    font-size: 2.2em;
+    font-weight: 500;
+  }
+
+
   .superior {
     position: relative;
     width: 100%;
@@ -104,7 +119,7 @@ gap:4%;
   /* carta eliminada (desaparece pero SIGUE ocupando su lugar, así no se mueven las otras). */
   .carta.eliminada {
     visibility: hidden;             /*si uso display:none no ocuparia su lugar*/
-    pointer-events: none;         /* no se le puede hacer clic */
+    pointer-events: none;           /* no se le puede hacer clic */
   }
   
   /* INTRO */
@@ -179,10 +194,10 @@ gap:4%;
     flex-direction: column;       
     align-items: center;
     justify-content: end;
-    gap: 1em;
+    gap: 1.5rem;
     font-size: 1.1rem;
     z-index: 5;                   /* queda por encima de las cartas */
-    padding-bottom: 1em;
+    padding-bottom: 3rem;
   }
 
   /*agrega la tipografia aca*/
@@ -210,12 +225,12 @@ gap:4%;
     border: none;
     border-radius: 8px;
     background: #ffffff00;
-    font-size: 1rem;
+    font-size: 2rem;
     cursor: pointer;
   }
 
   .parlante{
-    width: 85%;
+    width: 95%;
   }
   
   /*  PANTALLA FINAL  */

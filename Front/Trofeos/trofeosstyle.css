@@ -18,6 +18,16 @@
        background-repeat: no-repeat; 
   }
   
+  .fondo{
+    position: fixed;          
+    top: 0;
+    left: 0;
+    width: 100vw;              
+    height: 100vh;             
+    object-fit: cover;        
+    z-index: -1;               
+  }
+
   /*tipografía*/
   
   .tipografia{
@@ -113,13 +123,29 @@
   
   /* Barra de scroll */
   
-  .medio::-webkit-scrollbar{
-    width: 14px;
-  }
-  .medio::-webkit-scrollbar-track{
-    background: transparent;
-  }
-  .medio::-webkit-scrollbar-thumb{
-    background: rgb(110, 110, 110);
-    border-radius: 10px;
-  }
+/* 1. Estándar para navegadores modernos (Firefox, Chrome/Edge nuevos) */
+.medio {
+  scrollbar-width: thin; /* Opciones: auto, thin, none */
+  scrollbar-color: rgb(110, 110, 110) transparent; /* [color-del-thumb] [color-del-track] */
+}
+
+/* 2. Personalización detallada para Chrome, Safari, Edge y Opera (WebKit) */
+.medio::-webkit-scrollbar {
+  width: 14px; /* Ancho de la barra vertical */
+  height: 14px; /* Alto de la barra horizontal si la hubiera */
+}
+
+.medio::-webkit-scrollbar-track {
+  background: transparent; /* Fondo de la barra */
+}
+
+.medio::-webkit-scrollbar-thumb {
+  background: rgb(110, 110, 110); /* Color del tirador */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 3px solid transparent; /* Opcional: crea un margen interno si usas background-clip */
+}
+
+/* Opcional: Cambiar el color al pasar el mouse (hover) */
+.medio::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 150, 150);
+}

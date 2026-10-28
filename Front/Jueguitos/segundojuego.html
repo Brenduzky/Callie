@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de "Qué preferís?"</title>
+
+       
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -18,7 +24,7 @@
                 <button class="flecha" id="flechaIntro" aria-label="Empezar el juego">
                     <img src="../../imagenes/salir.png" alt="">
                 </button>
-                <p class="texto-izq">
+                <p class="texto-izq tipografia alta">
                     En este juego te voy a preguntar qué preferís.<br>
                     Elegí una de las dos opciones y hacé el ejercicio que aparezca.<br>
                     ¡Vos podés!
@@ -28,16 +34,16 @@
             <!--Otra pantala: pregunta con las dos opciones -->
             <div class="pantalla" id="pregunta">
                 <!-- el JS escribe la pregunta -->
-                <p id="textoPregunta"></p>
+                <p id="textoPregunta" class="tipografia alta"></p>
 
                 <!-- los dos botones de abajo. El JS les pone lo de adentro-->
                 <div class="opciones">
                     <button class="opcion" id="opcionA">
-                        <span class="op-texto"></span>
+                        <span class="op-texto tipografia alta"></span>
                         <img class="op-img" alt="">
                     </button>
                     <button class="opcion" id="opcionB">
-                        <span class="op-texto"></span>
+                        <span class="op-texto tipografia"></span>
                         <img class="op-img" alt="">
                     </button>
                 </div>
@@ -48,14 +54,14 @@
                 <button class="flecha" id="flechaEjercicio" aria-label="Siguiente pregunta">
                     <img src="../../imagenes/salir.png" alt="">
                 </button>
-                <h2 id="tituloOpcion"></h2>         
-                <p id="tituloEjercicio"></p>        
-                <p id="explicacionEjercicio"></p>   
+                <h2 id="tituloOpcion" class="tipografia gorda"></h2>         
+                <p id="tituloEjercicio" class="tipografia alta"></p>        
+                <p id="explicacionEjercicio" class="tipografia alta"></p>   
             </div>
 
             <!-- PANTALLA FINAL: cuando hizo todas las preguntas -->
             <div class="pantalla" id="final">
-                <p id="textoFinal">¡Terminaste! </p>
+                <p id="textoFinal tipografia alta">¡Terminaste! </p>
             </div>
         </div>
     </section>

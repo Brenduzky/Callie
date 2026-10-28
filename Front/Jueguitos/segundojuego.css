@@ -11,6 +11,24 @@ body {
   font-family: 'Inter', Arial, sans-serif;
 }
 
+
+.tipografia{
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+  font-size: 2.2rem;
+}
+
+.alta{
+  font-size: 2.5rem;
+}
+
+.gorda{
+  font-weight: 500;
+}
+
 .superior {
   position: relative;
   width: 100%;
@@ -83,7 +101,7 @@ body {
 }
 
 .texto-izq {
-  font-size: 1.1rem;
+  
   line-height: 1.5;
   text-align: left;
 }
@@ -99,7 +117,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0 10%;
-  font-size: 1.7rem;
   text-align: center;
   white-space: pre-line;         /* hace que el "\n" del JS sea un salto de línea. Es decir, que se vea 
                                   en distintos espacios (arriba y abajo) pq no se puede usar br en js */
@@ -115,7 +132,6 @@ body {
   flex: 1;                       /* cada botón ocupa la mitad: se reparten el ancho en partes iguales */
   border: none;
   font-family: inherit;
-  font-size: 1.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -147,13 +163,11 @@ body {
 
 #tituloOpcion {
   align-self: flex-end;         
-  font-size: 1.7rem;
   font-weight: normal;
 }
 
 /* fotos del título de la pantalla del ejercicio */
 .titulo-img {
-  height: 1.2em;
   width: auto;
   vertical-align: middle; /* las alinea con el texto (si no, quedan más abajo) */
 }
@@ -168,7 +182,6 @@ body {
   padding: 0.4em 1.2em;
   background-color: rgba(255, 255, 255, 0.85); 
   border-radius: 12px;
-  font-size: 1.4rem;
   text-align: center;
 }
 
@@ -184,7 +197,6 @@ body {
 #final {
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
   font-weight: bold;
 }
 
