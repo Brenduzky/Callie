@@ -132,7 +132,7 @@ function mostrarPopup(texto, color, fondo, emoji, palabra) {
   }
 
   if (altavoz) {
-    altavoz.dataset.dice = palabra; // <--- AGREGAR ESTA LÍNEA
+    altavoz.dataset.dice = palabra; 
   }
 
 }
@@ -147,18 +147,18 @@ function hablar() {
 
   window.speechSynthesis.cancel(); // corta lo que estuviera sonando
   
-  const voz = new SpeechSynthesisUtterance(textoADecir); // <--- Usa la variable recuperada
-  voz.lang = 'es-AR'; // idioma español (Argentina)
+  const voz = new SpeechSynthesisUtterance(textoADecir); 
+  voz.lang = 'es-AR'; // idioma 
   
   window.speechSynthesis.speak(voz);
 }
 
-// Al tocar la flecha del popup: se cierra y se eliminan las dos cartas
+// Al tocar la flecha se cierra y se eliminan las dos cartas
 function cerrarPopup() {
   popup.classList.remove('visible');                  // esconde el popup
   window.speechSynthesis.cancel();                    // por si todavía estaba hablando
 
-  parActual.forEach(carta => carta.classList.add('eliminada')); // desaparecen (el CSS las esconde)
+  parActual.forEach(carta => carta.classList.add('eliminada')); // el CSS las esconde
   parActual = [];
   encontrados++;                                      // suma un par
 
@@ -170,17 +170,17 @@ function cerrarPopup() {
   }
 }
 
-// ================== EMPEZAR EL JUEGO ==================
+// EMPEZAR EL JUEGO
 function empezar() {
-  mostrarModo('modo-juego');                          // pasa de la explicación al tablero
-  bloqueado = false;                                  // ahora se pueden tocar las cartas
+  mostrarModo('modo-juego');              // pasa de la explicación al tablero
+  bloqueado = false;                      // ahora se pueden tocar las cartas
 }
 
-// ==================  EVENTOS (qué pasa al tocar cada cosa) ==================
+//  Q pasa si se toca cada cosa
 flechaIntro.addEventListener('click', empezar);
 flechaPopup.addEventListener('click', cerrarPopup);
 altavoz.addEventListener('click', hablar);
-jugarOtraVez.addEventListener('click', () => location.reload()); // recargar = nueva mezcla
+jugarOtraVez.addEventListener('click', () => location.reload()); // recargar hace q se reinicie
 
 // EMPEZAR
 crearTablero(); 
