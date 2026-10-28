@@ -1,10 +1,10 @@
 //Los colores de los pares predeterminados
 const pares = [
-  { color: "#B7383A", fondo: "#FFEBEE", texto: "Di Ratón!!", emoji: "../../imagenes/carta-roja.png" },
-  { color: "#E2863C", fondo: "#FFF3E0", texto: "Di Pelota!!", emoji: "../../imagenes/carta-naranja.png" },
-  { color: "#2AA418", fondo: "#E8F5E9", texto: "Di Sol!!", emoji: "../../imagenes/carta-verde.png" },
-  { color: "#3358BC", fondo: "#E3F2FD", texto: "Di Rana!!", emoji: "../../imagenes/carta-azul.png" },
-  { color: "#B90EAE", fondo: "#F3E5F5", texto: "Di Mariposa!!", emoji: "../../imagenes/carta-violeta.png" }
+  { color: "#B7383A", fondo: "#F6A7A8", texto: "Di Ratón!!", emoji: "../../imagenes/carta-roja.png", dice:"six seven aura o laura esres tu" },
+  { color: "#E2863C", fondo: "#FEC08E", texto: "Di Pelota!!", emoji: "../../imagenes/carta-naranja.png", dice:"pelota" },
+  { color: "#2AA418", fondo: "#B0E995", texto: "Di Sol!!", emoji: "../../imagenes/carta-verde.png", dice:"sol" },
+  { color: "#3358BC", fondo: "#8ECFFE", texto: "Di Rana!!", emoji: "../../imagenes/carta-azul.png", dice:"rana" },
+  { color: "#B90EAE", fondo: "#E8B6E4", texto: "Di Mariposa!!", emoji: "../../imagenes/carta-violeta.png", dice:"mariposa" }
 ];
 
 // ELEMENTOS DEL HTML 
@@ -18,6 +18,7 @@ const altavoz = document.getElementById('altavoz');
 const jugarOtraVez = document.getElementById('jugarOtraVez');
 const emojiPopup = document.getElementById('emoji');
 //agregar el boton de salir del final junto el volver a jugar
+//despues agregar las imagenes tmb
 
 //  VARIABLES DEL JUEGO 
 let primera = null;      // guarda la primera carta que se dio vuelta (null = todavía ninguna)
@@ -56,6 +57,7 @@ function crearTablero() {
     carta.dataset.fondo = par.fondo;
     carta.dataset.texto = par.texto;                  // y su texto de adentro (data-texto)
     carta.dataset.emoji = par.emoji;
+    carta.dataset.dice = par.dice;
     carta.addEventListener('click', () => tocarCarta(carta)); // al tocarla
     tablero.appendChild(carta);                       // la mete adentro del tablero
   });
@@ -70,7 +72,7 @@ function mostrarModo(modo) {
 //  DAR VUELTA UNA CARTA
 function voltear(carta) {
   carta.classList.add('volteada');
-  carta.style.borderColor = carta.dataset.color;  // asigna el color al borde
+  carta.style.borderColor = carta.dataset.color;  // le da el color al borde
 }
 
 function desvoltear(carta) {
@@ -84,60 +86,71 @@ function tocarCarta(carta) {
   if (carta.classList.contains('volteada')) return;   // si ya está dada vuelta, no hace nada
 
   voltear(carta);                                     // muestra el borde con color
-// -------------------------------------- segui de aca
-  // CASO A: es la primera carta de la jugada. Se guarda y se espera la segunda.
+
+  // si es la primera carta de la jugada, se espera la segunda
   if (primera === null) {
     primera = carta;
     return;
   }
 
-  // CASO B: es la segunda carta. Hay que comparar.
-  const anterior = primera;                           // copia de la primera, para usarla adentro del setTimeout
-  primera = null;                                     // la jugada termina: la próxima vez empieza de cero
-  bloqueado = true;                                   // mientras se compara no se puede tocar nada
-
-if (anterior.dataset.color === carta.dataset.color) {
+  // la segunda carta, hay que comparar
+  const anterior = primera;         // la copiamos para usarla en setTimeout
+  primera = null;                   // la jugada termina: empieza de cero
+  bloqueado = true;                 // mientras se compara no se puede tocar nada
+ 
+if (anterior.dataset.color === carta.dataset.color) { //si son iguales:
   parActual = [anterior, carta];
-  setTimeout(() => {
+  setTimeout(() => { //set timeout sirve para que pase una sola vez despues de un tiempo (en este caso 600ms) 
     mostrarPopup(
       carta.dataset.texto, 
       carta.dataset.color, 
       carta.dataset.fondo, 
-      carta.dataset.emoji
+      carta.dataset.emoji,
+      carta.dataset.dice
     );
   }, 600);
 } else {
-    // NO COINCIDEN: se dejan 1 segundo a la vista y se vuelven a dar vuelta las dos
+    // NO COINCIDEN 
     setTimeout(() => {
-      desvoltear(anterior);
-      desvoltear(carta);
-      bloqueado = false;                              // ahora sí se puede seguir jugando
-    }, 1000);
+      desvoltear(anterior);  // da vuelta la primera carta
+      desvoltear(carta);     // y la segunda
+      bloqueado = false;     // para poder seguir jugando
+    }, 1000); //unos segundos dsp para q vea de q colores son
   }
 }
 
-// ==================  POPUP DEL EJERCICIO ==================
-function mostrarPopup(texto, color, fondo, emoji) {
+//  POPUP DEL EJERCICIO
+function mostrarPopup(texto, color, fondo, emoji, palabra) {
   textoPopup.textContent = texto;
-  
-  // Asigna el borde dinámico y el fondo personalizado
-  popup.style.borderColor = color;
-  popup.style.backgroundColor = fondo; // O usa un color fijo ej: "#FFFFFF" si no cambia por par
+  popup.style.borderColor = ""; //el borde del pop es igual al del css
+  popup.style.backgroundColor = fondo; //los colores del principio q puse
 
-  popup.classList.add('visible');
+  popup.classList.add('visible'); //antes estaba invisible
 
   if (emojiPopup) {
-    emojiPopup.src = emoji;
+    emojiPopup.src = emoji;  //agrege el icono de las cartas
   }
+
+  if (altavoz) {
+    altavoz.dataset.dice = palabra; // <--- AGREGAR ESTA LÍNEA
+  }
+
 }
 
-// Lee la palabra en voz alta con el parlante (la voz del navegador)
+// Lee la palabra con la voz del navegador
 function hablar() {
-  if (!('speechSynthesis' in window)) return;         // si el navegador no puede, no hace nada
-  window.speechSynthesis.cancel();                    // corta lo que estuviera sonando
-  const voz = new SpeechSynthesisUtterance(textoPopup.textContent); // lo que va a decir
-  voz.lang = 'es-AR';                                 // idioma: español
-  window.speechSynthesis.speak(voz);                  // lo dice
+  if (!('speechSynthesis' in window)) return;
+  
+  // Lee la palabra guardada en el altavoz (si no hay nada, no dice nada)
+  const textoADecir = altavoz.dataset.dice; 
+  if (!textoADecir) return;
+
+  window.speechSynthesis.cancel(); // corta lo que estuviera sonando
+  
+  const voz = new SpeechSynthesisUtterance(textoADecir); // <--- Usa la variable recuperada
+  voz.lang = 'es-AR'; // idioma español (Argentina)
+  
+  window.speechSynthesis.speak(voz);
 }
 
 // Al tocar la flecha del popup: se cierra y se eliminan las dos cartas
