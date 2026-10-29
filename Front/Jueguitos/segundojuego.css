@@ -76,10 +76,10 @@ body {
 /* FLECHA */
 .flecha {
   position: absolute;           
-  left: 2%;
+  right: 2%;
   top: 4%;
   width: 4%;
-  min-width: 2.2rem;
+  min-width: 2.8rem;
   aspect-ratio: 1/1;
   border-radius: 50%;
   border: none;
@@ -136,7 +136,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6em;                    
+  gap: 1em;                    
   transition: filter 0.2s;
 }
 
@@ -150,7 +150,7 @@ body {
 
 /* foto dentro de los botones de opción */
 .op-img {
-  height: 1.8em;          /* el alto manda; el ancho se ajusta solo */
+  height: 3.2em;          /* el alto manda; el ancho se ajusta solo */
   width: auto;
 }
 
@@ -158,11 +158,11 @@ body {
 #pantallaEjercicio {
   flex-direction: column;
   align-items: center;
-  padding: 4% 6%;
+  padding: 1% 6%;
 }
 
 #tituloOpcion {
-  align-self: flex-end;         
+  align-self: flex-start;         
   font-weight: normal;
 }
 
@@ -171,6 +171,8 @@ body {
   width: auto;
   vertical-align: middle; /* las alinea con el texto (si no, quedan más abajo) */
 }
+
+
 
 .derecha{
   transform: scaleX(-1);
@@ -250,14 +252,6 @@ body {
 }
 
 
-#jugarOtraVez {
-  padding: 0.5em 1.2em;
-  border: 3px solid #000;
-  border-radius: 12px;
-  background: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-}
 
 /* ===== BOTÓN X (ahora es <button>, no <a>) ===== */
 #cerrar {
@@ -269,6 +263,11 @@ body {
 #cerrar img {
   display: block; /* saca el huequito que deja una imagen dentro de un botón */
 }
+
+
+
+
+
 
 /* ===== POPUP DE SALIR ===== */
 .modal-fondo {

@@ -25,7 +25,7 @@ const preguntas = [ //todas las preguntas con sus ejercicios
   {
     pregunta: "¿Qué preferís...\n \u00A0\u00A0\u00A0\u00A0 Playa o Montaña?",   //\u00A0 hace que haya espacio vacio asi se ve mas al costado :)
     opciones: [
-      { texto: "Playa",   imagen:"../../imagenes/segundo-playa.png", color: "#F2D2A8" },
+      { texto: "Playa",   imagen :"../../imagenes/segundo-playa.png", color: "#F2D2A8" },
       { texto: "Montaña", imagen:"../../imagenes/segundo-montaña.png", color: "#99E556" }
     ],
     ejercicio: {
@@ -123,7 +123,7 @@ function elegir(numero) {   // "numero" es 0 si tocó el botón A, 1 si tocó el
   tituloOpcion.innerHTML = `
   <img class="titulo-img derecha" src="${op.imagen}" alt="">
   ${op.texto}!!
-  <img class="titulo-img" src="${op.imagen}" alt="">
+  <img class="titulo-img " src="${op.imagen}" alt="">
 `;
 
 
