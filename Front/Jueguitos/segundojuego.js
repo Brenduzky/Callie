@@ -23,7 +23,7 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\nPlaya o Montaña?",
+    pregunta: "¿Qué preferís...\n \u00A0\u00A0\u00A0\u00A0 Playa o Montaña?",   //\u00A0 hace que haya espacio vacio asi se ve mas al costado :)
     opciones: [
       { texto: "Playa",   imagen:"../../imagenes/segundo-playa.png", color: "#F2D2A8" },
       { texto: "Montaña", imagen:"../../imagenes/segundo-montaña.png", color: "#99E556" }

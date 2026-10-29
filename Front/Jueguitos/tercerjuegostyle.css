@@ -106,6 +106,17 @@ gap:4%;
   .carta.volteada {
     color: #E8E8E8;
     box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.603);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .carta img {
+    width: 60%;
+    height: 80%;
+    object-fit: contain;
+    pointer-events: none; /* Evita interferir con los clics */
   }
 
   #emoji {
@@ -115,6 +126,7 @@ gap:4%;
     width: 15%; 
   
   }
+
   
   /* carta eliminada (desaparece pero SIGUE ocupando su lugar, así no se mueven las otras). */
   .carta.eliminada {

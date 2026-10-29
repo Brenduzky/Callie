@@ -1,10 +1,10 @@
 //Los colores de los pares predeterminados
 const pares = [
-  { color: "#B7383A", fondo: "#F6A7A8", texto: "Di Ratón!!", emoji: "../../imagenes/carta-roja.png", dice:"six seven aura o laura esres tu" },
-  { color: "#E2863C", fondo: "#FEC08E", texto: "Di Pelota!!", emoji: "../../imagenes/carta-naranja.png", dice:"pelota" },
-  { color: "#2AA418", fondo: "#B0E995", texto: "Di Sol!!", emoji: "../../imagenes/carta-verde.png", dice:"sol" },
-  { color: "#3358BC", fondo: "#8ECFFE", texto: "Di Rana!!", emoji: "../../imagenes/carta-azul.png", dice:"rana" },
-  { color: "#B90EAE", fondo: "#E8B6E4", texto: "Di Mariposa!!", emoji: "../../imagenes/carta-violeta.png", dice:"mariposa" }
+  { color: "#B7383A", fondo: "#F6A7A8", texto: "Di Tren!!", emoji: "../../imagenes/carta-roja-.png", foto: "../../imagenes/memotest-rojo-tren.png", dice:"Tren" },
+  { color: "#E2863C", fondo: "#FEC08E", texto: "Di Guitarra!!", emoji: "../../imagenes/carta-naranja.png", foto: "../../imagenes/memotest-naranja-guitarra.png",dice:"guitarra" },
+  { color: "#2AA418", fondo: "#B0E995", texto: "Di Raton!!", emoji: "../../imagenes/carta-verde.png", foto: "../../imagenes/memotest-verde-raton.png", dice:"ratón" },
+  { color: "#3358BC", fondo: "#8ECFFE", texto: "Di Perro!!", emoji: "../../imagenes/carta-azul.png", foto: "../../imagenes/memotest-azul-perro.png", dice:"perro" },
+  { color: "#B90EAE", fondo: "#E8B6E4", texto: "Di Fruta!!", emoji: "../../imagenes/carta-violeta.png", foto: "../../imagenes/memotest-violeta-uvas.png", dice:"fruta" }
 ];
 
 // ELEMENTOS DEL HTML 
@@ -17,6 +17,7 @@ const flechaPopup = document.getElementById('flechaPopup');
 const altavoz = document.getElementById('altavoz');
 const jugarOtraVez = document.getElementById('jugarOtraVez');
 const emojiPopup = document.getElementById('emoji');
+const fotoPopup = document.getElementById('foto');
 //agregar el boton de salir del final junto el volver a jugar
 //despues agregar las imagenes tmb
 
@@ -57,6 +58,7 @@ function crearTablero() {
     carta.dataset.fondo = par.fondo;
     carta.dataset.texto = par.texto;                  // y su texto de adentro (data-texto)
     carta.dataset.emoji = par.emoji;
+    carta.dataset.foto = par.foto;
     carta.dataset.dice = par.dice;
     carta.addEventListener('click', () => tocarCarta(carta)); // al tocarla
     tablero.appendChild(carta);                       // la mete adentro del tablero
@@ -73,11 +75,13 @@ function mostrarModo(modo) {
 function voltear(carta) {
   carta.classList.add('volteada');
   carta.style.borderColor = carta.dataset.color;  // le da el color al borde
+  carta.innerHTML = `<img src="${carta.dataset.foto}" alt="Imagen de la carta">`;
 }
 
 function desvoltear(carta) {
   carta.classList.remove('volteada');
   carta.style.borderColor = '';                   // le da el borde normal
+  carta.innerHTML = '';
 }
 
 // LO QUE PASA AL TOCAR UNA CARTA
@@ -132,6 +136,7 @@ function mostrarPopup(texto, color, fondo, emoji, palabra) {
   if (emojiPopup) {
     emojiPopup.src = emoji;  //agrege el icono de las cartas
   }
+
 
   if (altavoz) {
     altavoz.dataset.dice = palabra; 
