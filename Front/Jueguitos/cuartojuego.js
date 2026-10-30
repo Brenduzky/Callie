@@ -3,16 +3,16 @@
 // dice:    como la lee la voz del navegador (con tilde, así suena bien)
 // imagen:  PEGÁ ACÁ EL LINK DE LA IMAGEN (ej: "../../imagenes/perro.png")
 const palabras = [
-    { palabra: "PERRO",     dice: "perro",     imagen: "" },
-    { palabra: "RATON",     dice: "ratón",     imagen: "" },
-    { palabra: "FRUTA",     dice: "fruta",     imagen: "" },
-    { palabra: "TREN",      dice: "tren",      imagen: "" },
-    { palabra: "GUITARRA",  dice: "guitarra",  imagen: "" },
-    { palabra: "SAPO",      dice: "sapo",      imagen: "" },
-    { palabra: "SOL",       dice: "sol",       imagen: "" },
-    { palabra: "SILLA",     dice: "silla",     imagen: "" },
-    { palabra: "ESCUELA",   dice: "escuela",   imagen: "" },
-    { palabra: "SERPIENTE", dice: "serpiente", imagen: "" }
+    { palabra: "PERRO",     dice: "perro",     imagen: "../../imagenes/cuartojuego-perro.png" },
+    { palabra: "RATON",     dice: "ratón",     imagen: "../../imagenes/memotest-verde-raton.png" },
+    { palabra: "FRUTA",     dice: "fruta",     imagen: "../../imagenes/memotest-violeta-uvas.png" },
+    { palabra: "TREN",      dice: "tren",      imagen: "../../imagenes/memotest-rojo-tren.png" },
+    { palabra: "GUITARRA",  dice: "guitarra",  imagen: "../../imagenes/memotest-naranja-guitarra.png" },
+    { palabra: "SAPO",      dice: "sapo",      imagen: "../../imagenes/cuartojuego-sapo.png" },
+    { palabra: "SOL",       dice: "sol",       imagen: "../../imagenes/cuartojuego-sol.png" },
+    { palabra: "SILLA",     dice: "silla",     imagen: "../../imagenes/cuartojuego-silla.png" },
+    { palabra: "ESCUELA",   dice: "escuela",   imagen: "../../imagenes/cuartojuego-escuela.png" },
+    { palabra: "SERPIENTE", dice: "serpiente", imagen: "../../imagenes/cuartojuego-serpiente.png" }
   ];
   
   const PALABRAS_POR_PARTIDA = 5; // cuántas palabras juega cada vez
@@ -71,7 +71,7 @@ const palabras = [
   function cambiarEstado(estado) {
     juego.dataset.estado = estado;
     if (estado === 'ordenar') {
-      mensaje.textContent = 'Selecciona una letra y muévela con las flechas ← → para formar la palabra!!';
+      mensaje.textContent = 'Selecciona las letras y muevelas para formar la palabra!!';
     } else if (estado === 'casi') {
       mensaje.textContent = 'Casi lo logras!! Vas por buen camino!!';
     } else if (estado === 'bien') {
@@ -109,7 +109,7 @@ const palabras = [
     ponerImagen(imgIzq, espacioIzq, palabraActual.imagen);
     ponerImagen(imgDer, espacioDer, palabraActual.imagen);
   
-    contador.textContent = 'Palabra ' + (indice + 1) + ' de ' + rondas.length;
+    //contador.textContent = 'Palabra ' + (indice + 1) + ' de ' + rondas.length;
     cambiarEstado('ordenar');
     dibujarLetras();
   }
@@ -121,10 +121,15 @@ const palabras = [
     letras.forEach((l, i) => {
       const boton = document.createElement('button');
       boton.className = 'letra ' + l.estado + (i === seleccionada ? ' seleccionada' : ''); // la clase decide el color de la barrita y si está agrandada
+      
+      // Cambiamos el emoji por una etiqueta <img>
+      const candadoImg = `<img src="../../imagenes/candado.png" alt="Candado" class="icono-candado">`;
+      
       boton.innerHTML =
         `<span class="caja">${l.char}</span>` +
-        `<span class="barra">${l.estado === 'bien' ? '🔒' : ''}</span>`;
-      boton.disabled = (l.estado === 'bien');          // las letras con candado no se tocan
+        `<span class="barra">${l.estado === 'bien' ? candadoImg : ''}</span>`;
+        
+      boton.disabled = (l.estado === 'bien'); // las letras con candado no se tocan
       boton.addEventListener('click', () => seleccionarLetra(i));
       contenedorLetras.appendChild(boton);
     });

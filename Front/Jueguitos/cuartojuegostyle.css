@@ -73,7 +73,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.6rem;
+    gap: 2.8rem;
     position: relative;
     padding: 0 3%;
   }
@@ -197,8 +197,8 @@
     font-size: 0.5rem;
     line-height: 1;
   }
-  .letra.bien .barra { background: #8bdc8f; }   /* verde con candado */
-  .letra.mal .barra  { background: #ff9a9a; }   /* rojo */
+  .letra.bien .barra { background: #86D78F; }   /* verde con candado */
+  .letra.mal .barra  { background: #FA8B91; }   /* rojo */
   
   /* BOTONES: se muestran según el estado del juego */
   #altavoz,
@@ -231,7 +231,7 @@
   }
   
   .parlante {
-    width: 2.2rem;
+    width: 4rem;
   }
   
   /* INTRO */
@@ -257,11 +257,11 @@
   
   #burbujadetexto {
     position: absolute;
-    left: 17%;
-    top: 15%;
+    left: 18%;
+    top: 5%;
     width: 40%;
     height: max-content;
-    padding: 20px 20px 50px 15px;
+    padding: 20px 20px 35px 15px;
     background-color: #9fe0ff;
     border: 5px solid #000;
     border-radius: 40px 40px 40px 0;
@@ -272,7 +272,7 @@
   /* FLECHA */
   .flecha {
     position: absolute;
-    width: 3.6rem;
+    width: 3.2rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
     border: none;
@@ -362,10 +362,10 @@
   /* BOTÓN NARANJA (Revisar, Jugar de nuevo, Seguir jugando, Salir) */
   .boton-naranja,
   #jugarOtraVez {
-    padding: 0.4em 1.1em;
-    border: 3px solid #E58F3F;
-    border-radius: 10px;
-    background: #FFB874;
+    padding: 0.5em 1.1em;
+    border: 5px solid #D46A1C;
+    border-radius: 20px;
+    background: #F8B570;
     font-size: 1.1rem;
     cursor: pointer;
     transition: filter 0.2s;
@@ -381,4 +381,11 @@
     width: auto;
     vertical-align: middle;
     margin: 0 0.6em;
+  }
+
+
+  
+
+  .chica{
+    font-size: 1.2rem;
   }
