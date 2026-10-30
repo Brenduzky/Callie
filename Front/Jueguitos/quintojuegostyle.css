@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(#f2fcc4 0%, #eefcbd 60%, #e6f7b5 100%);
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  
+  .fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    transform: scaleX(-1);
+  }
+  
+  .tipografia {
+    font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 1.5rem;
+  }
+
+  .chica{
+    font-size: 1.2rem;
+  }
+  
+  .grande {
+    font-size: 2.2em;
+    font-weight: 500;
+  }
+  
+  .superior {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* COLORES (todos juntos para cambiarlos fácil) */
+  :root {
+    --naranja: #ffab3a;        /* barra y botón mientras corre el tiempo */
+    --azul-congelado: #7fc4ff; /* barra y botón cuando el tiempo está pausado */
+    --verde: #8de8aa;          /* barra cuando se completó */
+  }
+  
+  /* CUADRO GRANDE */
+  .ejercicio {
+    position: relative;
+    width: 75%;
+    height: 75%;
+    background-color: #f1f0ee;     /* gris clarito de la intro y el final */
+    border-radius: 10px;
+    border: 5px solid #000;
+    overflow: hidden;
+    transition: background-color 0.3s;
+  }
+  
+  /* en el juego el fondo es celeste */
+  .ejercicio.modo-juego {
+    background-color: #aed3ec;
+  }
+  
+  /* Todas las pantallas empiezan escondidas */
+  .pantalla {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* se muestra una de las pantallas según el js */
+  .ejercicio.modo-intro #intro {
+    display: block;
+  }
+  
+  .ejercicio.modo-juego #juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    position: relative;
+    padding: 0 4%;
+  }
+  
+  .ejercicio.modo-final #final {
+    display: block;
+  }
+  
+  /* ===== TIEMPO: RELOJ + BARRA ===== */
+  .tiempo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 65%;
+  }
+  
+  .reloj {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  
+  .barra-tiempo {
+    flex: 1;
+    height: 1.6rem;
+    background: #d0d0d0;
+    border: 3px solid #000;
+    border-radius: 20px;
+    overflow: hidden;              /* el relleno no se sale de las puntas redondas */
+  }
+  
+  .relleno {
+    width: 0%;
+    height: 100%;
+    background: var(--naranja);
+    border-radius: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  #mensaje {
+    text-align: center;
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    max-width: 70%;
+  }
+  
+  /* ===== IMAGEN + BOTÓN DE PAUSA ===== */
+  .zona-imagen {
+    position: relative;            /* para ubicar el botón al costado de la imagen */
+  }
+  
+  /* ESPACIO PARA LA IMAGEN */
+  .espacio-imagen {
+    width: clamp(7rem, 16vw, 11rem);
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .espacio-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* si todavía no hay link, se ve un cuadrito punteado con el nombre */
+  .espacio-imagen.sin-imagen {
+    border: 3px dashed #4f7f9c;
+    border-radius: 10px;
+    color: #4f7f9c;
+    font-family: "Google Sans", sans-serif;
+    text-align: center;
+  }
+  .espacio-imagen.sin-imagen::before {
+    content: attr(data-nombre);
+  }
+  .espacio-imagen.sin-imagen img {
+    display: none;
+  }
+  
+  /* BOTÓN DE PAUSA (a la derecha de la imagen) */
+  #botonPausa {
+    position: absolute;
+    left: calc(100% + 2rem);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    aspect-ratio: 1/1;
+    border: none;
+    border-radius: 8px;
+    background: var(--naranja);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, filter 0.2s;
+  }
+  
+  #botonPausa:hover {
+    filter: brightness(1.06);
+  }
+  
+  #botonPausa svg {
+    width: 65%;
+    height: 65%;
+    fill: #fff;
+  }
+  
+  /* ===== SEGÚN EL ESTADO DEL JUEGO ===== */
+  
+  /* jugando: se ve el dibujito de pausa. En pausa: el de play */
+  #juego[data-estado="jugando"] .icono-play { display: none; }
+  #juego[data-estado="pausa"] .icono-pausa { display: none; }
+  
+  /* pausa: la barra y el botón se ponen azules (congelados) */
+  #juego[data-estado="pausa"] .relleno,
+  #juego[data-estado="pausa"] #botonPausa {
+    background: var(--azul-congelado);
+  }
+  
+  /* éxito: barra verde, se esconde el botón y aparece la flecha */
+  #juego[data-estado="exito"] .relleno {
+    background: var(--verde);
+  }
+  #juego[data-estado="exito"] #botonPausa {
+    display: none;
+  }
+  
+  #flechaSiguiente {
+    display: none;
+    right: 2%;
+    top: 4%;
+  }
+  #juego[data-estado="exito"] #flechaSiguiente {
+    display: flex;
+  }
+  
+  /* INTRO */
+  .callie {
+    position: absolute;
+    left: -10%;
+    bottom: 0;
+    width: 25%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+  }
+  
+  .callie img {
+    width: 100%;
+  }
+  
+  .calliete {
+    transform: scaleX(-1);
+  }
+  
+  #burbujadetexto {
+    position: absolute;
+    left: 18%;
+    top: 5%;
+    width: 40%;
+    height: max-content;
+    padding: 20px 20px 35px 15px;
+    background-color: #9fe0ff;
+    border: 5px solid #000;
+    border-radius: 40px 40px 40px 0;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  
+  /* FLECHA */
+  .flecha {
+    position: absolute;
+    width: 3.6rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff00;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  
+  .flecha img {
+    width: 100%;
+  }
+  
+  #flechaIntro {
+    right: 2%;
+    bottom: 5%;
+  }
+  
+  /* PANTALLA FINAL */
+  #textofinal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  /* LOS PECES AL COSTADO DEL TÍTULO:
+     "titulo-final" es una fila (flex), así los peces y el h2 quedan en la misma línea */
+  .titulo-final {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5em;
+  }
+  
+  #textofinal .titulo-final h2 {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  
+  #textofinal p {
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+  }
+  
+  /* BOTÓN DE SALIR */
+  #cerrar {
+    position: absolute;
+    right: 1.5%;
+    top: 3%;
+    width: 3%;
+    aspect-ratio: 1/1;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .cerrado {
+    width: 100%;
+  }
+  
+  #cerrar img {
+    display: block;
+  }
+  
+  /* POPUP DE SALIR */
+  .modal-fondo {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .modal-fondo.visible {
+    display: flex;
+  }
+  .modal-caja {
+    background: #f1f0ee;
+    border: 5px solid #000;
+    border-radius: 15px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .modal-texto {
+    font-size: 1.4rem;
+  }
+  
+  /* BOTÓN NARANJA (Volver a jugar, Seguir jugando, Salir) */
+  .boton-naranja,
+  #jugarOtraVez {
+    padding: 0.4em 1.1em;
+    border: 3px solid #E58F3F;
+    border-radius: 10px;
+    background: #FFB874;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+  .boton-naranja:hover,
+  #jugarOtraVez:hover {
+    filter: brightness(1.06);
+  }
+  
+  /* PECES DEL "Lo lograste" */
+  .pez {
+    height: 1.2em;
+    width: auto;
+    vertical-align: middle;
+    margin: 0 0.6em;
+  }
+  
+  /* dentro de la fila del título los peces no necesitan margen (ya lo da el gap) */
+  .titulo-final .pez {
+    margin: 0;
+    height: 1.8rem;
+  }

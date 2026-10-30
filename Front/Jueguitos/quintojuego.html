@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="quintojuegostyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copia la imagen</title>
+</head>
+<body>
+    <img class="fondo" src="../../imagenes/fondoprincipal.png">
+    <section class="superior">
+        <div class="ejercicio modo-intro" id="ejercicio"> <!-- El JS le cambia la clase: modo-intro / modo-juego / modo-final -->
+
+            <!-- PANTALLA 1 (explicación) -->
+            <div class="pantalla" id="intro">
+                <div class="callie">
+                    <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
+                </div>
+                <div id="burbujadetexto">
+                    <p class="tipografia chica">En el juego debes copiar la imagen que aparece y mantenerla hasta que se acabe el tiempo.<br>
+                       Si necesitas descansar, toca el botón para congelar el tiempo!!<br>
+                       Tu puedes!!</p>
+                    <button class="flecha" id="flechaIntro" aria-label="Empezar el juego">
+                        <img src="../../imagenes/salir.png" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <!-- PANTALLA 2 (el juego). El atributo data-estado lo cambia el JS: jugando / pausa / exito -->
+            <div class="pantalla" id="juego" data-estado="jugando">
+
+                <!-- flecha para pasar a la próxima imagen (solo se ve cuando se completó el tiempo) -->
+                <button class="flecha" id="flechaSiguiente" aria-label="Siguiente imagen">
+                    <img src="../../imagenes/salir.png" alt="">
+                </button>
+
+                <!-- RELOJ + BARRA DEL TIEMPO -->
+                <div class="tiempo">
+                    <span class="reloj" aria-hidden="true">⏰</span> <!-- si tenés una imagen de reloj, la podés poner acá en vez del emoji -->
+                    <div class="barra-tiempo">
+                        <div class="relleno" id="relleno"></div>
+                    </div>
+                </div>
+
+                <p class="tipografia" id="mensaje"></p>
+
+                <!-- ZONA DE LA IMAGEN + BOTÓN DE PAUSA -->
+                <div class="zona-imagen">
+                    <!-- AQUÍ VA LA IMAGEN: el JS le pone el link que está en la lista "ejercicios" -->
+                    <div class="espacio-imagen" id="espacioImagen"><img id="imagenEjercicio" alt="Imagen para copiar"></div>
+
+                    <!-- BOTÓN DE PAUSA / PLAY (tiene dos dibujitos, el CSS muestra uno u otro) -->
+                    <button id="botonPausa" aria-label="Pausar o seguir el tiempo">
+                        <svg class="icono-pausa" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="6" y="5" width="4" height="14" rx="1"></rect>
+                            <rect x="14" y="5" width="4" height="14" rx="1"></rect>
+                        </svg>
+                        <svg class="icono-play" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 4.5 L19 12 L7 19.5 Z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PANTALLA FINAL (cuando ganó) -->
+            <div class="pantalla" id="final">
+                <div class="callie">
+                    <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
+                </div>
+                <div id="textofinal">
+                    <!-- Los peces y el título van juntos adentro de "titulo-final" para que queden uno al lado del otro -->
+                    <div class="titulo-final">
+                        <img class="pez" src="../../imagenes/Pez.png" alt="">
+                        <h2 class="tipografia grande">¡¡Lo lograste!!</h2>
+                        <img class="pez" src="../../imagenes/Pez.png" alt="">
+                    </div>
+                    <p class="tipografia">Ganaste 100 peces</p>
+                    <button class="tipografia" id="jugarOtraVez">Volver a jugar</button>
+                </div>
+            </div>
+        </div>
+
+        <button id="cerrar" aria-label="Salir">
+            <img class="cerrado" src="../../imagenes/cerrar.png" alt="">
+        </button>
+    </section>
+
+    <!-- POPUP DE SALIR: empieza escondido, el JS le agrega la clase "visible" -->
+    <div class="modal-fondo" id="modalSalir">
+        <div class="modal-caja">
+            <p class="tipografia modal-texto">¿Querés salir del juego?</p>
+            <button class="tipografia boton-naranja" id="seguirJugando">Seguir jugando</button>
+            <button class="tipografia boton-naranja" id="salirJuego">Salir</button>
+        </div>
+    </div>
+
+    <script src="quintojuego.js"></script> <!-- vincula el JS -->
+</body>
+</html>

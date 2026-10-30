@@ -36,9 +36,9 @@ const palabras = [
   // ===== VARIABLES DEL JUEGO =====
   let rondas = [];          // las 5 palabras elegidas para esta partida
   let indice = 0;           // en cuál de las 5 va (0 = la primera)
-  let palabraActual = null; // la palabra que se está jugando (objeto de la lista)
+  let palabraActual; // la palabra que se está jugando (objeto de la lista)
   let letras = [];          // las letras en pantalla: { char: "P", estado: "neutro" | "bien" | "mal" }
-  let seleccionada = null;  // posición de la letra seleccionada (null = ninguna)
+  let seleccionada;  // posición de la letra seleccionada (null = ninguna)
   
   // ===== MEZCLAR =====
   // Misma función que en los otros juegos: saca elementos al azar de una copia
