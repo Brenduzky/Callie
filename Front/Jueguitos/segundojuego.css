@@ -112,14 +112,14 @@ body {
 }
 
 #textoPregunta {
-  flex: 1;                       /* ocupa el espacio sobrante entre los botones para que haya espacio*/
+  flex: 1;                       
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10%;
-  text-align: center;
-  white-space: pre-line;         /* hace que el "\n" del JS sea un salto de línea. Es decir, que se vea 
-                                  en distintos espacios (arriba y abajo) pq no se puede usar br en js */
+  flex-direction: column;        /* coloca las líneas de texto una sobre otra */
+  justify-content: center;       /* centra el bloque de texto verticalmente */
+  align-items: center;           /* centra el bloque horizontalmente en el contenedor */
+  text-align: right;             /* alinea el texto hacia la derecha */
+  white-space: pre-line;         /* respeta los saltos de línea (\n) */
+  padding: 0 15%;
 }
 
 .opciones {

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="cuartojuegostyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordena la palabra</title>
+</head>
+<body>
+    <img class="fondo" src="../../imagenes/fondoprincipal.png">
+    <section class="superior">
+        <div class="ejercicio modo-intro" id="ejercicio"> <!-- El JS le cambia la clase: modo-intro / modo-juego / modo-final -->
+
+            <!-- PANTALLA 1 (explicación) -->
+            <div class="pantalla" id="intro">
+                <div class="callie">
+                    <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
+                </div>
+                <div id="burbujadetexto">
+                    <p class="tipografia">En el juego debes ordenar las letras para formar la palabra.<br>
+                       Toca una letra y se cambia con la de su derecha.<br>
+                       Cuando creas que está lista, toca Revisar!!<br>
+                       Tu puedes!!</p>
+                    <button class="flecha" id="flechaIntro" aria-label="Empezar el juego">
+                        <img src="../../imagenes/salir.png" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <!-- PANTALLA 2 (el juego). El atributo data-estado lo cambia el JS: ordenar / casi / bien -->
+            <div class="pantalla" id="juego" data-estado="ordenar">
+                <p class="tipografia contador" id="contador"></p>
+
+                <!-- flecha para pasar a la próxima palabra (solo se ve cuando la hizo bien) -->
+                <button class="flecha" id="flechaSiguiente" aria-label="Siguiente palabra">
+                    <img src="../../imagenes/salir.png" alt="">
+                </button>
+
+                <p class="tipografia" id="mensaje"></p>
+
+                <div class="fila">
+                    <!-- AQUÍ VA LA IMAGEN (izquierda): el JS le pone el link que está en la lista de palabras -->
+                    <div class="espacio-imagen" id="espacioIzq"><img id="imgIzq" alt=""></div>
+
+                    <div class="letras" id="letras"></div>
+
+                    <!-- AQUÍ VA LA IMAGEN (derecha) -->
+                    <div class="espacio-imagen" id="espacioDer"><img id="imgDer" alt=""></div>
+                </div>
+
+                <button class="tipografia boton-naranja" id="revisar">Revisar</button>
+
+                <button id="altavoz" aria-label="Escuchar">
+                    <img class="parlante" src="../../imagenes/Parlante.png" alt="">
+                </button>
+            </div>
+
+            <!-- PANTALLA FINAL (cuando ganó) -->
+            <div class="pantalla" id="final">
+                <div class="callie">
+                    <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
+                </div>
+                <div id="textofinal">
+                    <img class="pez" src="../../imagenes/Pez.png" alt="">
+                    <h2 class="tipografia grande">¡¡Lo lograste!!</h2>
+                    <img class="pez" src="../../imagenes/Pez.png" alt="">
+                    <p class="tipografia">Ganaste 100 peces</p>
+                    <button class="tipografia" id="jugarOtraVez">Jugar de nuevo</button>
+                </div>
+            </div>
+        </div>
+
+        <button id="cerrar" aria-label="Salir">
+            <img class="cerrado" src="../../imagenes/cerrar.png" alt="">
+        </button>
+    </section>
+
+    <!-- POPUP DE SALIR: empieza escondido, el JS le agrega la clase "visible" -->
+    <div class="modal-fondo" id="modalSalir">
+        <div class="modal-caja">
+            <p class="tipografia modal-texto">¿Querés salir del juego?</p>
+            <button class="tipografia boton-naranja" id="seguirJugando">Seguir jugando</button>
+            <button class="tipografia boton-naranja" id="salirJuego">Salir</button>
+        </div>
+    </div>
+
+    <script src="cuartojuego.js"></script> <!-- vincula el JS -->
+</body>
+</html>

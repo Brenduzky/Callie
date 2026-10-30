@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(#f2fcc4 0%, #eefcbd 60%, #e6f7b5 100%);
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  
+  .fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    transform: scaleX(-1);
+  }
+  
+  .tipografia {
+    font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 1.5rem;
+  }
+  
+  .grande {
+    font-size: 2.2em;
+    font-weight: 500;
+  }
+  
+  .superior {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* CUADRO GRANDE */
+  .ejercicio {
+    position: relative;
+    width: 75%;
+    height: 75%;
+    background-color: #cce7e9ea;
+    border-radius: 10px;
+    border: 5px solid #000;
+    overflow: hidden;
+  }
+  
+  /* Todas las pantallas empiezan escondidas */
+  .pantalla {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* se muestra una de las pantallas según el js */
+  .ejercicio.modo-intro #intro {
+    display: block;
+  }
+  
+  .ejercicio.modo-juego #juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    position: relative;
+    padding: 0 3%;
+  }
+  
+  .ejercicio.modo-final #final {
+    display: block;
+  }
+  
+  /* ===== EL JUEGO ===== */
+  #mensaje {
+    text-align: center;
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+  }
+  
+  .contador {
+    position: absolute;
+    left: 3%;
+    top: 5%;
+    font-size: 1rem;
+  }
+  
+  /* fila: imagen - letras - imagen */
+  .fila {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.8rem, 3vw, 2.5rem);
+    width: 100%;
+  }
+  
+  /* ESPACIO PARA LA IMAGEN (donde estaba el perro) */
+  .espacio-imagen {
+    flex-shrink: 0;
+    width: clamp(3rem, 8vw, 6rem);
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .espacio-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* si todavía no hay link, se ve un cuadrito punteado con "IMG" */
+  .espacio-imagen.sin-imagen {
+    border: 3px dashed #7a9aa0;
+    border-radius: 10px;
+    color: #7a9aa0;
+    font-family: "Google Sans", sans-serif;
+  }
+  .espacio-imagen.sin-imagen::before {
+    content: "IMG";
+  }
+  .espacio-imagen.sin-imagen img {
+    display: none;
+  }
+  
+  /* LETRAS */
+  .letras {
+    display: flex;
+    gap: clamp(0.25rem, 0.9vw, 0.8rem);
+    align-items: flex-start;
+  }
+  
+  .letra {
+    width: clamp(1.7rem, 4.2vw, 3.4rem);
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+  }
+  
+  .letra .caja {
+    width: 100%;
+    height: clamp(2.3rem, 5.5vw, 4rem);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Google Sans", sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    color: #000;
+    transition: transform 0.2s;
+  }
+  
+  .letra:not(:disabled):not(.seleccionada):hover .caja {
+    transform: translateY(-4px);
+  }
+  
+  .letra:disabled {
+    cursor: default;
+  }
+  
+  /* LETRA SELECCIONADA: queda con borde azul (como la selección de tu diseño), sin agrandarse */
+  :root {
+    --azul-seleccion: #0d99ff;   /* azul del borde de tu foto; cambialo si querés otro */
+  }
+  .letra.seleccionada .caja {
+    border: 3px solid var(--azul-seleccion);
+    box-shadow: 0 0 10px 2px rgba(13, 153, 255, 0.55);   /* brillito azul alrededor */
+    animation: iluminar 0.25s ease-out;
+  }
+  @keyframes iluminar {
+    from { border-color: transparent; box-shadow: 0 0 0 0 rgba(13, 153, 255, 0); }
+    to   { border-color: var(--azul-seleccion); box-shadow: 0 0 10px 2px rgba(13, 153, 255, 0.55); }
+  }
+  
+  /* la barrita de abajo de cada letra */
+  .letra .barra {
+    width: 100%;
+    height: 0.8rem;
+    background: #8aa9d6;                  /* azul: todavía no revisada */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    line-height: 1;
+  }
+  .letra.bien .barra { background: #8bdc8f; }   /* verde con candado */
+  .letra.mal .barra  { background: #ff9a9a; }   /* rojo */
+  
+  /* BOTONES: se muestran según el estado del juego */
+  #altavoz,
+  #flechaSiguiente {
+    display: none;
+  }
+  
+  #juego[data-estado="bien"] #altavoz {
+    display: block;
+  }
+  #juego[data-estado="bien"] #flechaSiguiente {
+    display: flex;
+  }
+  #juego[data-estado="bien"] #revisar {
+    display: none;
+  }
+  
+  #flechaSiguiente {
+    right: 2%;
+    top: 4%;
+  }
+  
+  #altavoz {
+    padding: 0.3em 0.6em;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff00;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .parlante {
+    width: 2.2rem;
+  }
+  
+  /* INTRO */
+  .callie {
+    position: absolute;
+    left: -10%;
+    bottom: 0;
+    width: 25%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+  }
+  
+  .callie img {
+    width: 100%;
+  }
+  
+  .calliete {
+    transform: scaleX(-1);
+  }
+  
+  #burbujadetexto {
+    position: absolute;
+    left: 17%;
+    top: 15%;
+    width: 40%;
+    height: max-content;
+    padding: 20px 20px 50px 15px;
+    background-color: #9fe0ff;
+    border: 5px solid #000;
+    border-radius: 40px 40px 40px 0;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  
+  /* FLECHA */
+  .flecha {
+    position: absolute;
+    width: 3.6rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff00;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  
+  .flecha img {
+    width: 100%;
+  }
+  
+  #flechaIntro {
+    right: 2%;
+    bottom: 5%;
+  }
+  
+  /* PANTALLA FINAL */
+  #textofinal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  #textofinal h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5em;
+  }
+  
+  #textofinal p {
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+  }
+  
+  /* BOTÓN DE SALIR */
+  #cerrar {
+    position: absolute;
+    right: 1.5%;
+    top: 3%;
+    width: 3%;
+    aspect-ratio: 1/1;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .cerrado {
+    width: 100%;
+  }
+  
+  #cerrar img {
+    display: block;
+  }
+  
+  /* POPUP DE SALIR */
+  .modal-fondo {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .modal-fondo.visible {
+    display: flex;
+  }
+  .modal-caja {
+    background: #f1f0ee;
+    border: 5px solid #000;
+    border-radius: 15px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .modal-texto {
+    font-size: 1.4rem;
+  }
+  
+  /* BOTÓN NARANJA (Revisar, Jugar de nuevo, Seguir jugando, Salir) */
+  .boton-naranja,
+  #jugarOtraVez {
+    padding: 0.4em 1.1em;
+    border: 3px solid #E58F3F;
+    border-radius: 10px;
+    background: #FFB874;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+  .boton-naranja:hover,
+  #jugarOtraVez:hover {
+    filter: brightness(1.06);
+  }
+  
+  /* PECES DEL "Lo lograste" */
+  .pez {
+    height: 1.2em;
+    width: auto;
+    vertical-align: middle;
+    margin: 0 0.6em;
+  }

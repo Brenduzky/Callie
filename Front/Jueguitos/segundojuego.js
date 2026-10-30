@@ -1,6 +1,6 @@
 const preguntas = [ //todas las preguntas con sus ejercicios
   {
-    pregunta: "¿Qué preferís...\nPizza o Hamburguesa?", //el \n es un salto de línea, para que quede en dos renglones
+    pregunta: "¿Qué preferís...\n Pizza o Hamburguesa?", //el \n es un salto de línea, para que quede en dos renglones
     opciones: [
       { texto: "Pizza",       imagen: "../../imagenes/segundo-pizza.png", color: "#e97f7f" },
       { texto: "Hamburguesa", imagen: "../../imagenes/segundo-hamburguesa.png", color: "#e2ec55" }
@@ -12,7 +12,7 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\nPerro o Gato?",
+    pregunta: "¿Qué preferís...\n Perro o Gato?",
     opciones: [
       { texto: "Perro", imagen:"../../imagenes/segundo-perro.png", color: "#E8C075" },
       { texto: "Gato",  imagen:"../../imagenes/segundo-gato.png", color: "#ABB1A6" }
@@ -23,7 +23,7 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\n \u00A0\u00A0\u00A0\u00A0 Playa o Montaña?",   //\u00A0 hace que haya espacio vacio asi se ve mas al costado :)
+    pregunta: "¿Qué preferís...\n  Playa o Montaña?",   //\u00A0 hace que haya espacio vacio asi se ve mas al costado :)
     opciones: [
       { texto: "Playa",   imagen :"../../imagenes/segundo-playa.png", color: "#F2D2A8" },
       { texto: "Montaña", imagen:"../../imagenes/segundo-montaña.png", color: "#99E556" }
@@ -34,7 +34,7 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\nAvión o Barco?",
+    pregunta: "¿Qué preferís...\n  Avión o Barco?",
     opciones: [
       { texto: "Avion",  imagen: "../../imagenes/segundo-avion.png", color: "#C3DDF2" },
       { texto: "Barco", imagen: "../../imagenes/segundo-barco.png", color: "#8880F5" }
@@ -45,7 +45,7 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\nHelado o Chocolate?",
+    pregunta: "¿Qué preferís...\n Helado o Chocolate?",
     opciones: [
       { texto: "Helado",   imagen: "../../imagenes/segundo-helado.png", color: "#F29CF0" },
       { texto: "Chocolate", imagen: "../../imagenes/segundo-chocolate.png", color: "#BA816E" }
