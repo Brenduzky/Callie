@@ -362,47 +362,93 @@
   }
   
   /* POPUP DE SALIR */
-  .modal-fondo {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-  }
-  .modal-fondo.visible {
-    display: flex;
-  }
-  .modal-caja {
-    background: #f1f0ee;
-    border: 5px solid #000;
-    border-radius: 15px;
-    padding: 2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .modal-texto {
-    font-size: 1.4rem;
-  }
+  /* ===== POPUP DE SALIR ===== */
+.modal-fondo {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-fondo.visible {
+  display: flex;
+}
+
+.modal-caja {
+  background: #dcdcdc; /* Fondo gris claro */
+  border: 4px solid #4a4a4a; /* Borde exterior oscuro */
+  border-radius: 4px;
+  width: 480px;
+  max-width: 90%;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.8rem;
+}
+
+.modal-texto {
+  font-size: 1.4rem;
+  color: #000;
+  line-height: 1.3;
+}
+
+/* Contenedor de botones alineados horizontalmente */
+.modal-botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Estilos base para los botones del modal */
+.boton-cancelar,
+.boton-salir {
+  padding: 0.5em 1.8em;
+  font-size: 1.1rem;
+  border-radius: 20px; /* Bordes redondeados en forma de píldora */
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.2s;
+}
+
+/* Botón Cancelar (Naranja con borde naranja oscuro) */
+.boton-cancelar {
+  background-color: #fca949;
+  border: 3px solid #e27d14;
+  color: #000;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botón Salir (Gris claro con borde gris oscuro) */
+.boton-salir {
+  background-color: #cccccc;
+  border: 3px solid #8c8c8c;
+  color: #000;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton-cancelar:hover,
+.boton-salir:hover {
+  filter: brightness(1.05);
+}
+
+.boton-cancelar:active,
+.boton-salir:active {
+  transform: scale(0.97);
+}
   
-  /* BOTÓN NARANJA (Volver a jugar, Seguir jugando, Salir) */
-  .boton-naranja,
-  #jugarOtraVez {
-    padding: 0.4em 1.1em;
-    border: 3px solid #E58F3F;
-    border-radius: 10px;
-    background: #FFB874;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: filter 0.2s;
-  }
-  .boton-naranja:hover,
-  #jugarOtraVez:hover {
-    filter: brightness(1.06);
-  }
   
   /* PECES DEL "Lo lograste" */
   .pez {
@@ -472,5 +518,25 @@
 }
 
 .pez-der {
+  transform: scaleX(-1);
+}
+
+
+
+
+.aaaaaaa{
+     position: absolute;
+    left: -10%;
+    bottom: 0;
+    width: 25%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);  
+}
+
+.amore{
+width: 100%; 
   transform: scaleX(-1);
 }
