@@ -158,7 +158,7 @@ gap:4%;
   #burbujadetexto {
     position: absolute;
     left: 17%;
-    top: 15%;
+    top: 8%;
     width: 40%;
     height: max-content;          
     padding: 20px 20px 50px 15px; /* abajo más lugar para que la flecha no tape el texto */
@@ -206,10 +206,11 @@ gap:4%;
     flex-direction: column;       
     align-items: center;
     justify-content: end;
-    gap: 1.5rem;
+    gap: 0.8rem;
     font-size: 1.1rem;
     z-index: 5;                   /* queda por encima de las cartas */
-    padding-bottom: 3rem;
+    padding-bottom: 1%;
+    padding-top: 8%;
   }
 
   /*agrega la tipografia aca*/
@@ -219,7 +220,7 @@ gap:4%;
   }
   
   #flechaPopup {                  
-    left: 3%;
+    right: 3%;
     top: 6%;
   }
   
@@ -227,7 +228,7 @@ gap:4%;
   /*cambiarlo por la img*/
   #iconoCartas {                  
     position: absolute;
-    right: 4%;
+    left: 4%;
     top: 4%;
     font-size: 1.5rem;
   }

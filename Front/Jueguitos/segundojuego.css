@@ -314,10 +314,10 @@ body {
 
 /* ===== PECES DEL "Lo lograste" ===== */
 .pez {
-  height: 1.2em;                 /* el alto manda, el ancho se ajusta solo */
+  height: 1.4em;                 /* el alto manda, el ancho se ajusta solo */
   width: auto;
   vertical-align: middle;        /* alineados con el texto */
-  margin: 0 0.6em;
+  margin: 0 0.1em;
 }
 
 :root {

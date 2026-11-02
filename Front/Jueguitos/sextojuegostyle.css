@@ -263,10 +263,10 @@ body {
 /* BOTÓN DE PAUSA (a la derecha de la imagen) */
 #botonPausa {
   position: absolute;
-  left: calc(100% + 2rem);
+  left: calc(100% + 8rem);
   top: 50%;
   transform: translateY(-50%);
-  width: 3rem;
+  width: 4rem;
   aspect-ratio: 1/1;
   border: none;
   border-radius: 8px;
