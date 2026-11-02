@@ -116,7 +116,7 @@ body{
 
 .juego{
   width: 20%;  
-  height: 100%;  
+  height: 90%;  
   background-color: rgb(113, 207, 247);
   display:flex;
   justify-content: start;
@@ -125,13 +125,13 @@ body{
   border: 5px solid rgb(23, 171, 240);
   text-decoration: none;
   gap:6%;
-  padding-left: 2.2%;
-  padding-right: 1%;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
 
 }
 .jugar{
   width: 55%;  
-  height: 100%;  
+  height: 90%;  
   background-color: rgb(253, 138, 19);
   display:flex;
   justify-content: center;
@@ -144,7 +144,7 @@ body{
 
 .trofeosracha{
 width: 20%;  
-  height: 100%;  
+  height: 90%;  
   background-color: rgb(113, 207, 247);
   display:flex;
   justify-content: start;
@@ -154,7 +154,7 @@ width: 20%;
   text-decoration: none;
   gap:6%;
   padding-left: 2.2%;
-  padding-right: 1%;
+  padding-right: 1.5%;
 }
 
 
@@ -172,7 +172,7 @@ width: 20%;
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 3rem;
+  font-size: 2.8rem;
      text-transform: none;
        text-decoration: none;
        color: black;
@@ -217,7 +217,7 @@ gap:-5%
 }
 
 .calliete{
-  width: 85%;
+  width: 90%;
 }
 
 .dado{
@@ -225,7 +225,7 @@ gap:-5%
 }
 
 .trofeito{
-  width: 210%;
+  width: 180%;
 }
 
   .fondo{
@@ -242,4 +242,61 @@ gap:-5%
   /*intento de hacerlo mas lindo*/ /*no me estaría saliendo*/
   .prueba:hover {
   filter: brightness(1.08);      
+}
+
+
+
+
+
+/* Posicionamiento del contenedor */
+.configura {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Estilos del menú flotante */
+.popout-menu {
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  background-color: #79c3f4;
+  border: 4px solid #3d4a5d;
+  border-radius: 20px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  min-width: 140px;
+}
+
+.popout-menu.oculto {
+  display: none !important;
+}
+
+/* Botones dentro del desplegable */
+.btn-popout {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 3px solid #3d4a5d;
+  font-weight: bold;
+}
+
+.btn-config-link {
+  background-color: #f7a460;
+  color: #000;
+}
+
+.btn-logout-link {
+  background-color: #b5b8bd;
+  color: #222;
+}
+
+.btn-popout:hover {
+  filter: brightness(1.1);
 }

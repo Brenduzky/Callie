@@ -1,74 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <link rel="stylesheet" href="pantalla-inicio.css">
-    <link rel="stylesheet" href="/../Callie/Front/Todo/todostyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Callie</title>
 
+    <link rel="stylesheet" href="pantalla-inicio.css">
+    <link rel="stylesheet" href="/../Callie/Front/Todo/todostyle.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
-
-
 </head>
 <body>
 
 <section class="superior">
-<div class="configura"> 
-    <a class="Configuracion" href="../Configuracion/confi.html">
-        <img class="configuri" src="../../imagenes/Configuracion.png">
-    </a>
-</div>
-<div class="racha">
-<div class="cajita">
-<div class="imagenderacha">
-    <img class="rachita" src="../../imagenes/Fuego.png">
-</div>
-<h1 id="cuanto-racha" name="cuantoderacha" class="cantidadderacha tipografia">0</h1>
-</div></div>
-<img class="marca" src="../../imagenes/marca.png">
-<div class="peces">
-    <div class="cajita especial">
-    <div class="imagendelpez">
-        <img class="pecesito" src="../../imagenes/Pez.png">
-    </div>
-    <h1 id="cuantos-peces" name="cuantospeces" class="cantidaddepeces tipografia">0</h1>
-</div></div>
-<div class="linea"></div>
+    <div class="configura"> 
+        <div id="btn-config" class="Configuracion">
+            <img class="configuri" src="../../imagenes/Configuracion.png" alt="Configuración">
+        </div>
 
+        <div id="popout-menu" class="popout-menu oculto">
+            <a href="../Configuracion/confi.html" class="btn-popout btn-config-link tipografia">Configuración</a>
+            <a href="../Login/login.html" class="btn-popout btn-logout-link tipografia">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <div class="racha">
+        <div class="cajita">
+            <div class="imagenderacha">
+                <img class="rachita" src="../../imagenes/Fuego.png" alt="Racha">
+            </div>
+            <h1 id="cuanto-racha" name="cuantoderacha" class="cantidadderacha tipografia">0</h1>
+        </div>
+    </div>
+
+    <img class="marca" src="../../imagenes/marca.png" alt="Marca">
+
+    <div class="peces">
+        <div class="cajita especial">
+            <div class="imagendelpez">
+                <img class="pecesito" src="../../imagenes/Pez.png" alt="Peces">
+            </div>
+            <h1 id="cuantos-peces" name="cuantospeces" class="cantidaddepeces tipografia">0</h1>
+        </div>
+    </div>
+
+    <div class="linea"></div>
 </section>
-    <section class="medio">
-        <a class="callie">   <!-- href="../personaje/oufits.html" no llego a hacerlo laura-->  
-            <img class="calliete" src="../../imagenes/callienormal.png">
-        </a>
-    </section>
-    
+
+<section class="medio">
+    <a class="callie">
+        <img class="calliete" src="../../imagenes/callienormal.png" alt="Callie">
+    </a>
+</section>
 
 <section class="abajo">
-     <a class="juego prueba" href="../Juegos/juego.html">
+    <a class="juego prueba" href="../Juegos/juego.html">
         <div class="fotito">
-            <img class="dado" src="../../imagenes/dado.png">
+            <img class="dado" src="../../imagenes/dado.png" alt="Dado">
         </div>
         <h1 class="jua-regular">Juegos</h1>
-     </a>
-     <a class="jugar prueba" href="../Jueguitos/primerjuego.html">
+    </a>
+    <a class="jugar prueba" href="../Jueguitos/primerjuego.html">
         <h1 class="jua-regular">Desafio diario</h1>
-     </a>
-     <a href="../Trofeos/proximostrofeos.html" class="trofeosracha prueba">
+    </a>
+    <a href="../Trofeos/proximostrofeos.html" class="trofeosracha prueba">
         <div class="fotito">
-            <img class="trofeito" src="../../imagenes/trofeo-pingüino.png">
+            <img class="trofeito" src="../../imagenes/trofeo-pingüino.png" alt="Trofeo">
         </div>
         <h1 class="jua-regular">Trofeos</h1>
     </a>
 </section>
-<img class="fondo" src="../../imagenes/fondoprincipal.png">
+
+<img class="fondo" src="../../imagenes/fondoprincipal.png" alt="Fondo">
 
 <script src="pantalla-iniciojason.js"></script>
 </body>
