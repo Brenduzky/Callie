@@ -1,16 +1,16 @@
 // ===== CONFIGURACIÓN =====
 const TIEMPO_TOTAL = 10; // segundos que dura cada imagen (cambialo si querés más o menos tiempo)
-
+const IMAGEN_RELOJ = "../../imagenes/Reloj.png";  
 // Las 6 partes del juego.
 // nombre: es lo que se ve en el cuadrito punteado mientras no haya imagen
 // imagen: PEGÁ ACÁ EL LINK DE LA IMAGEN (ej: "../../imagenes/lengua.png")
 const ejercicios = [
-  { nombre: "Imagen 1", imagen: "" },
-  { nombre: "Imagen 2", imagen: "" },
-  { nombre: "Imagen 3", imagen: "" },
-  { nombre: "Imagen 4", imagen: "" },
-  { nombre: "Imagen 5", imagen: "" },
-  { nombre: "Imagen 6", imagen: "" }
+  { nombre: "Imagen 1", imagen: "../../imagenes/nene-medio.abajo.png" },
+  { nombre: "Imagen 2", imagen: "../../imagenes/nene-medio.arriba.png" },
+  { nombre: "Imagen 3", imagen: "../../imagenes/nene-derecha.arriba.png" },
+  { nombre: "Imagen 4", imagen: "../../imagenes/nene-izquierda.arriba.png" },
+  { nombre: "Imagen 5", imagen: "../../imagenes/nene-izquierda.abajo.png" },
+  { nombre: "Imagen 6", imagen: "../../imagenes/nene-derecha.arriba.png" }
 ];
 
 // ===== ELEMENTOS DEL HTML =====
@@ -18,6 +18,8 @@ const ejercicio = document.getElementById('ejercicio');
 const flechaIntro = document.getElementById('flechaIntro');
 const juego = document.getElementById('juego');
 const mensaje = document.getElementById('mensaje');
+const reloj = document.getElementById('reloj');
+const imagenReloj = document.getElementById('imagenReloj');
 const relleno = document.getElementById('relleno');
 const espacioImagen = document.getElementById('espacioImagen');
 const imagenEjercicio = document.getElementById('imagenEjercicio');
@@ -140,6 +142,19 @@ function empezar() {
   mostrarModo('modo-juego');
   cargarEjercicio();
 }
+
+// ===== IMAGEN DEL RELOJ =====
+// Si hay link se muestra la imagen; si no, queda el cuadrito punteado
+function ponerReloj() {
+  if (IMAGEN_RELOJ) {
+    imagenReloj.src = IMAGEN_RELOJ;
+    reloj.classList.remove('sin-imagen');
+  } else {
+    imagenReloj.removeAttribute('src');
+    reloj.classList.add('sin-imagen');
+  }
+}
+ponerReloj();   // se hace una sola vez, al cargar la página
 
 // ===== Q PASA SI SE TOCA CADA COSA =====
 flechaIntro.addEventListener('click', empezar);

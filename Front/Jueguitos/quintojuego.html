@@ -36,7 +36,7 @@
 
                 <!-- RELOJ + BARRA DEL TIEMPO -->
                 <div class="tiempo">
-                    <span class="reloj" aria-hidden="true">⏰</span> <!-- si tenés una imagen de reloj, la podés poner acá en vez del emoji -->
+                   <div class="reloj" id="reloj"><img id="imagenReloj" alt="Reloj"></div>
                     <div class="barra-tiempo">
                         <div class="relleno" id="relleno"></div>
                     </div>
@@ -62,22 +62,25 @@
                 </div>
             </div>
 
-            <!-- PANTALLA FINAL (cuando ganó) -->
-            <div class="pantalla" id="final">
-                <div class="callie">
-                    <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
-                </div>
-                <div id="textofinal">
-                    <!-- Los peces y el título van juntos adentro de "titulo-final" para que queden uno al lado del otro -->
-                    <div class="titulo-final">
-                        <img class="pez" src="../../imagenes/Pez.png" alt="">
-                        <h2 class="tipografia grande">¡¡Lo lograste!!</h2>
-                        <img class="pez" src="../../imagenes/Pez.png" alt="">
-                    </div>
-                    <p class="tipografia">Ganaste 100 peces</p>
-                    <button class="tipografia" id="jugarOtraVez">Volver a jugar</button>
-                </div>
-            </div>
+        <!-- PANTALLA FINAL -->
+<div class="pantalla" id="final">
+    <div class="callie-final">
+        <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
+
+    </div>
+    <div id="textofinal">
+        <div class="titulo-final">
+            <img class="pez pez-izq" src="../../imagenes/Pez.png" alt="">
+            <h2 class="tipografia grande">¡¡Lo lograste!!</h2>
+            <img class="pez pez-der" src="../../imagenes/Pez.png" alt="">
+        </div>
+
+        <p class="tipografia">Ganaste 100 peces</p>
+        <button class="tipografia" id="jugarOtraVez">Volver a jugar</button>
+    </div>
+</div>
+
+
         </div>
 
         <button id="cerrar" aria-label="Salir">

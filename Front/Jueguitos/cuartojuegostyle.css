@@ -235,16 +235,9 @@
   }
   
   /* INTRO */
-  .callie {
-    position: absolute;
-    left: -10%;
-    bottom: 0;
-    width: 25%;
-    aspect-ratio: 1/1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(45deg);
+   .callie img,
+  .callie-final img {
+    width: 100%;
   }
   
   .callie img {
@@ -389,3 +382,59 @@
   .chica{
     font-size: 1.2rem;
   }
+
+:root {
+  /* Verifica que la ruta hacia confeti.png sea la correcta según la ubicación de tu CSS */
+  --fondo-final: url("../../imagenes/fondoconfeti.png");
+}
+
+.ejercicio.modo-final #final {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--fondo-final) center / cover no-repeat;
+}
+#textofinal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1.6rem 3rem;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 24px;
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-final {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5em;
+}
+
+#textofinal .titulo-final h2 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+#textofinal p {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+/* PECES AGRANDADOS E INVERTIDOS */
+.pez {
+  height: 3.8rem;
+  width: auto;
+  vertical-align: middle;
+}
+
+.pez-der {
+  transform: scaleX(-1);
+}

@@ -78,25 +78,27 @@ body {
 
 
 /* MODO INTRO */
+/* MODO INTRO / FINAL - Contenedor de Callie */
 #callie,
 .callie-final {
   position: absolute;
-  left: -6%;
-  bottom: 0;
-  width: 20%;
+  left: -18%;             /* Ajusta la posición para que no quede muy pegado al borde */
+  bottom: -8%;
+  width:38%;            /* Reducimos el ancho del contenedor del 20% al 16% */
   aspect-ratio: 1/1;
-  background-color: #9fe1ff00;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
   transform: rotate(45deg);
+  /* Se eliminó font-size: 4rem que afectaba medidas internas */
 }
-.calliete{
+
+/* Imagen del personaje */
+.calliete {
   transform: scaleX(-1);
-  width: 120%;
+  width: 100%;           /* Cambiamos de 120% a 100% para que respete el contenedor */
+  height: 100%;
+  object-fit: contain;   /* Mantiene la proporción perfecta sin agrandarse de más */
 }
 
 /* burbuja de texto, al lado de Callie */
@@ -350,4 +352,65 @@ width: 100%;
   width: auto;
   vertical-align: middle;        /* alineados con el texto */
   margin: 0 0.6em;
+}
+
+
+
+
+
+:root {
+  /* Verifica que la ruta hacia confeti.png sea la correcta según la ubicación de tu CSS */
+  --fondo-final: url("../../imagenes/fondoconfeti.png");
+}
+
+.ejercicio.modo-final #final {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--fondo-final) center / cover no-repeat;
+}
+
+#textofinal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1.6rem 3rem;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 24px;
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-final {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5em;
+}
+
+#textofinal .titulo-final h2 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+#textofinal p {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+
+/* PECES AGRANDADOS E INVERTIDOS */
+.pez {
+  height: 3.2rem;
+  width: auto;
+  vertical-align: middle;
+}
+
+.pez-der {
+  transform: scaleX(-1);
 }
