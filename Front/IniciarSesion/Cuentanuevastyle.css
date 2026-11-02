@@ -57,7 +57,7 @@ gap:15%;
   }
 
   .escribilo{
-    height: 55%;
+    height: 65%;
     width:90%;
     background-color: #71CFF7;
     border: 5px solid #17ABF0;
@@ -170,7 +170,7 @@ gap:15%;
     justify-content: center;
     align-items: center;
     border-radius: 999px;
-    border: 5px solid rgb(253,138,19);
+    border: 6px solid rgb(253,138,19);
     font-family: sans-serif;
       font-size: 1.8rem;
       bottom: 5%;
@@ -187,7 +187,7 @@ gap:15%;
 
   .redondeado{
     height: 90%;
-    width:70%;
+    width:90%;
     background-color: rgba(168, 212, 239, 0.6);
 border-radius: 50px;
 display: flex;
@@ -217,6 +217,7 @@ gap:4%;
   }
 
   .calliete{
+    width:15%;
     position: absolute;
     bottom: -15%;
     right:-1%;

@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  body{
+    height: 100vh;
+    background-color: rgba(135, 208, 254);
+    display: flex;
+    overflow: hidden;  
+  }
+
+.tipografia{
+font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    font-size: 2rem;
+}
+
+
+  .izquierda{
+    height: 100%;
+    width: 50%;
+    background-color: rgba(165, 42, 42, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 2%;
+    padding-left: 2%;
+  }
+
+  .derecha{
+    height: 100%;
+    width:50%;
+    background-color: rgba(165, 42, 124, 0);
+    display: flex;
+    flex-direction: column;
+align-items: center;
+padding-top: 4%;
+padding-bottom: 4.2%;
+gap:15%;
+  }
+
+
+  .contenedor{
+    height: 18%;
+    width:100%;
+    background-color: rgba(87, 165, 42, 0);
+    display: flex;
+    flex-direction: column;
+    gap:10%;
+  }
+
+  .escribilo{
+    height: 65%;
+    width:90%;
+    background-color: #71CFF7;
+    border: 5px solid #17ABF0;
+    border-radius: 25px;
+    color: #5FB6DA;
+    font-family: sans-serif;
+    font-size: 1.9rem;
+    padding: 8px 16px;
+    outline: none; 
+  }
+  
+  input::placeholder {
+    color: #2c7da0;
+    opacity: 0.6;
+  }
+  
+  .grande{
+    font-size: 3rem;
+  }
+
+  .chico{
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .espacio{
+    height: 82%;
+    width:85%;
+    background-color: rgba(165, 42, 124, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap:8%;
+  }
+
+  /*parte derecha*/
+
+  .cubo{
+    height: 75%;
+    width: 70%;
+    background-color: rgba(168, 212, 239, 0.6);
+    backdrop-filter: blur(3px);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5% 8%;
+    gap: 13%;
+  }
+  
+  .chiquita{
+    /* CORREGIDO: acá había "font-family: sans-serif;". Como .chiquita está
+       escrita DESPUÉS de .tipografia, le pisaba la fuente Google Sans.
+       Se borró esa línea para que el h2 use la fuente de .tipografia. */
+    font-size: 1.8rem;
+    font-weight: 550;
+    color: black;
+  }
+  
+  .cubitos{
+    width: 100%;
+    height: 80%;
+    background-color: rgba(255, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  .opcion{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-family: sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .opcion input{
+    appearance: none;
+    -webkit-appearance: none;
+    width: 10%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    background-color: #c9c9c9;
+    border: 5px solid #999;
+    cursor: pointer;
+    margin: 0;
+  }
+  
+  .opcion input:checked{
+    background-color: #5ce65c;
+    border-color: #3aa83a;
+  }
+
+  .abajo{
+    height: 15%;
+    width:65%;
+    background-color: rgba(42, 165, 58, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  .siguiente{
+    position: absolute;
+    width: 20.05vw;
+    height: 11.19vh;
+    background-color: rgb(255, 169, 50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    border: 6px solid rgb(253,138,19);
+    font-family: sans-serif;
+      font-size: 1.8rem;
+      bottom: 5%;
+  }
+
+  .callie{
+    position: absolute;
+    right: 0%;
+    bottom: 0;
+    height: 28%;
+    width:20%;
+    background-color: rgba(0, 0, 255, 0);
+  }
+
+  .redondeado{
+    height: 90%;
+    width:90%;
+    background-color: rgba(168, 212, 239, 0.6);
+border-radius: 50px;
+display: flex;
+flex-direction: column;
+justify-content: start;
+align-items: center;
+padding-top: 3%;
+gap:4%;
+  }
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
+
+
+  /* imagenes */
+
+  .fondo{
+    position: fixed;           /* La fija en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;              
+    height: 100vh;             
+    object-fit: cover;         /* Se estira y adapta sin deformarse */
+    z-index: -1;               /*al fondo*/
+  }
+
+  .calliete{
+    width: 15%;
+    position: absolute;
+    bottom: -15%;
+    right:-1%;
+  }
