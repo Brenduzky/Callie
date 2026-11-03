@@ -15,23 +15,23 @@
 <body>
 <section class="izquierda">
     <div class="redondeado">
-<h1 class="tipografia grande">Registrarse</h1>
-<form id="registrate" class="espacio">
+<h1 class="tipografia grande">Configuración</h1>
+<form id="configuracion" class="espacio">
 <div class="contenedor">
     <label for="nombre-usuario" class="tipografia chico">Nombre de Usuario</label>
     <input id="nombre-usuario" name="nombre-usuario" placeholder="Escribir" class="escribilo">
 </div>
 <div class="contenedor">
     <label for="contraseña" class="tipografia chico">Contraseña</label>
-    <input id="contraseña" name="contraseña" placeholder="Escribir" class="escribilo">
+    <input type="password" id="contraseña" name="contraseña" placeholder="Escribir" class="escribilo">
 </div>
 <div class="contenedor">
     <label for="verificacion" class="tipografia chico">Repetir contraseña</label>
-    <input id="verificacion" name="verificacion" placeholder="Escribir" class="escribilo">
+    <input type="password" id="verificacion" name="verificacion" placeholder="Escribir" class="escribilo">
 </div>
 <div class="contenedor">
     <label for="nacimiento" class="tipografia chico">Fecha de nacimiento</label>
-    <input id="nacimiento" name="nacimiento" placeholder="XX/XX/XXXX" class="escribilo">
+    <input type="date" id="nacimiento" name="nacimiento" class="escribilo" required>
 </div>
 </form></div>
 </section>
@@ -40,20 +40,24 @@
 
   <div class="cubo">
     <h2 class="tipografia chiquita">Obstaculo fonoudiologico</h2>
-    <div class="cubitos">
-      <label class="opcion">
-        <input type="radio" name="opcion" value="1">
-        1
-      </label>
-      <label class="opcion">
-        <input type="radio" name="opcion" value="2">
-        2
-      </label>
-      <label class="opcion">
-        <input type="radio" name="opcion" value="3">
-        3
-      </label>
-    </div>
+    
+<div class="cubitos">
+  <label class="opcion">
+    <input type="radio" name="opcion" value="Posición y movimiento de labios">
+    Incompetencia labial
+  </label>
+
+  <label class="opcion">
+    <input type="radio" name="opcion" value="Trastorno de los sonidos del habla">
+    Dislalia
+  </label>
+
+  <label class="opcion">
+    <input type="radio" name="opcion" value="Posición y movimiento de lengua">
+    Deglución atípica
+  </label>
+</div>
+
   </div>
   
 <!--

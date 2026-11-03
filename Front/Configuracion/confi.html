@@ -21,9 +21,13 @@
   <div class="foto">
     <div class="edicion"></div>
   </div>
-    <input class="texto" type="text" placeholder="Nombre">
-    <input class="texto" type="text" placeholder="Fecha de N.">
-  </section>
+
+  <input id="perfilNombre" class="texto" type="text"
+         placeholder="Nombre" readonly>
+
+  <input id="perfilFecha" class="texto" type="text"
+         placeholder="Fecha de N." readonly>
+</section>
 <section class="abajito"></section></section>
 
 </section>
@@ -33,7 +37,7 @@
     <h1>Usuario</h1>
   </div>
   <div class="bajo">
-    <input class="texto grande" type="text" placeholder="Lorem ipsum">
+    <input id="configNombre" class="texto grande" type="text" placeholder="Nombre de usuario">
   </div>
 </section>
 <section class="contenedor">
@@ -41,15 +45,15 @@
     <h1>Contraseña</h1>
   </div>
   <div class="bajo">
-    <input class="texto grande" type="text" placeholder="******">
+    <input id="configContrasena" class="texto grande" type="password" placeholder="Nueva contraseña (opcional)">
   </div>
 </section>
 <section class="contenedor">
   <div class="arriba">
-    <h1>Mail</h1>
+    <h1>Fecha de nacimiento</h1>
   </div>
   <div class="bajo">
-    <input class="texto grande" type="text" placeholder="Lorem ipsum">
+    <input id="configFecha" class="texto grande" type="date">
   </div>
 </section>
 <section class="contenedor">
@@ -57,21 +61,20 @@
     <h1>problema</h1>
   </div>
   <div class="bajo especial">
-    <select class="combo">
-      <option value="" disabled selected>Selecciona un problema</option>
-      <option value="Problema1">holaa</option>
-      <option value="Problema2">nose</option>
-      <option value="Problema3">hi</option>
+    <select id="configProblema" class="combo">
+      <option value="Trastorno de los sonidos del habla">Dislalia</option>
+      <option value="Posición y movimiento de lengua">Deglución atípica</option>
+      <option value="Posición y movimiento de labios">Incompetencia labial</option>
     </select>
   </div>
 </section>
 <div class="espaciado"></div>
-<button class="chico">
-  <h1>Guardar</h1>
+<button id="guardarConfiguracion" class="chico" type="button">
+  Guardar
 </button>
 
 </section>
 </section>
-    
+    <script src="configuracion.js"></script>
 </body>
 </html>
