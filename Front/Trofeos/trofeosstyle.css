@@ -149,3 +149,8 @@
 .medio::-webkit-scrollbar-thumb:hover {
   background: rgb(150, 150, 150);
 }
+
+.untrofeo.bloqueado {
+  filter: grayscale(1);
+  opacity: 0.5;
+}

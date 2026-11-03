@@ -1,3 +1,5 @@
+const URL_SERVER = 'http://localhost:3000';
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Manejo del Popout de Configuración
     const btnConfig = document.getElementById('btn-config');
@@ -16,24 +18,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Carga de datos del usuario
+    // 2. Cerrar sesión: borra el usuario guardado en el login
+    const btnLogout = document.querySelector('.btn-logout-link');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', () => {
+            localStorage.removeItem('usuario');
+        });
+    }
+
+    // 3. Carga de datos del usuario
     cargarDatosUsuario();
 });
+
+function obtenerIdUsuario() {
+    try {
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        return usuario ? usuario.id : null;
+    } catch (error) {
+        return null;
+    }
+}
 
 async function cargarDatosUsuario() {
     const elementoRacha = document.getElementById('cuanto-racha');
     const elementoPeces = document.getElementById('cuantos-peces');
 
+    const id = obtenerIdUsuario();
+
+    // Si no hay sesión iniciada, volvemos al login
+    if (id === null || id === undefined) {
+        window.location.href = '../IniciarSesion/Iniciosesion.html';
+        return;
+    }
+
     try {
-        const respuesta = await fetch('https://api.tu-servidor.com/datos-usuario');
-        const datos = await respuesta.json();
-        
-        if (datos.diasRacha !== undefined && elementoRacha) {
-            elementoRacha.textContent = datos.diasRacha;
+        // Las dos consultas salen juntas
+        const [respuestaUsuario, respuestaRacha] = await Promise.all([
+            fetch(`${URL_SERVER}/usuario/${id}`),
+            fetch(`${URL_SERVER}/usuario/${id}/racha`)
+        ]);
+
+        const datosUsuario = await respuestaUsuario.json();
+        const datosRacha = await respuestaRacha.json();
+
+        // Peces (en el server son las monedas)
+        if (datosUsuario.funciono && datosUsuario.usuario && elementoPeces) {
+            const peces = datosUsuario.usuario.monedas
+                ?? datosUsuario.usuario.monedasDisponibles
+                ?? 0;
+            elementoPeces.textContent = peces.toLocaleString();
         }
-        
-        if (datos.cantidadPeces !== undefined && elementoPeces) {
-            elementoPeces.textContent = datos.cantidadPeces.toLocaleString();
+
+        // Racha (fueguito)
+        if (datosRacha.funciono && elementoRacha) {
+            elementoRacha.textContent = datosRacha.racha ?? 0;
         }
     } catch (error) {
         console.error('Error al obtener los datos del servidor:', error);

@@ -538,3 +538,11 @@ body {
   vertical-align: middle;
 }
 
+#jugarOtraVez {
+  padding: 0.5em 1.2em;
+  border: 4px solid #FD8A13;
+  border-radius: 12px;
+  background: #FFA932;
+  font-size: 1rem;
+  cursor: pointer;
+}
