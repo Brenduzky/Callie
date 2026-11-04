@@ -1,40 +1,48 @@
+const URL_SERVER = 'http://localhost:3000';
+
 let registrate = document.getElementById("registrate");
-let botonSiguiente = document.querySelector(".siguiente"); // Apuntamos al botón Siguiente
+let botonSiguiente = document.querySelector(".siguiente");
 
 botonSiguiente.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    // 1. Validar contraseñas
-    let pass = registrate.contraseña.value;
-    let confirmPass = registrate.verificacion.value;
+    // 1. Obtener valores de los campos
+    const nombre = registrate["nombre-usuario"]?.value.trim();
+    const pass = registrate["contraseña"]?.value || registrate["contrasena"]?.value;
+    const confirmPass = registrate["verificacion"]?.value;
+    const fechaNacimiento = registrate["nacimiento"]?.value;
 
+    if (!nombre || !pass || !fechaNacimiento) {
+        alert("Por favor completá todos los campos requeridos.");
+        return;
+    }
+
+    // 2. Validar contraseñas
     if (pass !== confirmPass) {
         alert("Verificación fallida: las contraseñas no coinciden.");
-        return; // Detenemos la ejecución si fallan
+        return;
     }
 
-   // 2. Obtener el problema fonoaudiológico seleccionado
+    // 3. Obtener el problema fonoaudiológico seleccionado
     let problemaSeleccionado = document.querySelector('input[name="opcion"]:checked');
 
-    if (problemaSeleccionado === null) {
-    alert("Tenés que seleccionar un obstáculo fonoaudiológico");
-    return;
+    if (!problemaSeleccionado) {
+        alert("Tenés que seleccionar un obstáculo fonoaudiológico");
+        return;
     }
 
-    
-    // 3. Armar el objeto que espera el backend (según tu tipo Partial en Express)
+    // 4. Armar el payload para el backend
     let user = {
-        nombre: registrate["nombre-usuario"].value,
+        nombre: nombre,
         contrasena: pass,
-        fechaDeNacimiento: registrate.nacimiento.value,
-        // Si tu backend espera un objeto o un array para el problema fonoaudiológico, 
-        // mandamos el array de seleccionados:
-        problemaFonoaudiologico: problemaSeleccionado.value
+        fechaDeNacimiento: fechaNacimiento,
+        // OJO: Si tu tipo 'problemaFonoaudiologico' es un objeto, parsealo según cómo lo espere tu backend:
+        problemaFonoaudiologico: (problemaSeleccionado.value)
+        // Si tu backend espera directamente un string/número, usá: problemaSeleccionado.value
     };
 
     try {
-        // 4. Enviar los datos al servidor Express (asegúrate de que el servidor esté corriendo)
-        const respuesta = await fetch("http://localhost:3000/usuario", {
+        const respuesta = await fetch(`${URL_SERVER}/usuario`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
@@ -42,17 +50,22 @@ botonSiguiente.addEventListener('click', async (event) => {
 
         const resultado = await respuesta.json();
 
-        if (resultado.funciono) {
+        if (respuesta.ok && resultado.funciono) {
             alert("¡Registro exitoso!");
             console.log("Usuario registrado:", resultado.usuario);
-            // Aquí puedes redirigirlo a otra ventana/página si quieres, ej:
-            // window.location.href = "otra-pagina.html";
+            
+            // Guardamos sesión igual que en el login
+            if (resultado.usuario) {
+                localStorage.setItem('usuario', JSON.stringify(resultado.usuario));
+            }
+
+            window.location.href = '../principal/pantalla-atras.html';
         } else {
-            alert("Error al registrarse: " + resultado.mensaje);
+            alert("Error al registrarse: " + (resultado.mensaje || "Ocurrió un problema"));
         }
 
     } catch (error) {
         console.error("Error de conexión con el servidor:", error);
-        alert("No se pudo conectar con el servidor. ¿Está encendido?");
+        alert("No se pudo conectar con el servidor.");
     }
 });

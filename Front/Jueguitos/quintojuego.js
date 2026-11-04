@@ -1,5 +1,5 @@
 const URL_SERVER = 'http://localhost:3000';
-const ID_EJERCICIO = 6; // id de este juego en tu base de datos
+const ID_EJERCICIO = 5; // id de este juego en tu base de datos
 
 function obtenerIdUsuario() {
   try {
