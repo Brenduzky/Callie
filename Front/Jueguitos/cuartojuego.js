@@ -1,3 +1,18 @@
+const URL_SERVER = 'http://localhost:3000';
+const ID_EJERCICIO = 5; // id de este juego en tu base de datos
+
+function obtenerIdUsuario() {
+  try {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    return usuario ? usuario.id : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+let resultadoEnviado = false; // evita sumar los peces dos veces en la misma partida
+
+
 // ===== LAS PALABRAS DEL JUEGO =====
 // palabra: como se ve en pantalla (en mayúscula)
 // dice:    como la lee la voz del navegador (con tilde, así suena bien)
@@ -215,15 +230,56 @@ const palabras = [
   }
   
   // ===== PASAR A LA PRÓXIMA PALABRA =====
-  function siguiente() {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    indice++;
-    if (indice >= rondas.length) {
-      mostrarModo('modo-final');             // hizo las 5: pantalla de que ganó
-    } else {
-      cargarPalabra();
-    }
+function siguiente() {
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  indice++;
+  if (indice >= rondas.length) {
+    mostrarModo('modo-final');             // hizo las 5: pantalla de que ganó
+    enviarResultado();
+  } else {
+    cargarPalabra();
   }
+}
+
+async function enviarResultado() {
+  if (resultadoEnviado) return;
+  resultadoEnviado = true;
+
+  const idUsuario = obtenerIdUsuario();
+  if (idUsuario === null || idUsuario === undefined) {
+    window.location.href = '../IniciarSesion/Iniciosesion.html';
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(`${URL_SERVER}/ejercicios/completar`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        idUsuario: idUsuario,
+        idEjercicio: ID_EJERCICIO,
+        gano: true
+      })
+    });
+
+    const datos = await respuesta.json();
+
+    if (!datos.funciono) {
+      console.error(datos.mensaje);
+      resultadoEnviado = false; // permite reintentar
+      return;
+    }
+
+    // Muestra los peces realmente ganados en la pantalla final
+    const pecesGanados = document.getElementById('pecesGanados');
+    if (pecesGanados && datos.monedasGanadas !== undefined) {
+      pecesGanados.textContent = datos.monedasGanadas;
+    }
+  } catch (error) {
+    console.error('No se pudo enviar el resultado al servidor:', error);
+    resultadoEnviado = false;
+  }
+}
   
   // ===== EMPEZAR EL JUEGO (sale de la intro) =====
   function empezar() {
@@ -236,10 +292,11 @@ const palabras = [
   botonRevisar.addEventListener('click', revisar);
   altavoz.addEventListener('click', () => hablar(palabraActual.dice));
   flechaSiguiente.addEventListener('click', siguiente);
-  jugarOtraVez.addEventListener('click', () => {
-    mostrarModo('modo-juego');
-    empezarPartida();                        // arma 5 palabras nuevas
-  });
+jugarOtraVez.addEventListener('click', () => {
+  resultadoEnviado = false;                // partida nueva: se puede volver a enviar
+  mostrarModo('modo-juego');
+  empezarPartida();                        // arma 5 palabras nuevas
+});
   
   // ===== BOTÓN X Y POPUP DE SALIR =====
   const cerrar = document.getElementById('cerrar');

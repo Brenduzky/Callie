@@ -1,3 +1,15 @@
+const URL_SERVER = 'http://localhost:3000';
+const ID_EJERCICIO = 2; // id de este juego en tu base de datos
+
+function obtenerIdUsuario() {
+  try {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    return usuario ? usuario.id : null;
+  } catch (error) {
+    return null;
+  }
+}
+
 const preguntas = [ //todas las preguntas con sus ejercicios
   {
     pregunta: "¿Qué preferís...\n Pizza o Hamburguesa?", //el \n es un salto de línea, para que quede en dos renglones
@@ -7,8 +19,8 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     ],
     
     ejercicio: {
-      titulo: "Debes hacer 10 besos!",
-      explicacion: "¿Cómo se hace? Cierra la boca y empuja tus labios hacia adelante y arriba, sin separarlos. Mantenlo así por 10 segundos."
+      titulo: "¡Mandá 10 besos hacia la derecha!",
+      explicacion: " Como se hace? \n 1. Hacé la forma de un beso con los labios y llevalos hacia la derecha. \n 2. Mantené los labios en esa posición por 10 segundos mirando al frente. \n 3. Relajá los labios y repetí."
     }
   },
   {
@@ -18,8 +30,8 @@ const preguntas = [ //todas las preguntas con sus ejercicios
       { texto: "Gato",  imagen:"../../imagenes/segundo-gato.png", color: "#ABB1A6" }
     ],
     ejercicio: {
-      titulo: "Infla las mejillas!",
-      explicacion: "¿Cómo se hace? Llena tus mejillas de aire como un globo y mantenlo 5 segundos. Repítelo 3 veces."
+      titulo: "¡Sonreí enseñando los dientes 10 veces!",
+      explicacion: "¿Cómo se hace? \n 1. Hacé una sonrisa bien grande mostrando los dientes. \n 2. Mantené la sonrisa por 10 segundos. \n 3. Relajá la boca y repetí."
     }
   },
   {
@@ -29,8 +41,8 @@ const preguntas = [ //todas las preguntas con sus ejercicios
       { texto: "Montaña", imagen:"../../imagenes/segundo-montaña.png", color: "#99E556" }
     ],
     ejercicio: {
-      titulo: "Sonrisa gigante!",
-      explicacion: "¿Cómo se hace? Sonríe lo más grande que puedas sin abrir la boca y mantenlo 10 segundos."
+      titulo: "¡Posiciona el labio superior sobre el labio inferior 10 veces!",
+      explicacion: "¿Cómo se hace? \n 1. Apoyá el labio de arriba sobre el de abajo presionando suavemente ¡Sin abrir la boca! \n 2. Mantené los labios así por 10 segundos. \n 3. Relajá los labios y repetí."
     }
   },
   {
@@ -40,8 +52,8 @@ const preguntas = [ //todas las preguntas con sus ejercicios
       { texto: "Barco", imagen: "../../imagenes/segundo-barco.png", color: "#8880F5" }
     ],
     ejercicio: {
-      titulo: "Saca la lengua!",
-      explicacion: "¿Cómo se hace? Saca la lengua lo más que puedas, hacia arriba y hacia abajo, 10 veces."
+      titulo: "¡Apreta los labios 10 veces!",
+      explicacion: "¿Cómo se hace? \n 1. Juntá y apretá los labios suavemente sin abrir la boca. \n 2. Mantené tus labios así por 10 segundos. \n 3. Relajá los labios y repetí."
     }
   },
   {
@@ -51,8 +63,8 @@ const preguntas = [ //todas las preguntas con sus ejercicios
       { texto: "Chocolate", imagen: "../../imagenes/segundo-chocolate.png", color: "#BA816E" }
     ],
     ejercicio: {
-      titulo: "Chasquea la lengua!",
-      explicacion: "¿Cómo se hace? Pega la lengua arriba en el paladar y hazla sonar hacia abajo, como un caballito. Hazlo 10 veces."
+      titulo: "¡Hacé un beso y luego sonreí enseñando los dientes 10 veces!",
+      explicacion: "¿Cómo se hace? \n 1. Estirá los labios en forma de beso y mantené por 5 segundos. \n 2. Cambiá a una sonrisa mostrando los dientes y mantené por 5 segundos. \n 3. Relajá los labios y repetí."
     }
   }
 ];
@@ -129,7 +141,7 @@ function elegir(numero) {   // "numero" es 0 si tocó el botón A, 1 si tocó el
 
   // El ejercicio es el mismo sin importar que opcion elijió
   tituloEjercicio.textContent = p.ejercicio.titulo;
-  explicacionEjercicio.textContent = p.ejercicio.explicacion;
+  explicacionEjercicio.innerHTML = p.ejercicio.explicacion.replace(/\n/g, '<br>');
 
   mostrarModo('modo-ejercicio');
   // el cuadro se pinta del color de la opción elegida (despues de mostrarModo porque esa función borra el color)
@@ -137,13 +149,55 @@ function elegir(numero) {   // "numero" es 0 si tocó el botón A, 1 si tocó el
 }
 
 //  SEGUIR A LA PRÓXIMA PREGUNTA 
+let resultadoEnviado = false; // evita sumar los peces dos veces
+
 function siguiente() {
-  indice++;                             
+  indice++;
   if (indice >= orden.length) {
-    mostrarModo('modo-final');           // cuando ya respondió las 5
-    // window.location.href = '../principal/pantalla-atras.html'; // redirigir al terminar
+    mostrarModo('modo-final');   // cuando ya respondió las 5
+    enviarResultado();
   } else {
     mostrarPregunta();
+  }
+}
+
+async function enviarResultado() {
+  if (resultadoEnviado) return;
+  resultadoEnviado = true;
+
+  const idUsuario = obtenerIdUsuario();
+  if (idUsuario === null || idUsuario === undefined) {
+    window.location.href = '../IniciarSesion/Iniciosesion.html';
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(`${URL_SERVER}/ejercicios/completar`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        idUsuario: idUsuario,
+        idEjercicio: ID_EJERCICIO,
+        gano: true
+      })
+    });
+
+    const datos = await respuesta.json();
+
+    if (!datos.funciono) {
+      console.error(datos.mensaje);
+      resultadoEnviado = false; // permite reintentar
+      return;
+    }
+
+    // Muestra los peces ganados si existe el elemento en el HTML
+    const pecesGanados = document.getElementById('pecesGanados');
+    if (pecesGanados && datos.monedasGanadas !== undefined) {
+      pecesGanados.textContent = datos.monedasGanadas;
+    }
+  } catch (error) {
+    console.error('No se pudo enviar el resultado al servidor:', error);
+    resultadoEnviado = false;
   }
 }
 

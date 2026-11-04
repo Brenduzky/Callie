@@ -18,11 +18,11 @@ body {
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "GRAD" 0;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
 }
 
 .alta{
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 
 .gorda{
@@ -42,7 +42,7 @@ body {
   width: 100%;
   height: 28%;
   display: flex;
-  align-items: end;
+  align-items: start;
   justify-content: space-evenly;
 }
 
@@ -96,8 +96,10 @@ body {
 
 /* PANTALLA 1: INTRO  */
 #intro {
-  align-items: center;      
+  align-items: center; 
+  justify-content: center;     
   padding: 0 8%;
+
 }
 
 .texto-izq {
@@ -188,11 +190,14 @@ body {
 }
 
 #explicacionEjercicio {
-  align-self: flex-start;        
+#explicacionEjercicio {
+  align-self: flex-start;
   margin-top: 5%;
-  font-size: 1.1rem;
   line-height: 1.4;
   text-align: left;
+  white-space: pre-line;   /* respeta los \n del JS */
+  font-size: 1rem;
+}
 }
 
 /* PANTALLA FINAL */
@@ -431,4 +436,9 @@ body {
   background: #FFA932;
   font-size: 1rem;
   cursor: pointer;
+}
+
+
+#explicacionEjercicio{
+  font-size: 1.7rem;
 }

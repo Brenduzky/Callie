@@ -1,3 +1,18 @@
+const URL_SERVER = 'http://localhost:3000';
+const ID_EJERCICIO = 3; // id de este juego en tu base de datos
+
+function obtenerIdUsuario() {
+  try {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    return usuario ? usuario.id : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+let resultadoEnviado = false; // evita sumar los peces dos veces
+
+
 //Los colores de los pares predeterminados
 const pares = [
   { color: "#B7383A", fondo: "#F6A7A8", texto: "Di Tren!!", emoji: "../../imagenes/carta-roja-.png", foto: "../../imagenes/memotest-rojo-tren.png", dice:"Tren" },
@@ -171,9 +186,49 @@ function cerrarPopup() {
 
   if (encontrados === pares.length) {
     mostrarModo('modo-final');                        // encontró todos: pantalla de que ganó
-    // window.location.href = '../principal/pantalla-atras.html'; // si querés redirigir al terminar
+    enviarResultado();
   } else {
     bloqueado = false;                                // si faltan, sigue jugando
+  }
+}
+
+async function enviarResultado() {
+  if (resultadoEnviado) return;
+  resultadoEnviado = true;
+
+  const idUsuario = obtenerIdUsuario();
+  if (idUsuario === null || idUsuario === undefined) {
+    window.location.href = '../IniciarSesion/Iniciosesion.html';
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(`${URL_SERVER}/ejercicios/completar`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        idUsuario: idUsuario,
+        idEjercicio: ID_EJERCICIO,
+        gano: true
+      })
+    });
+
+    const datos = await respuesta.json();
+
+    if (!datos.funciono) {
+      console.error(datos.mensaje);
+      resultadoEnviado = false; // permite reintentar
+      return;
+    }
+
+    // Muestra los peces ganados si existe el elemento en el HTML
+    const pecesGanados = document.getElementById('pecesGanados');
+    if (pecesGanados && datos.monedasGanadas !== undefined) {
+      pecesGanados.textContent = datos.monedasGanadas;
+    }
+  } catch (error) {
+    console.error('No se pudo enviar el resultado al servidor:', error);
+    resultadoEnviado = false;
   }
 }
 

@@ -1,5 +1,18 @@
 const TOTAL = 6; // veces q pasa para terminar
 
+
+const URL_SERVER = 'http://localhost:3000';
+const ID_EJERCICIO = 1; // id de este juego en tu base de datos
+
+function obtenerIdUsuario() {
+    try {
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        return usuario ? usuario.id : null;
+    } catch (error) {
+        return null;
+    }
+}
+
 //elementos que va a utilizar del html
 const cajas = document.querySelectorAll('.seleccion');
 const ejercicio = document.getElementById('ejercicio');
@@ -82,13 +95,58 @@ function cerrarConsigna() {
     }
 }
 
+let resultadoEnviado = false; // evita sumar los peces dos veces
+
 function terminar() {
     ejercicio.style.backgroundColor = '';          // vuelve al gris
     ejercicio.classList.remove('modo-intro', 'modo-consigna');
     ejercicio.classList.add('modo-final');         // muestra a Callie y "Lo lograste!!!"
     bloqueado = true;                              // las cajas ya no hacen nada
 
-    // window.location.href = '../../Front/principal/pantalla-atras.html'
+    enviarResultado();
+}
+
+async function enviarResultado() {
+    if (resultadoEnviado) return;
+    resultadoEnviado = true;
+
+    const idUsuario = obtenerIdUsuario();
+    if (idUsuario === null || idUsuario === undefined) {
+        window.location.href = '../IniciarSesion/Iniciosesion.html';
+        return;
+    }
+
+    try {
+        const respuesta = await fetch(`${URL_SERVER}/ejercicios/completar`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                idUsuario: idUsuario,
+                idEjercicio: ID_EJERCICIO,
+                gano: true
+            })
+        });
+
+        const datos = await respuesta.json();
+
+        if (!datos.funciono) {
+            console.error(datos.mensaje);
+            resultadoEnviado = false; // permite reintentar
+            return;
+        }
+
+        // Muestra los peces que ganó, si existe el elemento en el HTML
+        const pecesGanados = document.getElementById('pecesGanados');
+        if (pecesGanados && datos.monedasGanadas !== undefined) {
+            pecesGanados.textContent = datos.monedasGanadas;
+        }
+
+        // datos.racha, datos.monedasDisponibles y datos.trofeosNuevos
+        // también vienen en la respuesta por si los querés mostrar
+    } catch (error) {
+        console.error('No se pudo enviar el resultado al servidor:', error);
+        resultadoEnviado = false;
+    }
 }
 
 cajas.forEach(caja => caja.addEventListener('click', () => tocarCaja(caja)));

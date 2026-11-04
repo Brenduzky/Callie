@@ -1,3 +1,17 @@
+const URL_SERVER = 'http://localhost:3000';
+const ID_EJERCICIO = 6; // id de este juego en tu base de datos
+
+function obtenerIdUsuario() {
+  try {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    return usuario ? usuario.id : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+let resultadoEnviado = false; // evita sumar los peces dos veces en la misma partida
+
 // ===== CONFIGURACIÓN =====
 const TIEMPO_TOTAL = 10; // segundos que dura cada imagen (cambialo si querés más o menos tiempo)
 const IMAGEN_RELOJ = "../../imagenes/Reloj.png";  
@@ -131,13 +145,55 @@ function siguiente() {
   indice++;
   if (indice >= ejercicios.length) {
     mostrarModo('modo-final');          // hizo las 6: pantalla de que ganó
+    enviarResultado();
   } else {
     cargarEjercicio();
   }
 }
 
+async function enviarResultado() {
+  if (resultadoEnviado) return;
+  resultadoEnviado = true;
+
+  const idUsuario = obtenerIdUsuario();
+  if (idUsuario === null || idUsuario === undefined) {
+    window.location.href = '../IniciarSesion/Iniciosesion.html';
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(`${URL_SERVER}/ejercicios/completar`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        idUsuario: idUsuario,
+        idEjercicio: ID_EJERCICIO,
+        gano: true
+      })
+    });
+
+    const datos = await respuesta.json();
+
+    if (!datos.funciono) {
+      console.error(datos.mensaje);
+      resultadoEnviado = false; // permite reintentar
+      return;
+    }
+
+    // Muestra los peces ganados si existe el elemento en el HTML
+    const pecesGanados = document.getElementById('pecesGanados');
+    if (pecesGanados && datos.monedasGanadas !== undefined) {
+      pecesGanados.textContent = datos.monedasGanadas;
+    }
+  } catch (error) {
+    console.error('No se pudo enviar el resultado al servidor:', error);
+    resultadoEnviado = false;
+  }
+}
+
 // ===== EMPEZAR EL JUEGO (sale de la intro) =====
 function empezar() {
+  resultadoEnviado = false;             // partida nueva: se puede volver a enviar
   indice = 0;
   mostrarModo('modo-juego');
   cargarEjercicio();
