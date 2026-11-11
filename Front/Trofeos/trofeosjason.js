@@ -1,5 +1,5 @@
 const URL_SERVER = 'http://localhost:3000';
-const contenedor = document.querySelector(".medio")
+
 document.addEventListener('DOMContentLoaded', Trofeos);
 
 function obtenerIdUsuario() {
@@ -11,67 +11,43 @@ function obtenerIdUsuario() {
     }
 }
 
-
 const id = obtenerIdUsuario();
-const tarjetas = document.querySelectorAll('.untrofeo');
 
-async function Trofeos(){
-    const resultado = await fetch (URL_SERVER + '/usuario/' + id +  '/trofeos', {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'},
-    })
-
-    const respuesta = await resultado.json()
-    respuesta.trofeos.forEach(trofeo => {
-        // Muestra cada trofeo y si está desbloqueado
-        console.log('trofeo:', trofeo.idDelTrofeo, 'desbloqueado:', trofeo.desbloqueado)
-
-        if (trofeo.desbloqueado) {
-            const tarjeta = document.querySelector('.untrofeo[data-id="' + trofeo.idDelTrofeo + '"]')
-
-            // Muestra si encontró la tarjeta (null = no la encontró)
-            console.log('tarjeta encontrada:', tarjeta)
-
-            if (tarjeta) {
-                tarjeta.style.backgroundColor = "#83EB96"
-            }
-        }
-    })
-    
-
-}
-
-/*async function cargarTrofeos() {
-
+async function Trofeos() {
+    // Si no hay usuario guardado, vuelve al inicio de sesión (igual que en los juegos)
     if (id === null || id === undefined) {
         window.location.href = '../IniciarSesion/Iniciosesion.html';
         return;
     }
 
-    const tarjetas = document.querySelectorAll('.untrofeo');
-
     try {
-        const respuesta = await fetch(`${URL_SERVER}/usuario/${id}/trofeos`);
-        const datos = await respuesta.json();
+        // Pide al servidor los trofeos del usuario
+        const resultado = await fetch(`${URL_SERVER}/usuario/${id}/trofeos`);
+        const respuesta = await resultado.json();
 
-        if (!datos.funciono) {
-            console.error(datos.mensaje);
+        // Si el servidor dice que algo falló, lo mostramos y cortamos
+        if (!respuesta.funciono) {
+            console.error(respuesta.mensaje);
             return;
         }
 
-        // Ids de los trofeos que el usuario ya ganó
-        const ganados = new Set(
-            datos.trofeos
-                .filter((t) => t.obtenido !== false)
-                .map((t) => String(t.id ?? t.idTrofeo))
-        );
+        // Recorre cada trofeo que mandó el servidor
+        respuesta.trofeos.forEach(trofeo => {
+            // Busca la tarjeta del HTML cuyo data-id coincide con el id del trofeo
+            const tarjeta = document.querySelector('.untrofeo[data-id="' + trofeo.idDelTrofeo + '"]');
 
-        tarjetas.forEach((tarjeta) => {
-            if (!ganados.has(tarjeta.dataset.id)) {
-                tarjeta.classList.add('bloqueado');
+            // Si no hay tarjeta para ese trofeo, pasa al siguiente
+            if (!tarjeta) return;
+
+            if (trofeo.desbloqueado) {
+                tarjeta.style.backgroundColor = "#83EB96"; // desbloqueado: verde
+                tarjeta.classList.remove('bloqueado');
+            } else {
+                tarjeta.classList.add('bloqueado');        // bloqueado: se le puede dar estilo en el CSS
             }
         });
     } catch (error) {
-        console.error('Error al obtener los trofeos:', error);
+        // Si el servidor está apagado o hay un error de conexión
+        console.error('No se pudieron cargar los trofeos:', error);
     }
-} */
+}
