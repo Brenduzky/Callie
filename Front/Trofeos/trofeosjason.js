@@ -1,6 +1,6 @@
 const URL_SERVER = 'http://localhost:3000';
-
-document.addEventListener('DOMContentLoaded', cargarTrofeos);
+const contenedor = document.querySelector(".medio")
+document.addEventListener('DOMContentLoaded', Trofeos);
 
 function obtenerIdUsuario() {
     try {
@@ -11,8 +11,37 @@ function obtenerIdUsuario() {
     }
 }
 
-async function cargarTrofeos() {
-    const id = obtenerIdUsuario();
+
+const id = obtenerIdUsuario();
+const tarjetas = document.querySelectorAll('.untrofeo');
+
+async function Trofeos(){
+    const resultado = await fetch (URL_SERVER + '/usuario/' + id +  '/trofeos', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'},
+    })
+
+    const respuesta = await resultado.json()
+    respuesta.trofeos.forEach(trofeo => {
+        // Muestra cada trofeo y si está desbloqueado
+        console.log('trofeo:', trofeo.idDelTrofeo, 'desbloqueado:', trofeo.desbloqueado)
+
+        if (trofeo.desbloqueado) {
+            const tarjeta = document.querySelector('.untrofeo[data-id="' + trofeo.idDelTrofeo + '"]')
+
+            // Muestra si encontró la tarjeta (null = no la encontró)
+            console.log('tarjeta encontrada:', tarjeta)
+
+            if (tarjeta) {
+                tarjeta.style.backgroundColor = "#83EB96"
+            }
+        }
+    })
+    
+
+}
+
+/*async function cargarTrofeos() {
 
     if (id === null || id === undefined) {
         window.location.href = '../IniciarSesion/Iniciosesion.html';
@@ -45,4 +74,4 @@ async function cargarTrofeos() {
     } catch (error) {
         console.error('Error al obtener los trofeos:', error);
     }
-}
+} */
