@@ -55,7 +55,8 @@
     background-color: #cce7e9ea;   
     border-radius: 10px;
     border: 5px solid #000;
-    overflow: hidden;             /* lo que se sale del cuadro se corta */
+    overflow: hidden;            /* lo que se sale del cuadro se corta */
+  container-type: size; 
   }
   
   /* Todas las pantallas empiezan escondidas*/
@@ -70,15 +71,15 @@
     display: block;
   }
   
-  .ejercicio.modo-juego #tablero {
-    display: grid;                      /* para acomodar las cartas */
-    grid-template-columns: repeat(5, 1fr);  /* 5 columnas iguales */
-    grid-template-rows: repeat(2, 1fr);     /* 2 filas iguales*/
-    align-items: center;          /* cada carta centrada en su casillero */
-    justify-items: center;
-    padding: 3% 4%;
-gap:4%;
-  }
+.ejercicio.modo-juego #tablero {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  padding: 4%;
+  gap: 4%;
+}
   
   .ejercicio.modo-final #final {
     display: block;
@@ -86,9 +87,10 @@ gap:4%;
   
   /* CARTAS */
   .carta {
-    position: relative;
-    height: 90%;                  
-    aspect-ratio: 3/4;            /*  para que sea un rectángulo */
+position: relative;
+  height: min(39cqh, calc(15.2cqw * 4 / 3));
+  aspect-ratio: 3 / 4;
+    object-fit: contain;
     background-color: #CACACA;    
     border: 5px solid #6F6F6F;
     border-radius: 8px;
