@@ -125,7 +125,7 @@
   
 /* 1. Estándar para navegadores modernos (Firefox, Chrome/Edge nuevos) */
 .medio {
-  scrollbar-width: thin; /* Opciones: auto, thin, none */
+  scrollbar-width: auto; /* Opciones: auto, thin, none */
   scrollbar-color: rgb(110, 110, 110) transparent; /* [color-del-thumb] [color-del-track] */
 }
 
