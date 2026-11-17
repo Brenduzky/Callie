@@ -9,7 +9,7 @@ const boton = document.getElementById("boton");
 let usuarioActual = null;
 
 // Cargar los datos guardados apenas abre la pantalla
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContent   Loaded', () => {
     const usuarioGuardado = localStorage.getItem('usuario');
 
     if (!usuarioGuardado) {

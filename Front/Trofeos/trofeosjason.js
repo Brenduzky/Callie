@@ -34,7 +34,7 @@ async function Trofeos() {
         // Recorre cada trofeo que mandó el servidor
         respuesta.trofeos.forEach(trofeo => {
             // Busca la tarjeta del HTML cuyo data-id coincide con el id del trofeo
-            const tarjeta = document.querySelector('.untrofeo[data-id="' + trofeo.idDelTrofeo + '"]');
+            const tarjeta = document.querySelector('.untrofeo[data-id="' + trofeo.condicion + '"]');
 
             // Si no hay tarjeta para ese trofeo, pasa al siguiente
             if (!tarjeta) return;

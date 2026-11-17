@@ -222,3 +222,23 @@ gap:4%;
     bottom: -15%;
     right:-1%;
   }
+
+  #cerrar {
+    position: absolute;
+    left: 1.5%;
+    top: 3%;
+    width: 3%;
+    aspect-ratio: 1/1;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .cerrado {
+    width: 100%;
+  }
+  
+  #cerrar img {
+    display: block;
+  }
