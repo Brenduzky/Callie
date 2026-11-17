@@ -38,16 +38,39 @@ async function Trofeos() {
 
             // Si no hay tarjeta para ese trofeo, pasa al siguiente
             if (!tarjeta) return;
+            // Ponemos las imágenes que corresponden (color o gris)
+            cambiarImagen(tarjeta, trofeo.desbloqueado);
 
             if (trofeo.desbloqueado) {
                 tarjeta.style.backgroundColor = "#83EB96"; // desbloqueado: verde
                 tarjeta.classList.remove('bloqueado');
             } else {
-                tarjeta.classList.add('bloqueado');        // bloqueado: se le puede dar estilo en el CSS
+                tarjeta.classList.add('bloqueado');
             }
         });
     } catch (error) {
         // Si el servidor está apagado o hay un error de conexión
         console.error('No se pudieron cargar los trofeos:', error);
+    } finally {
+        // Pase lo que pase, mostramos las imágenes (ya están con su versión correcta)
+        document.querySelector('.medio').classList.add('cargado');
     }
+
+}
+
+// Cambia las imágenes de una tarjeta: color si está desbloqueado, gris si no
+function cambiarImagen(tarjeta, desbloqueado) {
+    // Una tarjeta tiene 2 imágenes (izquierda y derecha), las recorremos a las dos
+    tarjeta.querySelectorAll('img').forEach(img => {
+        // La primera vez guardamos el src original (el de color) para no perderlo
+        if (!img.dataset.color) {
+            img.dataset.color = img.getAttribute('src');
+        }
+
+        // Armamos el nombre de la imagen gris: "trofeo-rayo.png" -> "trofeo-rayo-gris.png"
+        const gris = img.dataset.color.replace('.png', '-gris.png');
+
+        // Si lo tiene, imagen de color; si no, imagen gris
+        img.src = desbloqueado ? img.dataset.color : gris;
+    });
 }

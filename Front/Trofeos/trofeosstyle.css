@@ -154,3 +154,12 @@
   filter: grayscale(1);
   opacity: 0.5;
 }
+
+/* Las imágenes quedan ocultas hasta que el JS decide si van en color o en gris */
+.medio img {
+  visibility: hidden;
+}
+
+.medio.cargado img {
+  visibility: visible;
+}
