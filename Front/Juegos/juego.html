@@ -40,11 +40,9 @@
     <img class="linea" src="../../imagenes/flecha.png">
     </button>
 
-    <!-- PASO 3: el carrusel. Adentro van las tarjetas de los juegos.
-         Todas se apilan en el mismo lugar y el CSS decide dónde queda cada una -->
+  
+
     <div class="carrusel">
-        <!-- "juego" = estilo común, "primero/segundo..." = el color de cada una.
-             Cada tarjeta es un link a su juego -->
         <a class="juego primero" href="../Jueguitos/primerjuego.html">
             <img class="fondito" src="../../imagenes/mini1.png">
         </a>
@@ -69,8 +67,12 @@
     <button class="flecha sig" aria-label="Siguiente">
         <img class="linea otra" src="../../imagenes/flecha.png">
     </button>
+
+
 </section>
         
+
+
        <script>
     const juegos = document.querySelectorAll('.juego'); 
     const ant = document.querySelector('.ant');         
@@ -80,56 +82,60 @@
     
 const titulo = document.querySelector('#titulo');
 const textos = ['Incompetencia labial', 'Incompetencia labial', 'Dislalia', 'Dislalia', 'Deglución atípica', 'Deglución atípica'];
-    // PASO 13: "actual" guarda cuál tarjeta está en el centro.
-    // Empieza en 0 (la primera). "let" porque va a cambiar.
-    let actual = 0;
+    
 
-    // PASO 14: función que reparte las clases según quién es el actual
+    let actual = 0;
     function mostrar() {
-        // forEach recorre cada tarjeta: j = la tarjeta, i = su número (0,1,2,3)
         juegos.forEach((j, i) => {
 
-            // Primero se limpian las clases de posición anteriores
+            // se sacan las clases de antes para agregarlas dsp
             j.classList.remove('centro', 'izq', 'der', 'oculto');
 
-            // d = distancia entre esta tarjeta y la actual.
-            // El "+ n" y el "% n" hacen que la cuenta sea circular (da la vuelta)
+            // d es la distancia entre la tarjeta y la actual.
+            // "+ n" y "% n" hacen que de la vuelta 
             let d = (i - actual + n) % n;
 
             // Si d queda en la segunda mitad, la pasamos a negativa
             // para que la última cuente como "a la izquierda" de la primera
+            //no es paraq vaya a la izq, sino para q el juego se muestre a la izq
             if (d > n / 2) d -= n;
 
+            // se vuelven a dar las clases
             // Según la distancia se asigna la posición:
             if (d === 0) j.classList.add('centro');        // es la actual
             else if (d === -1) j.classList.add('izq');     // la anterior
             else if (d === 1) j.classList.add('der');      // la siguiente
-            else j.classList.add('oculto');                // el resto se esconde
+            else j.classList.add('oculto');                // para q no este
         });
 
-        titulo.textContent = textos[actual]; //el titulo q cambia segun el juego
+        titulo.textContent = textos[actual]; //el titulo cambia segun el juego
     }
 
-    // PASO 15: botón anterior. Resta 1; el "+ n" evita números negativos
-    // (así desde la primera se pasa a la última). Luego redibuja.
-    ant.addEventListener('click', () => { actual = (actual - 1 + n) % n; mostrar(); });
 
-    // PASO 16: botón siguiente. Suma 1; el "% n" vuelve a 0 después de la última.
-    sig.addEventListener('click', () => { actual = (actual + 1) % n; mostrar(); });
+    // botón ant resta 1, "+ n" hace q no haya nros negativos, entc la primera va a la ultima
+    ant.addEventListener('click', () => { 
+        actual = (actual - 1 + n) % n;
+         mostrar(); 
+        });
 
-    // PASO 17: hacer clic en una tarjeta lateral la trae al centro
+    // el sig, suma 1 y el "% n" hace q vuelva a 0 si es la ultima
+    sig.addEventListener('click', () => { 
+        actual = (actual + 1) % n; 
+        mostrar(); 
+    });
+
+    // si apreto una tarjeta de los costados tmb funciona como las flechas
     juegos.forEach((j, i) => {
         j.addEventListener('click', e => {
-            if (i !== actual) {          // si NO es la del centro...
-                e.preventDefault();      // ...frenamos el link (no abre el juego)
-                actual = i;              // la hacemos la actual
-                mostrar();               // y redibujamos
+            if (i !== actual) {          
+                e.preventDefault();      // no se puede abrir el juego cuando apretas
+                actual = i;              // va al medio
+                mostrar();               
             }
-            // si ES la del centro, no hacemos nada y el link abre el juego
         });
     });
 
-    // PASO 18: ejecutar una vez al cargar para que se vea el estado inicial
+    
     mostrar();
 </script>
         
