@@ -17,7 +17,7 @@ async function iniciarSesion(evento) {
     return;
   }
 
-  try {
+  
     const respuesta = await fetch(`${URL_SERVER}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -31,14 +31,10 @@ async function iniciarSesion(evento) {
       return;
     }
 
-    // Guardamos el usuario para usarlo en las otras pantallas
     localStorage.setItem('usuario', JSON.stringify(datos.usuario));
 
     window.location.href = '../principal/pantalla-atras.html';
-  } catch (error) {
-    mensaje.textContent = 'No se pudo conectar con el servidor';
-    console.error(error);
-  }
+
 }
 
 botonSiguiente.addEventListener('click', iniciarSesion);

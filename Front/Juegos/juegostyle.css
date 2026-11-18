@@ -176,7 +176,6 @@ font-family: "Google Sans", sans-serif;
 /* PASO 10: estilo común de las flechas, flotando sobre el carrusel */
 .flecha {
   display: flex;
-  justify-content: center;
   align-items: center;
   position: absolute;
   top: 50%;
@@ -186,23 +185,30 @@ font-family: "Google Sans", sans-serif;
 height: 15%;
   border: none;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.60);
   cursor: pointer;
   transition: opacity 0.3s, transform 0.2s;
+  
 }
 
-.flecha svg {
-  width: 70%;
-  height: 55%;
-  fill: none;
-  stroke: #000;
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.linea{
+  width:60%;
+}
+
+.otra{
+  transform: scaleX(-1)
 }
 
 .flecha:hover { transform: translateY(-50%) scale(1.1); }
 
 /* PASO 11: una a cada lado */
-.ant { left: 2%; }
-.sig { right: 2%; }
+.ant { 
+  left: 2%; 
+  justify-content: start;
+  padding-left:1%;
+}
+.sig { 
+  right: 2%; 
+  justify-content: end;
+  padding-right:1%;
+}

@@ -32,19 +32,12 @@
  </section>
         
         </section>
-      <!-- PASO 1: contenedor general de la zona del carrusel.
-     Es "position: relative" para poder ubicar las flechas adentro -->
 <section class="medio">
 
-    <!-- PASO 2: botón "anterior". Tiene dos clases:
-         "flecha" = estilo compartido, "ant" = su posición (izquierda).
-         aria-label describe el botón para lectores de pantalla -->
+   
     <button class="flecha ant izquierdita" aria-label="Anterior">
-        <!-- El SVG dibuja la flecha. viewBox="0 0 24 24" es un lienzo de 24x24 -->
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <!-- path = línea: M(mover a 15,4) L(línea a 7,12) L(línea a 15,20) forma una "<" -->
-            <path d="M15 4 L7 12 L15 20" />
-        </svg>
+      
+    <img class="linea" src="../../imagenes/flecha.png">
     </button>
 
     <!-- PASO 3: el carrusel. Adentro van las tarjetas de los juegos.
@@ -72,23 +65,20 @@
         </a>
     </div>
 
-    <!-- PASO 4: botón "siguiente" (la flecha ">") -->
+ 
     <button class="flecha sig" aria-label="Siguiente">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 4 L17 12 L9 20" />
-        </svg>
+        <img class="linea otra" src="../../imagenes/flecha.png">
     </button>
 </section>
         
        <script>
-    // PASO 12: buscar los elementos del HTML y guardarlos en variables
-    const juegos = document.querySelectorAll('.juego'); // lista con las 4 tarjetas
-    const ant = document.querySelector('.ant');         // botón anterior
-    const sig = document.querySelector('.sig');         // botón siguiente
-    const n = juegos.length;                            // cantidad de tarjetas (4)
+    const juegos = document.querySelectorAll('.juego'); 
+    const ant = document.querySelector('.ant');         
+    const sig = document.querySelector('.sig');    
+    const n = juegos.length;                            
 
     
-const titulo = document.querySelector('#titulo'); // para buscar el título para cambiarle el texto}
+const titulo = document.querySelector('#titulo');
 const textos = ['Incompetencia labial', 'Incompetencia labial', 'Dislalia', 'Dislalia', 'Deglución atípica', 'Deglución atípica'];
     // PASO 13: "actual" guarda cuál tarjeta está en el centro.
     // Empieza en 0 (la primera). "let" porque va a cambiar.
