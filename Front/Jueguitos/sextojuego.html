@@ -9,9 +9,8 @@
 <body>
     <img class="fondo" src="../../imagenes/fondojuego3.png">
     <section class="superior">
-        <div class="ejercicio modo-intro" id="ejercicio"> <!-- El JS le cambia la clase: modo-intro / modo-juego / modo-final -->
-
-            <!-- PANTALLA 1 (explicación) -->
+        <div class="ejercicio modo-intro" id="ejercicio"> 
+          
             <div class="pantalla" id="intro">
                 <div class="callie">
                     <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
@@ -27,16 +26,15 @@
                 </div>
             </div>
 
-            <!-- PANTALLA 2 (el juego). El atributo data-estado lo cambia el JS:
-                 buscar (elige la imagen diferente) / jugando (copia la imagen) / pausa (tiempo congelado) / exito (terminó el tiempo) -->
+            
             <div class="pantalla" id="juego" data-estado="buscar">
 
-                <!-- flecha para pasar a la próxima ronda (solo se ve cuando se completó el tiempo) -->
+               
                 <button class="flecha" id="flechaSiguiente" aria-label="Siguiente ronda">
                     <img src="../../imagenes/salir.png" alt="">
                 </button>
 
-                <!-- RELOJ + BARRA DEL TIEMPO (se ve solo cuando ya eligió la imagen) -->
+               
                 <div class="tiempo">
                     <div class="reloj" id="reloj"><img id="imagenReloj" alt="Reloj"></div>
                     <div class="barra-tiempo">
@@ -46,16 +44,11 @@
 
                 <p class="tipografia" id="mensaje"></p>
 
-                <!-- LAS 3 IMÁGENES PARA ELEGIR (se ven solo en el estado "buscar").
-                     Está vacío a propósito: el JS crea los 3 botones de adentro -->
-                <div id="opciones"></div>
+               <div id="opciones"></div>
 
-                <!-- IMAGEN A COPIAR + BOTÓN DE PAUSA (se ven después de elegir bien) -->
                 <div class="zona-imagen">
-                    <!-- AQUÍ SE MUESTRA LA IMAGEN DIFERENTE QUE ELIGIÓ, para que la copie -->
-                    <div class="espacio-imagen" id="espacioImagen"><img id="imagenEjercicio" alt="Imagen para copiar"></div>
+                   <div class="espacio-imagen" id="espacioImagen"><img id="imagenEjercicio" alt="Imagen para copiar"></div>
 
-                    <!-- BOTÓN DE PAUSA / PLAY (tiene dos dibujitos, el CSS muestra uno u otro) -->
                     <button id="botonPausa" aria-label="Pausar o seguir el tiempo">
                         <svg class="icono-pausa" viewBox="0 0 24 24" aria-hidden="true">
                             <rect x="6" y="5" width="4" height="14" rx="1"></rect>
@@ -68,14 +61,12 @@
                 </div>
             </div>
 
-            <!-- PANTALLA FINAL (cuando ganó) -->
             <div class="pantalla" id="final">
                 <div class="callie">
                     <img class="calliete" src="../../imagenes/calliesaludando.png" alt="">
                 </div>
-                <!-- "textofinal" es la tarjeta blanca del medio -->
+               
                 <div id="textofinal">
-                    <!-- Los peces y el título van juntos adentro de "titulo-final" para que queden uno al lado del otro -->
                     <div class="titulo-final">
                         <img class="pez" src="../../imagenes/Pez.png" alt="">
                         <h2 class="tipografia grande">¡¡Lo lograste!!</h2>
@@ -93,7 +84,6 @@
         </button>
     </section>
 
-<!-- POPUP DE SALIR -->
 <div class="modal-fondo" id="modalSalir">
     <div class="modal-caja">
         <p class="tipografia modal-texto">
@@ -106,6 +96,6 @@
     </div>
 </div>
 
-    <script src="sextojuegojava.js"></script> <!-- vincula el JS -->
+    <script src="sextojuegojava.js"></script> 
 </body>
 </html>

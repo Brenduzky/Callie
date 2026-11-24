@@ -1,23 +1,18 @@
 const URL_SERVER = 'http://localhost:3000';
-const ID_EJERCICIO = 2; // id de este juego en tu base de datos
+const ID_EJERCICIO = 2;
 
 function obtenerIdUsuario() {
-  try {
-    const usuario = JSON.parse(localStorage.getItem('usuario'));
-    return usuario ? usuario.id : null;
-  } catch (error) {
-    return null;
-  }
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  return usuario ? usuario.id : null;
 }
 
-const preguntas = [ //todas las preguntas con sus ejercicios
+const preguntas = [
   {
-    pregunta: "¿Qué preferís...\n Pizza o Hamburguesa?", //el \n es un salto de línea, para que quede en dos renglones
+    pregunta: "¿Qué preferís...\n Pizza o Hamburguesa?",
     opciones: [
       { texto: "Pizza",       imagen: "../../imagenes/segundo-pizza.png", color: "#e97f7f" },
       { texto: "Hamburguesa", imagen: "../../imagenes/segundo-hamburguesa.png", color: "#e2ec55" }
     ],
-    
     ejercicio: {
       titulo: "¡Mandá 10 besos hacia la derecha!",
       explicacion: " Como se hace? \n 1. Hacé la forma de un beso con los labios y llevalos hacia la derecha. \n 2. Mantené los labios en esa posición por 10 segundos mirando al frente. \n 3. Relajá los labios y repetí."
@@ -35,7 +30,7 @@ const preguntas = [ //todas las preguntas con sus ejercicios
     }
   },
   {
-    pregunta: "¿Qué preferís...\n  Playa o Montaña?",   //\u00A0 hace que haya espacio vacio asi se ve mas al costado :)
+    pregunta: "¿Qué preferís...\n  Playa o Montaña?",
     opciones: [
       { texto: "Playa",   imagen :"../../imagenes/segundo-playa.png", color: "#F2D2A8" },
       { texto: "Montaña", imagen:"../../imagenes/segundo-montaña.png", color: "#99E556" }
@@ -69,92 +64,78 @@ const preguntas = [ //todas las preguntas con sus ejercicios
   }
 ];
 
-//elementos importados del html
-const ejercicio = document.getElementById('ejercicio');           // el cuadro grande
-const flechaIntro = document.getElementById('flechaIntro');      
-const flechaEjercicio = document.getElementById('flechaEjercicio'); 
+const ejercicio = document.getElementById('ejercicio');
+const flechaIntro = document.getElementById('flechaIntro');
+const flechaEjercicio = document.getElementById('flechaEjercicio');
 const textoPregunta = document.getElementById('textoPregunta');
 const tituloOpcion = document.getElementById('tituloOpcion');
 const tituloEjercicio = document.getElementById('tituloEjercicio');
 const explicacionEjercicio = document.getElementById('explicacionEjercicio');
 const jugarOtraVez = document.getElementById('jugarOtraVez');
 
-// los botones de opciones, botones[0] es el A y botones[1] el B
 const botones = [
   document.getElementById('opcionA'),
   document.getElementById('opcionB')
 ];
 
-//  MEZCLAR LAS PREGUNTAS
-// Elige una pregunta al azar, la saca de la lista y la pone en el nuevo orden. Se repite hasta que no queda ninguna
 function mezclar(lista) {
-  const restantes = [...lista];   // usa una copia para poder modificar y cambiar el orden (de los ejercicios)
-  const resultado = [];           
+  const restantes = [...lista];
+  const resultado = [];
 
-  while (restantes.length > 0) {           // preguntas sin usar
-    const i = Math.floor(Math.random() * restantes.length); // al azar de las q quedan
-    const elegida = restantes.splice(i, 1)[0];              // la elegida la usa y la saca de "restantes" 
-    resultado.push(elegida);                                // la usa
+  while (restantes.length > 0) {
+    const i = Math.floor(Math.random() * restantes.length);
+    const elegida = restantes.splice(i, 1)[0];
+    resultado.push(elegida);
   }
 
   return resultado;
 }
 
-const orden = mezclar(preguntas); // se mezcla cada vez que se juega
-let indice = 0;                   // dice qué pregunta toca ahora (la primera es la 0, la segunda la 1, etc.)
+const orden = mezclar(preguntas);
+let indice = 0;
 
-
-//  CAMBIAR DE PANTALLA 
-// Le pone al cuadro grande la clase de la pantalla que queremos ver: el CSS se encarga
 function mostrarModo(modo) {
   ejercicio.className = 'ejercicio ' + modo;
-  ejercicio.style.backgroundColor = ''; // borra el color que pusó el JS y vuelve al predeterminado
+  ejercicio.style.backgroundColor = '';
 }
 
-//  PANTALLA DE PREGUNTA 
 function mostrarPregunta() {
-  const p = orden[indice];              // la pregunta que toca ahora (viene de la ultima funcion) ahora se va a llamar p
-  textoPregunta.textContent = p.pregunta; //textoPregunta viene del html y va a cambiar lo que dice con textContent segun p
+  const p = orden[indice];
+  textoPregunta.textContent = p.pregunta;
 
-  botones.forEach((boton, i) => {              //botones viene del httml
-    const op = p.opciones[i];       //Obtiene la opción correspondiente a ese botón usando i
-    boton.querySelector('.op-texto').textContent = op.texto;   //querySelector busca la etiqueta que muestra el icono y le pone op.texto
+  botones.forEach((boton, i) => {
+    const op = p.opciones[i];
+    boton.querySelector('.op-texto').textContent = op.texto;
     boton.querySelector('.op-img').src = op.imagen;
-    boton.style.backgroundColor = op.color; //segun op.color le pone el color al cuadrado grande
+    boton.style.backgroundColor = op.color;
   });
 
   mostrarModo('modo-pregunta');
 }
 
-//  PANTALLA DE EJERCICIO 
-function elegir(numero) {   // "numero" es 0 si tocó el botón A, 1 si tocó el B
-  const p = orden[indice];     //le pone p en la pregunta que se encuentra que luego mostrara el ejercicio predeterminado para la misma
-  const op = p.opciones[numero];        // la opción que eligió
+function elegir(numero) {
+  const p = orden[indice];
+  const op = p.opciones[numero];
 
-  // lo quqe se muestra arriba a la derecha
   tituloOpcion.innerHTML = `
   <img class="titulo-img derecha" src="${op.imagen}" alt="">
   ${op.texto}!!
-  <img class="titulo-img " src="${op.imagen}" alt="">
+  <img class="titulo-img" src="${op.imagen}" alt="">
 `;
 
-
-  // El ejercicio es el mismo sin importar que opcion elijió
   tituloEjercicio.textContent = p.ejercicio.titulo;
   explicacionEjercicio.innerHTML = p.ejercicio.explicacion.replace(/\n/g, '<br>');
 
   mostrarModo('modo-ejercicio');
-  // el cuadro se pinta del color de la opción elegida (despues de mostrarModo porque esa función borra el color)
   ejercicio.style.backgroundColor = op.color;
 }
 
-//  SEGUIR A LA PRÓXIMA PREGUNTA 
-let resultadoEnviado = false; // evita sumar los peces dos veces
+let resultadoEnviado = false;
 
 function siguiente() {
   indice++;
   if (indice >= orden.length) {
-    mostrarModo('modo-final');   // cuando ya respondió las 5
+    mostrarModo('modo-final');
     enviarResultado();
   } else {
     mostrarPregunta();
@@ -171,46 +152,37 @@ async function enviarResultado() {
     return;
   }
 
-  try {
-    const respuesta = await fetch(`${URL_SERVER}/ejercicios/completar`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        idUsuario: idUsuario,
-        idEjercicio: ID_EJERCICIO,
-        gano: true
-      })
-    });
+  const respuesta = await fetch(`${URL_SERVER}/ejercicios/completar`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      idUsuario: idUsuario,
+      idEjercicio: ID_EJERCICIO,
+      gano: true
+    })
+  });
 
-    const datos = await respuesta.json();
+  const datos = await respuesta.json();
 
-    if (!datos.funciono) {
-      console.error(datos.mensaje);
-      resultadoEnviado = false; // permite reintentar
-      return;
-    }
-
-    // Muestra los peces ganados si existe el elemento en el HTML
-    const pecesGanados = document.getElementById('pecesGanados');
-    if (pecesGanados && datos.monedasGanadas !== undefined) {
-      pecesGanados.textContent = datos.monedasGanadas;
-    }
-  } catch (error) {
-    console.error('No se pudo enviar el resultado al servidor:', error);
+  if (!datos.funciono) {
+    console.error(datos.mensaje);
     resultadoEnviado = false;
+    return;
+  }
+
+  const pecesGanados = document.getElementById('pecesGanados');
+  if (pecesGanados && datos.monedasGanadas !== undefined) {
+    pecesGanados.textContent = datos.monedasGanadas;
   }
 }
 
-//  Que pasa cuando se toca algo
-flechaIntro.addEventListener('click', mostrarPregunta);   // flecha de la explicación (empieza el juego)
-flechaEjercicio.addEventListener('click', siguiente);     // flecha del ejercicio (sigue a la próxima pregunta)
-botones[0].addEventListener('click', () => elegir(0));    // A = 0
-botones[1].addEventListener('click', () => elegir(1));    // B = 0
+flechaIntro.addEventListener('click', mostrarPregunta);
+flechaEjercicio.addEventListener('click', siguiente);
+botones[0].addEventListener('click', () => elegir(0));
+botones[1].addEventListener('click', () => elegir(1));
 
-jugarOtraVez.addEventListener('click', () => location.reload()); // recargar hace q se reinicie
+jugarOtraVez.addEventListener('click', () => location.reload());
 
-
-// ===== BOTÓN X Y POPUP DE SALIR =====
 const cerrar = document.getElementById('cerrar');
 const modalSalir = document.getElementById('modalSalir');
 const seguirJugando = document.getElementById('seguirJugando');
@@ -222,11 +194,11 @@ function salir() {
 
 cerrar.addEventListener('click', () => {
   if (ejercicio.classList.contains('modo-final')) {
-    salir();                              // en la pantalla final se cierra de una
+    salir();
   } else {
-    modalSalir.classList.add('visible');  // si no, pregunta primero
+    modalSalir.classList.add('visible');
   }
 });
 
-seguirJugando.addEventListener('click', () => modalSalir.classList.remove('visible')); // vuelve al juego
+seguirJugando.addEventListener('click', () => modalSalir.classList.remove('visible'));
 salirJuego.addEventListener('click', salir);

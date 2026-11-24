@@ -93,7 +93,6 @@ gap:15%;
     gap:8%;
   }
 
-  /*parte derecha*/
 
   .cubo{
     height: 75%;
@@ -109,9 +108,6 @@ gap:15%;
   }
   
   .chiquita{
-    /* CORREGIDO: acá había "font-family: sans-serif;". Como .chiquita está
-       escrita DESPUÉS de .tipografia, le pisaba la fuente Google Sans.
-       Se borró esa línea para que el h2 use la fuente de .tipografia. */
     font-size: 1.8rem;
     font-weight: 550;
     color: black;
@@ -207,13 +203,13 @@ gap:4%;
   /* imagenes */
 
   .fondo{
-    position: fixed;           /* La fija en la pantalla */
+    position: fixed;          
     top: 0;
     left: 0;
     width: 100vw;              
     height: 100vh;             
-    object-fit: cover;         /* Se estira y adapta sin deformarse */
-    z-index: -1;               /*al fondo*/
+    object-fit: cover;         
+    z-index: -1;               
   }
 
   .calliete{

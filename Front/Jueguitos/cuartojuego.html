@@ -9,9 +9,8 @@
 <body>
     <img class="fondo" src="../../imagenes/fondojuego2.png">
     <section class="superior">
-        <div class="ejercicio modo-intro" id="ejercicio"> <!-- El JS le cambia la clase: modo-intro / modo-juego / modo-final -->
-
-            <!-- PANTALLA 1 (explicación) -->
+        <div class="ejercicio modo-intro" id="ejercicio"> 
+        
             <div class="pantalla" id="intro">
                 <div class="callie aaaaaaa">
                     <img class="calliete amore" src="../../imagenes/calliesaludando.png" alt="">
@@ -27,11 +26,11 @@
                 </div>
             </div>
 
-            <!-- PANTALLA 2 (el juego). El atributo data-estado lo cambia el JS: ordenar / casi / bien -->
+         
             <div class="pantalla" id="juego" data-estado="ordenar">
                 <p class="tipografia contador" id="contador"></p>
 
-                <!-- flecha para pasar a la próxima palabra (solo se ve cuando la hizo bien) -->
+              
                 <button class="flecha" id="flechaSiguiente" aria-label="Siguiente palabra">
                     <img src="../../imagenes/salir.png" alt="">
                 </button>
@@ -39,12 +38,12 @@
                 <p class="tipografia" id="mensaje"></p>
 
                 <div class="fila">
-                    <!-- AQUÍ VA LA IMAGEN (izquierda): el JS le pone el link que está en la lista de palabras -->
+                   
                     <div class="espacio-imagen" id="espacioIzq"><img id="imgIzq" alt=""></div>
 
                     <div class="letras" id="letras"></div>
 
-                    <!-- AQUÍ VA LA IMAGEN (derecha) -->
+                    
                     <div class="espacio-imagen" id="espacioDer"><img id="imgDer" alt=""></div>
                 </div>
 
@@ -55,8 +54,8 @@
                 </button>
             </div>
 
-            <!-- PANTALLA FINAL (cuando ganó) -->
-        <!-- PANTALLA FINAL -->
+          
+       
 <div class="pantalla" id="final">
     <div class="callie-final aaaaaaa">
         <img class="calliete amore" src="../../imagenes/calliesaludando.png" alt="">
@@ -80,7 +79,7 @@
         </button>
     </section>
 
-<!-- POPUP DE SALIR -->
+
 <div class="modal-fondo" id="modalSalir">
     <div class="modal-caja">
         <p class="tipografia modal-texto">
@@ -93,6 +92,6 @@
     </div>
 </div>
 
-    <script src="cuartojuego.js"></script> <!-- vincula el JS -->
+    <script src="cuartojuego.js"></script> 
 </body>
 </html>

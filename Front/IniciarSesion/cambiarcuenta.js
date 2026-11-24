@@ -8,7 +8,7 @@ const boton = document.getElementById("boton");
 
 let usuarioActual = null;
 
-// Cargar los datos guardados apenas abre la pantalla
+
 document.addEventListener('DOMContent   Loaded', () => {
     const usuarioGuardado = localStorage.getItem('usuario');
 
@@ -20,18 +20,18 @@ document.addEventListener('DOMContent   Loaded', () => {
     usuarioActual = JSON.parse(usuarioGuardado);
     console.log("Usuario cargado desde localStorage:", usuarioActual);
 
-    // 1. Mostrar el nombre guardado en el placeholder
+   
     const nombreGuardado = usuarioActual.nombre || usuarioActual.nombreDeUsuario;
     if (inputNombre && nombreGuardado) {
         inputNombre.placeholder = nombreGuardado;
     }
 
-    // 2. Cargar la fecha de nacimiento guardada
+    
     if (inputFecha && usuarioActual.fechaDeNacimiento) {
         inputFecha.value = usuarioActual.fechaDeNacimiento;
     }
 
-    // 3. Marcar el problema fonoaudiológico si existía uno
+   
     if (usuarioActual.problemaFonoaudiologico) {
         const idProblema = usuarioActual.problemaFonoaudiologico.id ?? usuarioActual.problemaFonoaudiologico;
         const radio = document.querySelector(`input[name="opcion"][value="${idProblema}"]`);
@@ -41,7 +41,7 @@ document.addEventListener('DOMContent   Loaded', () => {
     }
 });
 
-// Guardar los cambios realizados
+
 async function Registrarse() {
     if (!usuarioActual || !usuarioActual.id) {
         alert("No se encontró el ID del usuario para modificar.");

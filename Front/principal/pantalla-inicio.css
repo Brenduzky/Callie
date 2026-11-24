@@ -229,17 +229,17 @@ gap:-5%
 }
 
   .fondo{
-    position: fixed;           /* La fija en la pantalla */
+    position: fixed;         
     top: 0;
     left: 0;
     width: 100vw;              
     height: 80vh;             
-    object-fit: cover;         /* Se estira y adapta sin deformarse */
-    z-index: -1;               /*al fondo*/
+    object-fit: cover;        
+    z-index: -1;              
   }
  
 
-  /*intento de hacerlo mas lindo*/ /*no me estaría saliendo*/
+
   .prueba:hover {
   filter: brightness(1.08);      
 }
@@ -248,13 +248,13 @@ gap:-5%
 
 
 
-/* Posicionamiento del contenedor */
+
 .configura {
   position: relative;
   cursor: pointer;
 }
 
-/* Estilos del menú flotante */
+
 .popout-menu {
   position: absolute;
   top: 90%;
@@ -275,7 +275,7 @@ gap:-5%
   display: none !important;
 }
 
-/* Botones dentro del desplegable */
+
 .btn-popout {
   display: block;
   text-align: center;

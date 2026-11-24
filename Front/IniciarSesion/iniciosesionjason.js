@@ -17,24 +17,22 @@ async function iniciarSesion(evento) {
     return;
   }
 
-  
-    const respuesta = await fetch(`${URL_SERVER}/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre, contrasena })
-    });
+  const respuesta = await fetch(`${URL_SERVER}/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nombre, contrasena })
+  });
 
-    const datos = await respuesta.json();
+  const datos = await respuesta.json();
 
-    if (!datos.funciono) {
-      mensaje.textContent = datos.mensaje;
-      return;
-    }
+  if (!datos.funciono) {
+    mensaje.textContent = datos.mensaje;
+    return;
+  }
 
-    localStorage.setItem('usuario', JSON.stringify(datos.usuario));
+  localStorage.setItem('usuario', JSON.stringify(datos.usuario));
 
-    window.location.href = '../principal/pantalla-atras.html';
-
+  window.location.href = '../principal/pantalla-atras.html';
 }
 
 botonSiguiente.addEventListener('click', iniciarSesion);

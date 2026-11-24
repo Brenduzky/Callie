@@ -58,26 +58,24 @@ body {
   justify-content: space-evenly;
 }
 
-/* CUADRO GRANDE */
 .ejercicio {
-  position: relative;            /* para poner la flecha de adentro */
+  position: relative;
   width: 65%;
   height: 85%;
-  background-color: #71CFF7;     /* celeste de la intro y dsp el js lo cambia segun lo q elija*/
+  background-color: #71CFF7;
   border-radius: 10px;
   border: 5px solid #000;
-  overflow: hidden;              /* lo que se sale del cuadrado se recorta */
-  transition: background-color 0.4s;  /* lo que tarda en cambiar el color */
+  overflow: hidden;
+  transition: background-color 0.4s;
 }
 
 
 .pantalla {
-  display: none; /* todas las pantallas están escondidas */
+  display: none;
   width: 100%;
   height: 100%;
 }
 
-/* según la clase que tenga el cuadro, se muestra una sola pantalla */
 .ejercicio.modo-intro #intro,
 .ejercicio.modo-pregunta #pregunta,
 .ejercicio.modo-ejercicio #pantallaEjercicio,
@@ -85,7 +83,6 @@ body {
   display: flex;
 }
 
-/* FLECHA */
 .flecha {
   position: absolute;           
   right: 2%;
@@ -106,7 +103,6 @@ body {
   width: 100%;                 
 }
 
-/* PANTALLA 1: INTRO  */
 #intro {
   align-items: center; 
   justify-content: center;     
@@ -120,30 +116,33 @@ body {
   text-align: left;
 }
 
-/*PANTALLA 2: PREGUNTA */
 #pregunta {
   flex-direction: column;       
 }
 
 #textoPregunta {
-  flex: 1;                       
-  display: flex;
-  flex-direction: column;        /* coloca las líneas de texto una sobre otra */
-  justify-content: center;       /* centra el bloque de texto verticalmente */
-  align-items: center;           /* centra el bloque horizontalmente en el contenedor */
-  text-align: right;             /* alinea el texto hacia la derecha */
-  white-space: pre-line;         /* respeta los saltos de línea (\n) */
-  padding: 0 15%;
+  flex: 1;
+  display: grid;
+  place-content: center;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 1.8;
+  padding-left: 4.5em;   
+  text-indent: -4.5em;
+}
+
+#textoPregunta::first-line {
+  margin-left: -3em;
 }
 
 .opciones {
-  display: flex;                 /* los dos botones lado a lado */
+  display: flex;
   height: 28%;
-  border-top: 5px solid #000;    /* línea entre la pregunta y los botones */
+  border-top: 5px solid #000;
 }
 
 .opcion {
-  flex: 1;                       /* cada botón ocupa la mitad: se reparten el ancho en partes iguales */
+  flex: 1;
   border: none;
   font-family: inherit;
   cursor: pointer;
@@ -155,20 +154,18 @@ body {
 }
 
 .opcion + .opcion {
-  border-left: 5px solid #000;   /* línea que separa los botones */
+  border-left: 5px solid #000;
 }
 
 .opcion:hover {
-  filter: brightness(1.08);      /* se aclara al pasar el mouse */
+  filter: brightness(1.08);
 }
 
-/* foto dentro de los botones de opción */
 .op-img {
-  height: 3.2em;          /* el alto manda; el ancho se ajusta solo */
+  height: 3.2em;
   width: auto;
 }
 
-/* PANTALLA 3: EJERCICIO*/
 #pantallaEjercicio {
   flex-direction: column;
   align-items: center;
@@ -180,10 +177,9 @@ body {
   font-weight: normal;
 }
 
-/* fotos del título de la pantalla del ejercicio */
 .titulo-img {
   width: auto;
-  vertical-align: middle; /* las alinea con el texto (si no, quedan más abajo) */
+  vertical-align: middle;
 }
 
 
@@ -207,19 +203,17 @@ body {
   margin-top: 5%;
   line-height: 1.4;
   text-align: left;
-  white-space: pre-line;   /* respeta los \n del JS */
+  white-space: pre-line;
   font-size: 1rem;
 }
 }
 
-/* PANTALLA FINAL */
 #final {
   align-items: center;
   justify-content: center;
   font-weight: bold;
 }
 
-/* la parte de abajo (no cambia) */
 #callie {
   width: 20%;
   height: 95%;
@@ -270,7 +264,6 @@ body {
 
 
 
-/* ===== BOTÓN X (ahora es <button>, no <a>) ===== */
 #cerrar {
   border: none;
   background: transparent;
@@ -278,7 +271,7 @@ body {
   cursor: pointer;
 }
 #cerrar img {
-  display: block; /* saca el huequito que deja una imagen dentro de un botón */
+  display: block;
 }
 
 
@@ -286,8 +279,6 @@ body {
 
 
 
-/* ===== POPUP DE SALIR ===== */
-/* ===== POPUP DE SALIR ===== */
 .modal-fondo {
   display: none;
   position: fixed;
@@ -303,8 +294,8 @@ body {
 }
 
 .modal-caja {
-  background: #dcdcdc; /* Fondo gris claro */
-  border: 4px solid #4a4a4a; /* Borde exterior oscuro */
+  background: #dcdcdc;
+  border: 4px solid #4a4a4a;
   border-radius: 4px;
   width: 480px;
   max-width: 90%;
@@ -322,7 +313,6 @@ body {
   line-height: 1.3;
 }
 
-/* Contenedor de botones alineados horizontalmente */
 .modal-botones {
   display: flex;
   flex-direction: row;
@@ -332,17 +322,15 @@ body {
   width: 100%;
 }
 
-/* Estilos base para los botones del modal */
 .boton-cancelar,
 .boton-salir {
   padding: 0.5em 1.8em;
   font-size: 1.1rem;
-  border-radius: 20px; /* Bordes redondeados en forma de píldora */
+  border-radius: 20px;
   cursor: pointer;
   transition: transform 0.1s, filter 0.2s;
 }
 
-/* Botón Cancelar (Naranja con borde naranja oscuro) */
 .boton-cancelar {
   background-color: #fca949;
   border: 3px solid #e27d14;
@@ -353,7 +341,6 @@ body {
   align-items: center;
 }
 
-/* Botón Salir (Gris claro con borde gris oscuro) */
 .boton-salir {
   background-color: #cccccc;
   border: 3px solid #8c8c8c;
@@ -375,16 +362,14 @@ body {
 }
   
 
-/* ===== PECES DEL "Lo lograste" ===== */
 .pez {
-  height: 1.4em;                 /* el alto manda, el ancho se ajusta solo */
+  height: 1.4em;
   width: auto;
-  vertical-align: middle;        /* alineados con el texto */
+  vertical-align: middle;
   margin: 0 0.1em;
 }
 
 :root {
-  /* Verifica que la ruta hacia confeti.png sea la correcta según la ubicación de tu CSS */
   --fondo-final: url("../../imagenes/fondoconfeti.png");
 }
 
@@ -429,7 +414,6 @@ body {
   margin-bottom: 1em;
 }
 
-/* PECES AGRANDADOS E INVERTIDOS */
 .pez {
   height: 3.8rem;
   width: auto;
@@ -451,6 +435,11 @@ body {
 }
 
 
-#explicacionEjercicio{
-  font-size: 1.7rem;
+#explicacionEjercicio {
+  align-self: flex-start;
+  margin-top: 1%; 
+  line-height: 1.5;
+  text-align: left;
+  white-space: pre-line;
+  font-size: 1.5rem;
 }

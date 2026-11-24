@@ -8,7 +8,6 @@
 body {
   height: 100vh;
   overflow: hidden;
-  /* poner el fondo sino*/
   background: linear-gradient(#f2fcc4 0%, #eefcbd 60%, #e6f7b5 100%);
   font-family: 'Inter', Arial, sans-serif;
 }
@@ -55,7 +54,7 @@ body {
   justify-content: space-evenly;
 }
 
-/* cuadrado del medio (grande) */
+
 .ejercicio {
   position: relative;           
   display: flex;
@@ -66,17 +65,17 @@ body {
   background-color: #f1f0ee;
   border-radius: 10px;
   border: 5px solid #000;
-  transition: background-color 0.4s;  /*cuando cambia de color, lo hace lento */
-  overflow: hidden; /*esconde lo que no esta adentro (asi no recorto la imagen*/
+  transition: background-color 0.4s;  
+  overflow: hidden;
 }
 
-/* los dos modos están escondidos */
+
 #intro,
 #consigna {
   display: none;
 }
 
-/* según la clase que tenga el cuadro, se muestra uno u otro */
+
 .ejercicio.modo-intro #intro {
   display: block;
 }
@@ -87,54 +86,50 @@ body {
 
 
 
-
-/* MODO INTRO */
-/* MODO INTRO / FINAL - Contenedor de Callie */
 #callie,
 .callie-final {
   position: absolute;
-  left: -18%;             /* Ajusta la posición para que no quede muy pegado al borde */
+  left: -18%;             
   bottom: -8%;
-  width:38%;            /* Reducimos el ancho del contenedor del 20% al 16% */
+  width:38%;           
   aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: rotate(45deg);
-  /* Se eliminó font-size: 4rem que afectaba medidas internas */
 }
 
-/* Imagen del personaje */
+
 .calliete {
   transform: scaleX(-1);
-  width: 100%;           /* Cambiamos de 120% a 100% para que respete el contenedor */
+  width: 100%;           
   height: 100%;
-  object-fit: contain;   /* Mantiene la proporción perfecta sin agrandarse de más */
+  object-fit: contain;   
 }
 
-/* burbuja de texto, al lado de Callie */
+
 #burbujadetexto {
   position: absolute;
   left: 17%;
   top: 5%;
   width: 32%;
   height: max-content;  
-  padding: 20px 40px 20px 15px;  /* abajo más espacio para que la flecha no tape el texto */
+  padding: 20px 40px 20px 15px;  
   background-color: #9fe0ff;
   border: 5px solid #000;
-  border-radius: 50px 50px 50px 0;  /* un lado sin redondear*/
+  border-radius: 50px 50px 50px 0;  
   font-size: 1.1rem;
   line-height: 1.3;
   z-index: 2;
 }
 
-/* MODO CONSIGNA */
+
 
 #consigna {
   width: 100%;
   height: 100%;
   padding: 4% 6%;
-  flex-direction: column;   /* título arriba, explicación abajo */
+  flex-direction: column;  
   align-items: center;
   justify-content:center;
   
@@ -167,7 +162,7 @@ body {
 }
 
 #titulo {
-  background-color: rgba(255, 255, 255, 0.85);  /* blanco medio transparente */
+  background-color: rgba(255, 255, 255, 0.85);  
   padding: 0.4em 1.2em;
   border-radius: 12px;
   font-size: 2rem;
@@ -175,15 +170,14 @@ body {
 }
 
 #explicacion {
-  align-self: flex-start;   /* este texto va pegado a la izquierda, no centrado */
-  margin-top: 5%;
+  align-self: flex-start;  
   font-size: 1.4rem;
   line-height: 1.4;
   text-align: left;
   white-space: pre-line;
 }
 
-/*FLECHAS*/
+
 
 .flecha {
   position: absolute;
@@ -198,7 +192,7 @@ body {
   justify-content: center;
 }
 
-/* flecha de la burbuja */
+
 #flecha {
   left: 78%;
   bottom: 6%;
@@ -207,7 +201,7 @@ body {
   border:  solid #00000000;
 }
 
-/* flecha del cuadro de consigna: arriba a la izquierda */
+
 #flecha2 {
   right: 2%;
   top: 4%;
@@ -224,12 +218,12 @@ body {
   width: 120%;
 }
 
-/*cerrar juego*/
+
 .cerralo {
 width: 100%;
 }
 
-/* cajas de abajo, ejercicios*/
+
 .seleccion {
   width: 18%;
   height: 80%;
@@ -261,31 +255,31 @@ width: 100%;
     border-color: #2FB33F;
    }
 
-/*la caja que se va a poner de colores */
+
 .seleccion.brilla {
   opacity: 1;
   animation: pulso 0.9s ease-in-out infinite;
 }
 
-/*para que se agranden las cajas y eso*/
 
-@keyframes pulso { /*define los pasos de una animación (de pulso). Dentro, el porcentaje marca en qué momento de la animación pasa cada cosa*/
+
+@keyframes pulso { 
   0%, 100% {
-      transform: scale(1);                                        /*como esta*/
+      transform: scale(1);                                       
       box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8);
   }
   50% {
       transform: scale(1.08);
-      box-shadow: 0 0 28px 12px rgba(255, 255, 255, 1);          /*se en el maximo para q cuando 100=0*/
+      box-shadow: 0 0 28px 12px rgba(255, 255, 255, 1);        
   }
 }
 
 
 
-.seleccion.error-rojo {      /* si elije la caja mala*/
-  background-color: #ff4d4d !important; /* el important es para q sea la regla mas importante*/
+.seleccion.error-rojo {     
+  background-color: #ff4d4d !important; 
   box-shadow: 0 0 100px #ff0000;
-  transition: background-color 0.2s ease; /*lo que tarda en convertirse del todo para luego volver a antes*/
+  transition: background-color 0.2s ease;
 }
 
 

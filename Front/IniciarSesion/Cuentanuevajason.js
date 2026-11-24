@@ -51,7 +51,6 @@ botonSiguiente.addEventListener('click', async (event) => {
             alert("Registro exitoso");
             console.log("Usuario registrado:", resultado.usuario);
             
-            // Guardamos sesión igual que en el login
             if (resultado.usuario) {
                 localStorage.setItem('usuario', JSON.stringify(resultado.usuario));
             }

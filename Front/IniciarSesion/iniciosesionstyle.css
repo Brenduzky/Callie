@@ -186,11 +186,11 @@ gap:1%;
   }
 
   .fondo{
-    position: fixed;           /* La fija en la pantalla */
+    position: fixed;          
     top: 0;
     left: 0;
     width: 100vw;              
     height: 100vh;             
-    object-fit: cover;         /* Se estira y adapta sin deformarse */
-    z-index: -1;               /*al fondo*/
+    object-fit: cover;        
+    z-index: -1;              
   }

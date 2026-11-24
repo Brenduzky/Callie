@@ -1,7 +1,6 @@
 const URL_SERVER = 'http://localhost:3000';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Manejo del Popout de Configuración
     const btnConfig = document.getElementById('btn-config');
     const popoutMenu = document.getElementById('popout-menu');
 
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Cerrar sesión: borra el usuario guardado en el login
     const btnLogout = document.querySelector('.btn-logout-link');
     if (btnLogout) {
         btnLogout.addEventListener('click', () => {
@@ -26,17 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Carga de datos del usuario
     cargarDatosUsuario();
 });
 
 function obtenerIdUsuario() {
-    try {
-        const usuario = JSON.parse(localStorage.getItem('usuario'));
-        return usuario ? usuario.id : null;
-    } catch (error) {
-        return null;
-    }
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    return usuario ? usuario.id : null;
 }
 
 async function cargarDatosUsuario() {
@@ -45,37 +38,27 @@ async function cargarDatosUsuario() {
 
     const id = obtenerIdUsuario();
 
-    // Si no hay sesión iniciada, volvemos al login
     if (id === null || id === undefined) {
         window.location.href = '../IniciarSesion/Iniciosesion.html';
         return;
     }
 
-    try {
-        // Las dos consultas salen juntas
-        const [respuestaUsuario, respuestaRacha] = await Promise.all([
-            fetch(`${URL_SERVER}/usuario/${id}`),
-            fetch(`${URL_SERVER}/usuario/${id}/racha`)
-        ]);
+    const [respuestaUsuario, respuestaRacha] = await Promise.all([
+        fetch(`${URL_SERVER}/usuario/${id}`),
+        fetch(`${URL_SERVER}/usuario/${id}/racha`)
+    ]);
 
-        const datosUsuario = await respuestaUsuario.json();
-        const datosRacha = await respuestaRacha.json();
+    const datosUsuario = await respuestaUsuario.json();
+    const datosRacha = await respuestaRacha.json();
 
-        // Peces (en el server son las monedas)
-        if (datosUsuario.funciono && datosUsuario.usuario && elementoPeces) {
-            const peces = datosUsuario.usuario.monedas
-                ?? datosUsuario.usuario.monedasDisponibles
-                ?? 0;
-            elementoPeces.textContent = peces.toLocaleString();
-        }
+    if (datosUsuario.funciono && datosUsuario.usuario && elementoPeces) {
+        const peces = datosUsuario.usuario.monedas
+            ?? datosUsuario.usuario.monedasDisponibles
+            ?? 0;
+        elementoPeces.textContent = peces.toLocaleString();
+    }
 
-        // Racha (fueguito)
-        if (datosRacha.funciono && elementoRacha) {
-            elementoRacha.textContent = datosRacha.racha ?? 0;
-        }
-    } catch (error) {
-        console.error('Error al obtener los datos del servidor:', error);
-        if (elementoRacha) elementoRacha.textContent = '0';
-        if (elementoPeces) elementoPeces.textContent = '0';
+    if (datosRacha.funciono && elementoRacha) {
+        elementoRacha.textContent = datosRacha.racha ?? 0;
     }
 }

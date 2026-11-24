@@ -6,7 +6,7 @@
   
   body{
     height: 100vh;
-    overflow: hidden;            /* el fondo no se mueve */
+    overflow: hidden;            
     display: flex;
     flex-direction: column;
   
@@ -28,7 +28,7 @@
     z-index: -1;               
   }
 
-  /*tipografía*/
+
   
   .tipografia{
     font-family: "Google Sans", sans-serif;
@@ -44,7 +44,7 @@
     font-size: 3rem;
   }
   
-  /*lo demas*/
+
   
   .header{
     width: 100%;
@@ -56,13 +56,13 @@
   .medio{
     width: 100%;
     height: 78%;                 
-    margin-top: 4vh;             /*espacio entre lo de arriba */
+    margin-top: 4vh;             
     background-color: rgb(216, 42, 138, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 2.5vh;                    /* espacio entre cajas*/
+    gap: 2.5vh;                   
     padding-top: 2vh;
     padding-bottom: 2vh;
     overflow-y: auto;
@@ -118,44 +118,26 @@
   }
   
   .masgrande{
-    height: 110%;
+    height: 100%;
   }
   
-  /* Barra de scroll */
-  
-/* 1. Estándar para navegadores modernos (Firefox, Chrome/Edge nuevos) */
+
 .medio {
-  scrollbar-width: auto; /* Opciones: auto, thin, none */
-  scrollbar-color: rgb(110, 110, 110) transparent; /* [color-del-thumb] [color-del-track] */
+  scrollbar-width: auto; 
+  scrollbar-color: rgb(110, 110, 110) transparent; 
 }
-
-/* 2. Personalización detallada para Chrome, Safari, Edge y Opera (WebKit) */
 .medio::-webkit-scrollbar {
-  width: 14px; /* Ancho de la barra vertical */
-  height: 14px; /* Alto de la barra horizontal si la hubiera */
-}
-
-.medio::-webkit-scrollbar-track {
-  background: transparent; /* Fondo de la barra */
+  width: 14px;
 }
 
 .medio::-webkit-scrollbar-thumb {
-  background: rgb(110, 110, 110); /* Color del tirador */
-  border-radius: 10px; /* Bordes redondeados */
-  border: 3px solid transparent; /* Opcional: crea un margen interno si usas background-clip */
+  background: rgb(110, 110, 110);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
 }
 
-/* Opcional: Cambiar el color al pasar el mouse (hover) */
-.medio::-webkit-scrollbar-thumb:hover {
-  background: rgb(150, 150, 150);
-}
 
-.untrofeo.bloqueado {
-  filter: grayscale(1);
-  opacity: 0.5;
-}
-
-/* Las imágenes quedan ocultas hasta que el JS decide si van en color o en gris */
 .medio img {
   visibility: hidden;
 }

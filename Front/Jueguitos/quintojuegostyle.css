@@ -49,38 +49,37 @@
     align-items: center;
   }
   
-  /* COLORES (todos juntos para cambiarlos fácil) */
-  :root {
-    --naranja: #ffab3a;        /* barra y botón mientras corre el tiempo */
-    --azul-congelado: #7fc4ff; /* barra y botón cuando el tiempo está pausado */
-    --verde: #8de8aa;          /* barra cuando se completó */
-  }
   
-  /* CUADRO GRANDE */
+  :root {
+    --naranja: #ffab3a;        
+    --azul-congelado: #7fc4ff; 
+    --verde: #8de8aa;          
+  }
+
   .ejercicio {
     position: relative;
     width: 75%;
     height: 75%;
-    background-color: #f1f0ee;     /* gris clarito de la intro y el final */
+    background-color: #f1f0ee;    
     border-radius: 10px;
     border: 5px solid #000;
     overflow: hidden;
     transition: background-color 0.3s;
   }
   
-  /* en el juego el fondo es celeste */
+ 
   .ejercicio.modo-juego {
     background-color: #aed3ec;
   }
   
-  /* Todas las pantallas empiezan escondidas */
+  
   .pantalla {
     display: none;
     width: 100%;
     height: 100%;
   }
   
-  /* se muestra una de las pantallas según el js */
+ 
   .ejercicio.modo-intro #intro {
     display: block;
   }
@@ -99,7 +98,7 @@
     display: block;
   }
   
-  /* ===== TIEMPO: RELOJ + BARRA ===== */
+ 
   .tiempo {
     display: flex;
     align-items: center;
@@ -107,7 +106,7 @@
     width: 65%;
   }
   
-/* ESPACIO PARA LA IMAGEN DEL RELOJ */
+
 .reloj {
   width: 2.4rem;
   aspect-ratio: 1/1;
@@ -123,20 +122,6 @@
   object-fit: contain;
 }
 
-/* si todavía no hay link, se ve un cuadradito punteado */
-.reloj.sin-imagen {
-  border: 2px dashed #4f7f9c;
-  border-radius: 6px;
-  color: #4f7f9c;
-  font-family: "Google Sans", sans-serif;
-  font-size: 0.6rem;
-}
-.reloj.sin-imagen::before {
-  content: "IMG";
-}
-.reloj.sin-imagen img {
-  display: none;
-}
 
   
   .barra-tiempo {
@@ -145,7 +130,7 @@
     background: #d0d0d0;
     border: 3px solid #000;
     border-radius: 20px;
-    overflow: hidden;              /* el relleno no se sale de las puntas redondas */
+    overflow: hidden;             
   }
   
   .relleno {
@@ -162,12 +147,12 @@
     max-width: 70%;
   }
   
-  /* ===== IMAGEN + BOTÓN DE PAUSA ===== */
+
   .zona-imagen {
-    position: relative;            /* para ubicar el botón al costado de la imagen */
+    position: relative;           
   }
   
-  /* ESPACIO PARA LA IMAGEN */
+ 
   .espacio-imagen {
     width: clamp(7rem, 16vw, 11rem);
     aspect-ratio: 1/1;
@@ -181,22 +166,8 @@
     object-fit: contain;
   }
   
-  /* si todavía no hay link, se ve un cuadrito punteado con el nombre */
-  .espacio-imagen.sin-imagen {
-    border: 3px dashed #4f7f9c;
-    border-radius: 10px;
-    color: #4f7f9c;
-    font-family: "Google Sans", sans-serif;
-    text-align: center;
-  }
-  .espacio-imagen.sin-imagen::before {
-    content: attr(data-nombre);
-  }
-  .espacio-imagen.sin-imagen img {
-    display: none;
-  }
+ 
   
-  /* BOTÓN DE PAUSA (a la derecha de la imagen) */
   #botonPausa {
     position: absolute;
     left: calc(100% + 8rem);
@@ -224,19 +195,19 @@
     fill: #fff;
   }
   
-  /* ===== SEGÚN EL ESTADO DEL JUEGO ===== */
   
-  /* jugando: se ve el dibujito de pausa. En pausa: el de play */
+  
+  /* cambia entre el pausa y despausa */
   #juego[data-estado="jugando"] .icono-play { display: none; }
   #juego[data-estado="pausa"] .icono-pausa { display: none; }
   
-  /* pausa: la barra y el botón se ponen azules (congelados) */
+  /* se ponen azules */
   #juego[data-estado="pausa"] .relleno,
   #juego[data-estado="pausa"] #botonPausa {
     background: var(--azul-congelado);
   }
   
-  /* éxito: barra verde, se esconde el botón y aparece la flecha */
+  
   #juego[data-estado="exito"] .relleno {
     background: var(--verde);
   }
@@ -253,7 +224,7 @@
     display: flex;
   }
   
-  /* INTRO */
+
   .callie {
     position: absolute;
     left: -10%;
@@ -288,7 +259,7 @@
     line-height: 1.3;
   }
   
-  /* FLECHA */
+
   .flecha {
     position: absolute;
     width: 3.6rem;
@@ -311,7 +282,7 @@
     bottom: 5%;
   }
   
-  /* PANTALLA FINAL */
+ 
   #textofinal {
     position: absolute;
     left: 50%;
@@ -320,8 +291,7 @@
     text-align: center;
   }
   
-  /* LOS PECES AL COSTADO DEL TÍTULO:
-     "titulo-final" es una fila (flex), así los peces y el h2 quedan en la misma línea */
+  
   .titulo-final {
     display: flex;
     align-items: center;
@@ -340,7 +310,7 @@
     margin-bottom: 1em;
   }
   
-  /* BOTÓN DE SALIR */
+ 
   #cerrar {
     position: absolute;
     right: 1.5%;
@@ -361,8 +331,7 @@
     display: block;
   }
   
-  /* POPUP DE SALIR */
-  /* ===== POPUP DE SALIR ===== */
+ 
 .modal-fondo {
   display: none;
   position: fixed;
@@ -378,8 +347,8 @@
 }
 
 .modal-caja {
-  background: #dcdcdc; /* Fondo gris claro */
-  border: 4px solid #4a4a4a; /* Borde exterior oscuro */
+  background: #dcdcdc; 
+  border: 4px solid #4a4a4a; 
   border-radius: 4px;
   width: 480px;
   max-width: 90%;
@@ -397,7 +366,7 @@
   line-height: 1.3;
 }
 
-/* Contenedor de botones alineados horizontalmente */
+
 .modal-botones {
   display: flex;
   flex-direction: row;
@@ -407,17 +376,17 @@
   width: 100%;
 }
 
-/* Estilos base para los botones del modal */
+
 .boton-cancelar,
 .boton-salir {
   padding: 0.5em 1.8em;
   font-size: 1.1rem;
-  border-radius: 20px; /* Bordes redondeados en forma de píldora */
+  border-radius: 20px; 
   cursor: pointer;
   transition: transform 0.1s, filter 0.2s;
 }
 
-/* Botón Cancelar (Naranja con borde naranja oscuro) */
+
 .boton-cancelar {
   background-color: #fca949;
   border: 3px solid #e27d14;
@@ -428,7 +397,7 @@
   align-items: center;
 }
 
-/* Botón Salir (Gris claro con borde gris oscuro) */
+
 .boton-salir {
   background-color: #cccccc;
   border: 3px solid #8c8c8c;
@@ -450,7 +419,7 @@
 }
   
   
-  /* PECES DEL "Lo lograste" */
+
   .pez {
     height: 1.2em;
     width: auto;
@@ -458,16 +427,14 @@
     margin: 0 0.6em;
   }
   
-  /* dentro de la fila del título los peces no necesitan margen (ya lo da el gap) */
-  .titulo-final .pez {
+   .titulo-final .pez {
     margin: 0;
     height: 1.8rem;
   }
 
 
  :root {
-  /* Verifica que la ruta hacia confeti.png sea la correcta según la ubicación de tu CSS */
-  --fondo-final: url("../../imagenes/fondoconfeti.png");
+   --fondo-final: url("../../imagenes/fondoconfeti.png");
 }
 
 .ejercicio.modo-final #final {
@@ -510,7 +477,7 @@
   margin-bottom: 1em;
 }
 
-/* PECES AGRANDADOS E INVERTIDOS */
+
 .pez {
   height: 3.8rem;
   width: auto;

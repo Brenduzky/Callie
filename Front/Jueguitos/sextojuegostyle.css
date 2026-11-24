@@ -45,42 +45,35 @@ body {
   align-items: center;
 }
 
-/* COLORES Y LINKS (todos juntos para cambiarlos fácil) */
 :root {
-  --naranja: #ffab3a;        /* barra y botón mientras corre el tiempo */
-  --azul-congelado: #7fc4ff; /* barra y botón cuando el tiempo está pausado */
-  --verde: #8de8aa;          /* barra y borde cuando se acierta / se completa */
-  --rojo: #ff7a7a;           /* borde cuando se elige la imagen equivocada */
-
-  /* ACÁ VA EL LINK DEL CONFETI DE LA PANTALLA FINAL (la ruta es desde este archivo .css) */
+  --naranja: #ffab3a;
+  --azul-congelado: #7fc4ff;
+  --verde: #8de8aa;
+  --rojo: #ff7a7a;
   --fondo-final: url("../../imagenes/fondoconfeti.png");
 }
 
-/* CUADRO GRANDE */
 .ejercicio {
   position: relative;
   width: 75%;
   height: 75%;
-  background-color: #f1f0ee;     /* gris clarito de la intro y el final */
+  background-color: #f1f0ee;
   border-radius: 10px;
   border: 5px solid #000;
   overflow: hidden;
   transition: background-color 0.3s;
 }
 
-/* en el juego el fondo es celeste */
 .ejercicio.modo-juego {
   background-color: #aed3ec;
 }
 
-/* Todas las pantallas empiezan escondidas */
 .pantalla {
   display: none;
   width: 100%;
   height: 100%;
 }
 
-/* se muestra una de las pantallas según el js */
 .ejercicio.modo-intro #intro {
   display: block;
 }
@@ -98,11 +91,9 @@ body {
 .ejercicio.modo-final #final {
   display: block;
   position: relative;
-  /* el confeti de fondo: cubre toda la pantalla final */
   background: var(--fondo-final) center / cover no-repeat;
 }
 
-/* ===== TIEMPO: RELOJ + BARRA ===== */
 .tiempo {
   display: flex;
   align-items: center;
@@ -110,7 +101,6 @@ body {
   width: 65%;
 }
 
-/* ESPACIO PARA LA IMAGEN DEL RELOJ */
 .reloj {
   width: 2.4rem;
   aspect-ratio: 1/1;
@@ -126,28 +116,13 @@ body {
   object-fit: contain;
 }
 
-/* si todavía no hay link, se ve un cuadradito punteado */
-.reloj.sin-imagen {
-  border: 2px dashed #4f7f9c;
-  border-radius: 6px;
-  color: #4f7f9c;
-  font-family: "Google Sans", sans-serif;
-  font-size: 0.6rem;
-}
-.reloj.sin-imagen::before {
-  content: "IMG";
-}
-.reloj.sin-imagen img {
-  display: none;
-}
-
 .barra-tiempo {
   flex: 1;
   height: 1.6rem;
   background: #d0d0d0;
   border: 3px solid #000;
   border-radius: 20px;
-  overflow: hidden;              /* el relleno no se sale de las puntas redondas */
+  overflow: hidden;
 }
 
 .relleno {
@@ -164,7 +139,6 @@ body {
   max-width: 70%;
 }
 
-/* ===== LAS 3 IMÁGENES PARA ELEGIR ===== */
 #opciones {
   display: flex;
   justify-content: center;
@@ -175,7 +149,7 @@ body {
   width: clamp(6rem, 13vw, 9.5rem);
   aspect-ratio: 1/1;
   background: transparent;
-  border: 4px solid transparent;   /* transparente: se pinta de verde o rojo al elegir */
+  border: 4px solid transparent;
   border-radius: 14px;
   cursor: pointer;
   display: flex;
@@ -185,35 +159,20 @@ body {
 }
 
 .opcion:hover {
-  transform: translateY(-4px);     /* sube un poquito al pasar el mouse */
+  transform: translateY(-4px);
 }
 
 .opcion img {
   width: 120%;
-  
   object-fit: contain;
-  pointer-events: none;            /* evita interferir con los clics */
+  pointer-events: none;
 }
 
-/* si todavía no hay link, se ve un cuadrito punteado con el nombre */
-.opcion.sin-imagen {
-  border: 3px dashed #4f7f9c;
-  color: #4f7f9c;
-  font-family: "Google Sans", sans-serif;
-  font-size: 5rem;
-  text-align: center;
-}
-.opcion.sin-imagen::before {
-  content: attr(data-nombre);
-}
-
-/* eligió la correcta: borde verde con brillito */
 .opcion.acierto,
 .opcion.acierto:hover {
   transform: scale(1.12);
 }
 
-/* eligió una equivocada: borde rojo y se sacude */
 .opcion.error {
   animation: sacudir 0.4s;
 }
@@ -226,12 +185,10 @@ body {
   80%      { transform: translateX(6px); }
 }
 
-/* ===== IMAGEN A COPIAR + BOTÓN DE PAUSA ===== */
 .zona-imagen {
-  position: relative;            /* para ubicar el botón al costado de la imagen */
+  position: relative;
 }
 
-/* ESPACIO PARA LA IMAGEN */
 .espacio-imagen {
   width: clamp(7rem, 16vw, 11rem);
   aspect-ratio: 1/1;
@@ -245,22 +202,6 @@ body {
   object-fit: contain;
 }
 
-/* si todavía no hay link, se ve un cuadrito punteado con el nombre */
-.espacio-imagen.sin-imagen {
-  border: 3px dashed #4f7f9c;
-  border-radius: 10px;
-  color: #4f7f9c;
-  font-family: "Google Sans", sans-serif;
-  text-align: center;
-}
-.espacio-imagen.sin-imagen::before {
-  content: attr(data-nombre);
-}
-.espacio-imagen.sin-imagen img {
-  display: none;
-}
-
-/* BOTÓN DE PAUSA (a la derecha de la imagen) */
 #botonPausa {
   position: absolute;
   left: calc(100% + 8rem);
@@ -288,30 +229,23 @@ body {
   fill: #fff;
 }
 
-/* ===== SEGÚN EL ESTADO DEL JUEGO ===== */
-
-/* buscar: solo se ven el texto y las 3 imágenes (se esconden el reloj, la imagen a copiar y el botón) */
 #juego[data-estado="buscar"] .tiempo,
 #juego[data-estado="buscar"] .zona-imagen {
   display: none;
 }
 
-/* cualquier otro estado: se esconden las 3 imágenes para elegir */
 #juego:not([data-estado="buscar"]) #opciones {
   display: none;
 }
 
-/* jugando: se ve el dibujito de pausa. En pausa: el de play */
 #juego[data-estado="jugando"] .icono-play { display: none; }
 #juego[data-estado="pausa"] .icono-pausa { display: none; }
 
-/* pausa: la barra y el botón se ponen azules (congelados) */
 #juego[data-estado="pausa"] .relleno,
 #juego[data-estado="pausa"] #botonPausa {
   background: var(--azul-congelado);
 }
 
-/* éxito: barra verde, se esconde el botón y aparece la flecha */
 #juego[data-estado="exito"] .relleno {
   background: var(--verde);
 }
@@ -328,7 +262,6 @@ body {
   display: flex;
 }
 
-/* INTRO */
 .callie {
   position: absolute;
   left: -10%;
@@ -363,7 +296,6 @@ body {
   line-height: 1.3;
 }
 
-/* FLECHA */
 .flecha {
   position: absolute;
   width: 3.6rem;
@@ -386,9 +318,6 @@ body {
   bottom: 5%;
 }
 
-/* ===== PANTALLA FINAL ===== */
-
-/* la tarjeta blanca translúcida del medio */
 #textofinal {
   position: absolute;
   left: 50%;
@@ -396,13 +325,11 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   padding: 1.6rem 3rem;
-  background: rgba(255, 255, 255, 0.78);   /* blanco con un poco de transparencia */
+  background: rgba(255, 255, 255, 0.78);
   border-radius: 24px;
   backdrop-filter: blur(2px);
 }
 
-/* LOS PECES AL COSTADO DEL TÍTULO:
-   "titulo-final" es una fila (flex), así los peces y el h2 quedan en la misma línea */
 .titulo-final {
   display: flex;
   align-items: center;
@@ -421,7 +348,6 @@ body {
   margin-bottom: 1em;
 }
 
-/* BOTÓN DE SALIR */
 #cerrar {
   position: absolute;
   right: 1.5%;
@@ -442,8 +368,6 @@ body {
   display: block;
 }
 
-/* POPUP DE SALIR */
-/* ===== POPUP DE SALIR ===== */
 .modal-fondo {
   display: none;
   position: fixed;
@@ -459,8 +383,8 @@ body {
 }
 
 .modal-caja {
-  background: #dcdcdc; /* Fondo gris claro */
-  border: 4px solid #4a4a4a; /* Borde exterior oscuro */
+  background: #dcdcdc;
+  border: 4px solid #4a4a4a;
   border-radius: 4px;
   width: 480px;
   max-width: 90%;
@@ -478,7 +402,6 @@ body {
   line-height: 1.3;
 }
 
-/* Contenedor de botones alineados horizontalmente */
 .modal-botones {
   display: flex;
   flex-direction: row;
@@ -488,17 +411,15 @@ body {
   width: 100%;
 }
 
-/* Estilos base para los botones del modal */
 .boton-cancelar,
 .boton-salir {
   padding: 0.5em 1.8em;
   font-size: 1.1rem;
-  border-radius: 20px; /* Bordes redondeados en forma de píldora */
+  border-radius: 20px;
   cursor: pointer;
   transition: transform 0.1s, filter 0.2s;
 }
 
-/* Botón Cancelar (Naranja con borde naranja oscuro) */
 .boton-cancelar {
   background-color: #fca949;
   border: 3px solid #e27d14;
@@ -509,7 +430,6 @@ body {
   align-items: center;
 }
 
-/* Botón Salir (Gris claro con borde gris oscuro) */
 .boton-salir {
   background-color: #cccccc;
   border: 3px solid #8c8c8c;
@@ -529,9 +449,7 @@ body {
 .boton-salir:active {
   transform: scale(0.97);
 }
-  
 
-/* PECES DEL "Lo lograste" (sin margen: el espacio lo da el gap de la fila) */
 .pez {
   height: 3rem;
   width: auto;

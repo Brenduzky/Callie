@@ -88,48 +88,39 @@ const textos = ['Incompetencia labial', 'Incompetencia labial', 'Dislalia', 'Dis
     function mostrar() {
         juegos.forEach((j, i) => {
 
-            // se sacan las clases de antes para agregarlas dsp
             j.classList.remove('centro', 'izq', 'der', 'oculto');
 
-            // d es la distancia entre la tarjeta y la actual.
-            // "+ n" y "% n" hacen que de la vuelta 
             let d = (i - actual + n) % n;
 
-            // Si d queda en la segunda mitad, la pasamos a negativa
-            // para que la última cuente como "a la izquierda" de la primera
-            //no es paraq vaya a la izq, sino para q el juego se muestre a la izq
             if (d > n / 2) d -= n;
 
-            // se vuelven a dar las clases
-            // Según la distancia se asigna la posición:
-            if (d === 0) j.classList.add('centro');        // es la actual
-            else if (d === -1) j.classList.add('izq');     // la anterior
-            else if (d === 1) j.classList.add('der');      // la siguiente
-            else j.classList.add('oculto');                // para q no este
+            if (d === 0) j.classList.add('centro');        
+            else if (d === -1) j.classList.add('izq');
+            else if (d === 1) j.classList.add('der');
+            else j.classList.add('oculto');
         });
 
-        titulo.textContent = textos[actual]; //el titulo cambia segun el juego
+        titulo.textContent = textos[actual]; 
     }
 
 
-    // botón ant resta 1, "+ n" hace q no haya nros negativos, entc la primera va a la ultima
+
     ant.addEventListener('click', () => { 
         actual = (actual - 1 + n) % n;
          mostrar(); 
         });
 
-    // el sig, suma 1 y el "% n" hace q vuelva a 0 si es la ultima
+    
     sig.addEventListener('click', () => { 
         actual = (actual + 1) % n; 
         mostrar(); 
     });
 
-    // si apreto una tarjeta de los costados tmb funciona como las flechas
     juegos.forEach((j, i) => {
         j.addEventListener('click', e => {
             if (i !== actual) {          
-                e.preventDefault();      // no se puede abrir el juego cuando apretas
-                actual = i;              // va al medio
+                e.preventDefault();     
+                actual = i;              
                 mostrar();               
             }
         });
