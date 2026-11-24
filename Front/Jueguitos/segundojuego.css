@@ -30,15 +30,16 @@ body {
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "GRAD" 0;
-  font-size: 1.5rem;
-}
-
-.alta{
   font-size: 1.8rem;
 }
 
+.alta{
+  font-size: 2.5rem;
+}
+
 .gorda{
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 .superior {
@@ -127,7 +128,7 @@ body {
   text-align: left;
   white-space: pre-line;
   line-height: 1.8;
-  padding-left: 4.5em;   
+  padding-left: 3em;   
   text-indent: -4.5em;
 }
 
@@ -195,6 +196,7 @@ body {
   background-color: rgba(255, 255, 255, 0.85); 
   border-radius: 12px;
   text-align: center;
+  margin-bottom: 25px;  
 }
 
 #explicacionEjercicio {

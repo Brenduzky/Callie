@@ -21,7 +21,7 @@ const preguntas = [
   {
     pregunta: "¿Qué preferís...\n Perro o Gato?",
     opciones: [
-      { texto: "Perro", imagen:"../../imagenes/segundo-perro.png", color: "#E8C075" },
+      { texto: "Perro", imagen:"../../imagenes/segundo-perro.png", color: "#E87575" },
       { texto: "Gato",  imagen:"../../imagenes/segundo-gato.png", color: "#ABB1A6" }
     ],
     ejercicio: {
